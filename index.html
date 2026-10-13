@@ -21,6 +21,8 @@
 .handoff-note{background:#fff3f7;padding:9px;border-radius:9px;color:#603b55;font-size:11px;line-height:1.5}
 .finish-confirm{padding:14px 10px;border-radius:12px;background:#fff2f9;color:#382b37;font-size:14px;line-height:1.8;margin-top:12px;overflow-wrap:anywhere}
 @media(max-width:650px){.task{min-height:270px;padding:31px 9px 13px}.task.done-history{min-height:270px}.task .text{font-size:15px;margin:26px 0 12px}.completion-item{font-size:11px}.finish-btn{font-size:14px;padding:12px 8px}}
+
+.accountability,.vacancy-panel{background:#fff;border:2px solid #e6dce7;border-radius:22px;padding:18px 20px;margin:14px 0 22px;box-shadow:0 8px 22px #82758913}.accountability-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.accountability h2,.vacancy-panel h2{font-size:20px;margin:0;color:#29222f}.accountability p,.vacancy-panel p{font-size:13px;color:#4d4753;line-height:1.65;margin:8px 0}.review-btn{background:#E17DC2;color:#281d2e;border:0;border-radius:12px;padding:13px 15px;font-weight:950}.pending-list{margin-top:12px;display:grid;gap:7px}.pending-line{display:flex;justify-content:space-between;align-items:center;gap:8px;background:#fff6fa;border:1px solid #f0d5e3;border-radius:12px;padding:10px;font-size:13px}.pending-line b{color:#352436}.pending-line button{flex-shrink:0;background:white;border:1px solid #c66fa8;border-radius:10px;padding:8px 10px;font-size:12px;font-weight:900}.vacancy-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.vacancy-choice{background:#f2fcf7;padding:12px;border-radius:15px;border:1px solid #d4ebdc}.vacancy-choice strong{display:block;font-size:14px;margin-bottom:8px}.vacancy-buttons{display:flex;gap:5px}.vacancy-buttons button{border:2px solid #d8dee1;border-radius:10px;background:#fff;padding:9px 12px;font-size:13px;font-weight:900;flex:1}.vacancy-buttons button.selected{background:#acf7f0;border-color:#309b92}.task.condition-locked{opacity:.55;background:#eef0f2!important;border-color:#dce0e4!important;box-shadow:none!important}.task.condition-locked .finish-btn{background:#d5d8df;color:#54535c;cursor:not-allowed}.task .category{font-size:12px;font-weight:950;color:#5d3863;background:#fff9;padding:5px 10px;border-radius:100px;margin-top:10px}.exception-note{background:#fff5f9;border:1px solid #eed6e4;border-radius:10px;padding:8px;font-size:12px;color:#58384d;margin-top:6px}.outstanding{background:#fbe3eb;border-radius:99px;padding:5px 9px;font-weight:900;color:#813b64}.no-claim{font-size:12px;color:#55505b;font-weight:700}@media(max-width:650px){.vacancy-grid{grid-template-columns:1fr}.pending-line{align-items:flex-start}.accountability,.vacancy-panel{padding:15px}}
 </style></head><body>
 <div class="authcover" id="authcover"><div class="authcard"><h2>🌷 오늘의 기록</h2><p>본인 계정으로 들어와 업무를 시작해 주세요.</p><label>직원 / 직위</label><select id="loginWho"><option value="">선택해 주세요</option><option>지배인</option><option>매니저</option><option>최일웅</option><option>김은진</option><option>파트타이머 1</option><option>파트타이머 2</option></select><div id="ptname" hidden><label>파트타이머 이름</label><input id="loginName" maxlength="30" placeholder="실제 이름을 적어 주세요"></div><label>개인 PIN (숫자 4~8자리)</label><input id="loginPin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="8" autocomplete="off" placeholder="처음 접속하면 PIN을 등록합니다"><button class="primarybtn" id="loginBtn">로그인 / 최초 등록</button><p id="loginNote">이 기기에서 계정별 PIN을 등록합니다. 완료 기록은 본인이 확인한 후 즉시 누적됩니다.</p><p class="subnote">※ 단독 HTML의 PIN은 기기 내 편의 인증입니다. 서버 인증이나 직원 간 실시간 동기화를 제공하지 않습니다.</p></div></div>
 <div class="wrap"><header class="mast"><div class="brand"><span class="logo">✿</span> TOYU WORK</div><span class="mini" id="todayLabel"></span></header><h1 class="title">오늘의 기록 <span style="color:#E17DC2">♥</span></h1>
@@ -28,26 +30,49 @@
 <div class="exportbar"><span class="pill">🌸 누가 무엇을 맡고 있는지 한눈에</span><button class="excel" data-excel>📗 엑셀로 출력</button></div>
 <h2 class="zone-title">✦ 지금 어디에서 일하고 있나요?</h2><div class="zones" id="zones"></div>
 <div class="panel"><div class="controls"><div class="control"><b>나의 출근 시간</b><div class="shift-group"><button class="shift active" data-shift="07">07:00</button><button class="shift" data-shift="09">09:00</button><button class="shift" data-shift="14">14:00</button><button class="shift" data-shift="all">전체</button></div></div><div class="control"><b>업무 날짜</b><input type="date" id="date"></div></div><p class="hint">업무를 실제로 마쳤을 때 ‘완료함’을 누르고 확인해 주세요. 같은 업무의 완료 기록은 계속 누적됩니다.</p><div class="utils"><button id="export">기록 백업(JSON)</button><button id="import">백업 불러오기</button><input hidden type="file" accept="application/json" id="file"></div></div>
-<div id="reviewpanel"></div><nav class="tabs"><button class="tab active" data-filter="all">모든 업무</button><button class="tab" data-filter="open">미완료 · 진행 중</button><button class="tab" data-filter="done">처리한 업무</button></nav><main id="main"></main><div id="previous"></div><div class="exportbar"><span class="pill">✿ 오늘의 기록을 파일로 남기세요</span><button class="excel" data-excel>📗 엑셀로 출력</button></div><footer class="foot">로그인한 이름과 완료 시각을 업무별로 누적 기록합니다. 인계 기록도 보관합니다. 개인별 순위는 표시하지 않습니다.<br>※ 다른 휴대폰에서 같은 기록을 실시간으로 보려면 서버와 공용 데이터베이스가 필요합니다. 본 파일은 브라우저별 저장 버전입니다.</footer></div>
+<div class="accountability" id="accountability"><div class="accountability-head"><div><h2>🌷 교대 전 확인</h2><p>지나간 시간의 미기록 업무를 확인하고, 빠뜨린 업무는 사유를 남겨 주세요.</p></div><button id="shiftReview" class="review-btn">교대 점검하기</button></div><div id="pendingSummary"></div></div>
+<div class="vacancy-panel"><h2>🏡 객실 공실 여부</h2><p>각 객실 구분의 공실 O / 공실 X를 먼저 선택해 주세요. <b>공실 X</b>인 경우 지정된 점검 카드가 활성화됩니다. 제습기 종료는 실제 입실 직전에 확인해 주세요.</p><div id="vacancyControls" class="vacancy-grid"></div></div><div id="reviewpanel"></div><nav class="tabs"><button class="tab active" data-filter="all">모든 업무</button><button class="tab" data-filter="open">미완료 · 진행 중</button><button class="tab" data-filter="done">처리한 업무</button></nav><main id="main"></main><div id="previous"></div><div class="exportbar"><span class="pill">✿ 오늘의 기록을 파일로 남기세요</span><button class="excel" data-excel>📗 엑셀로 출력</button></div><footer class="foot">로그인한 이름과 완료 시각을 업무별로 누적 기록합니다. 인계 기록도 보관합니다. 개인별 순위는 표시하지 않습니다.<br>※ 다른 휴대폰에서 같은 기록을 실시간으로 보려면 서버와 공용 데이터베이스가 필요합니다. 본 파일은 브라우저별 저장 버전입니다.</footer></div>
 <div class="dialog" id="dialog"><div class="modal"><h2 id="modalTitle"></h2><p id="modalText"></p><div id="modalFields"></div><div class="actions"><button id="cancel">취소</button><button class="yes" id="confirm">확인</button></div></div></div><script>
 const rows=[];let next=0;const add=(time,shifts,text)=>rows.push({id:'t'+(++next),time,shifts:shifts.split('/'),text});
-add('07:00','07','출근길 카톡 공지, 전날 이슈사항·전달사항 확인 / 명찰 착용 / 유니폼 확인');
-add('07:00','07','지하 문 열기 및 전등 ON');
-add('07:00','07','비디오 체크, 창고·복도·객실 문, 쓰레기, 조명 및 고객 동선 정리');
-add('07:00','07','주전자 물 채우고 온도 올리기 / 얼음물·따뜻한 물 준비 / 음료 확인');
-add('07:00','07','공실 지하층·스탠다드 객실 향 확인 및 환기 팬 작동');
-add('07:00','07','지하 제습기 ON / 입실 전 OFF / 컴퓨터 전원 ON');
-add('07:00','07','홀·로비 음악 확인 및 음향 조절');
-add('07:00','07','제습기 물 비우기');
-add('07:00','07','복도 조명 / 추가 침구 / 이동식 생수 선반 / 룸스프레이 확인');
-add('07:00','07','태블릿 켜기 / 블렌딩 티 준비(1.5L, 30분 후 티백 빼기)');
-add('07:00','07','조식 소스, 반찬, 샐러드, 동치미 세팅');
-add('07:00','07','태블릿 배터리 연결 / 테이블 물 배치 / 모닝티 찻잔 세팅');
-add('07:00','07','테이블 번호·객실·인원 확인 및 테이블 세팅 오류 점검');
-add('07:00','07','포스기 켜기 / 네이버예약 확인 / 태블릿 재부팅');
-add('07:00','07','찻잔 뒤집기 최종 확인');
-add('07:00','07','TL린칸·네이버 메일·톡톡·OTA 예약 및 취소 확인, 기재');
-add('07:00','07','객실 정비 리스트·인스펙 리스트 업데이트(인원·침구 추가 포함)');
+add('07:00','07','카카오톡으로 온 공지 내용 확인');rows[rows.length-1].group='카카오톡 공지 확인';
+add('07:00','07','전날 이슈 사항과 전달 사항 카카오톡 확인');rows[rows.length-1].group='전날 인수인계';
+add('07:00','07','지층 문 살짝 열어놓기');rows[rows.length-1].group='지층 오픈';
+add('07:00','07','지층 전등 켜기');rows[rows.length-1].group='지층 오픈';
+add('07:00','07','비디오 CCTV 확인하기');rows[rows.length-1].group='고객 동선 점검';
+add('07:00','07','창고·복도·객실 문, 쓰레기, 조명 및 고객 동선을 확인하고 보기 좋지 않은 부분 정리하기');rows[rows.length-1].group='고객 동선 점검';
+add('07:00','07','주전자 물 채우기');rows[rows.length-1].group='프론트';
+add('07:00','07','냉수 주전자 얼음과 함께 채우기');rows[rows.length-1].group='프론트';
+add('07:00','07','따뜻한 물 준비하기');rows[rows.length-1].group='프론트';
+add('07:00','07','커피 머신 세팅하기');rows[rows.length-1].group='프론트';
+add('07:00','07','커피 도구·템퍼 정리하기');rows[rows.length-1].group='프론트';
+add('07:00','07','음료 재고가 모두 채워져 있는지 확인하기');rows[rows.length-1].group='프론트';
+add('07:00','07','101호·102호 객실 상태 확인하기');rows[rows.length-1].group='지층 객실 점검';rows[rows.length-1].condition='basement';
+add('07:00','07','101호·102호 팬 작동 확인하기');rows[rows.length-1].group='지층 객실 점검';rows[rows.length-1].condition='basement';
+add('07:00','07','101호·102호 객실 향기 확인 후 룸스프레이 뿌리기');rows[rows.length-1].group='지층 객실 점검';rows[rows.length-1].condition='basement';
+add('07:00','07','스탠다드 객실 상태 확인하기');rows[rows.length-1].group='스탠다드 객실 점검';rows[rows.length-1].condition='standard';
+add('07:00','07','스탠다드 객실 팬 작동 확인하기');rows[rows.length-1].group='스탠다드 객실 점검';rows[rows.length-1].condition='standard';
+add('07:00','07','스탠다드 객실 향기 확인 후 룸스프레이 뿌리기');rows[rows.length-1].group='스탠다드 객실 점검';rows[rows.length-1].condition='standard';
+add('07:00','07','101호 제습기 물 비우기');rows[rows.length-1].group='지층 제습기';rows[rows.length-1].condition='dehumid';
+add('07:00','07','102호 제습기 물 비우기');rows[rows.length-1].group='지층 제습기';rows[rows.length-1].condition='dehumid';
+add('07:00','07','101호 제습기 입실 전 끄기');rows[rows.length-1].group='지층 제습기';rows[rows.length-1].condition='dehumid';
+add('07:00','07','102호 제습기 입실 전 끄기');rows[rows.length-1].group='지층 제습기';rows[rows.length-1].condition='dehumid';
+add('07:00','07','외부 음악 볼륨 높이기');rows[rows.length-1].group='프론트·홀 배경 음악';
+add('07:00','07','홀·로비 음악 볼륨 조절하기');rows[rows.length-1].group='프론트·홀 배경 음악';
+add('08:50','07','복도 음악 볼륨 조절하기 (08:50)');rows[rows.length-1].group='프론트·홀 배경 음악';
+add('07:00','07','프론트 제습기 1대 물 비우기');rows[rows.length-1].group='제습기 물 비우기';
+add('07:00','07','레스토랑 제습기 1 물 비우기');rows[rows.length-1].group='제습기 물 비우기';
+add('07:00','07','레스토랑 제습기 2 물 비우기');rows[rows.length-1].group='제습기 물 비우기';
+add('07:00','07','1~4층 복도 조명 모두 켜기');rows[rows.length-1].group='전층 정비';
+add('07:00','07','추가 침구 창고에 넣기');rows[rows.length-1].group='전층 정비';
+add('07:00','07','이동식 생수 선반 창고에 넣기');rows[rows.length-1].group='전층 정비';
+add('07:00','07','전층 룸스프레이로 향기 입히기');rows[rows.length-1].group='전층 정비';
+add('07:00','07','각 테이블 태블릿 켜기');rows[rows.length-1].group='레스토랑 업무 시작';
+add('07:00','07','블렌딩 티 1.5L 준비하기');rows[rows.length-1].group='레스토랑 업무 시작';
+add('07:30','07','블렌딩 티 우린 지 30분 후 티백 빼기 (준비 시점 기준)');rows[rows.length-1].group='레스토랑 업무 시작';
+add('07:00','07','각종 소스·샐러드·동치미·반찬 세팅하기');rows[rows.length-1].group='조식 플레이팅';
+add('07:00','07','태블릿 배터리 연결하기');rows[rows.length-1].group='조식 플레이팅';
+add('07:00','07','테이블 물 주전자 배치하기');rows[rows.length-1].group='조식 플레이팅';
+add('07:00','07','모닝티 찻잔 뒤집어서 세팅하기');rows[rows.length-1].group='조식 플레이팅';
 add('07:40','07','오픈 업무 처리 확인 후 마감보고창에 공유');
 add('08:00','07','조식 고객 응대 및 아침 인사');
 add('08:00','07','연박 고객 다음날 조식 메뉴·시간 / 당일 룸터치·외출시간 확인');
@@ -94,15 +119,15 @@ const $=s=>document.querySelector(s),$$=s=>Array.from(document.querySelectorAll(
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const roles=['지배인','매니저','최일웅','김은진','파트타이머 1','파트타이머 2'];
 const zoneNames=[['프론트','체크인 및 음료제조'],['레스토랑 홀','고객응대 및 그릇정리'],['레스토랑 메인','반찬 담기']];
-let identity='',shift='07',filter='all',priorExpanded=false,records={},zones={},audit=[],modalCallback=null;
+let identity='',shift='07',filter='all',priorExpanded=false,records={},zones={},audit=[],modalCallback=null,conditions={};
 const today=()=>{let d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')};
 const clock=()=>new Date().toLocaleTimeString('ko-KR',{hour12:false,hour:'2-digit',minute:'2-digit'});
 const fulltime=()=>new Date().toISOString();
 const localStamp=()=>{let d=new Date();return today()+' '+clock()};
 const storageKey=()=>`toyu-lovely-v5:${$('#date').value}`;
 $('#date').value=today();
-function load(){try{let d=JSON.parse(localStorage.getItem(storageKey())||'{}');records=d.records||{};zones=d.zones||{};audit=d.audit||[]}catch{records={};zones={};audit=[]}}
-function save(){localStorage.setItem(storageKey(),JSON.stringify({records,zones,audit}))}
+function load(){try{let d=JSON.parse(localStorage.getItem(storageKey())||'{}');records=d.records||{};zones=d.zones||{};audit=d.audit||[];conditions=d.conditions||{} }catch{records={};zones={};audit=[];conditions={}}}
+function save(){localStorage.setItem(storageKey(),JSON.stringify({records,zones,audit,conditions}))}
 function accounts(){try{return JSON.parse(localStorage.getItem('toyu-local-accounts-v5')||'{}')}catch{return {}}}
 // This lightweight hash is only a convenience check in a local file, not real authentication.
 function pinHash(s){let h=2166136261;for(let c of s){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return (h>>>0).toString(16)}
@@ -128,22 +153,24 @@ function finishTask(id){
  if(!identity)return alert('먼저 로그인해 주세요.');
  if($('#date').value!==today())return alert('완료 기록은 오늘 날짜에만 새로 추가할 수 있습니다.');
  const t=rows.find(x=>x.id===id);if(!t)return;
+ if(t.condition&&conditions[t.condition]!=='X')return alert('이 업무는 해당 구분에서 공실 X를 선택해야 활성화됩니다.');
  modal('정말 완료하셨나요?','실제로 업무를 끝낸 경우에만 기록해 주세요. 확인하면 로그인한 이름과 지금 시간이 기록되며 이전 기록은 그대로 남습니다.',
  `<div class="finish-confirm">✓ ${esc(t.text)}<br><b>${esc(identity)}</b> · ${esc(clock())}</div>`,()=>{
   let r=records[id]||{};
   if(!Array.isArray(r.entries))r.entries=[];
   let now=localStamp();r.entries.push({who:identity,at:clock(),stamp:now});
-  r.status='done';r.who=identity;r.at=clock();r.completedStamp=now;
+  delete r.exception;r.status='done';r.who=identity;r.at=clock();r.completedStamp=now;
   records[id]=r;audit.push({id,kind:'completed',who:identity,at:now});
   save();closeModal();render();
  },'네, 완료했습니다');
 }
 function taskCard(t){
- const r=records[t.id]||{},entries=taskEntries(t.id),m=moment(t),has=entries.length>0;
- const badge=m==='now'?'💗 지금 해야 할 일':m==='late'&&!has?'놓치지 않기':'';
+ const r=records[t.id]||{},entries=taskEntries(t.id),m=moment(t),has=entries.length>0,locked=!!t.condition&&conditions[t.condition]!=='X';
+ const badge=locked?'조건 확인 필요':m==='now'?'💗 지금 해야 할 일':m==='late'&&!has?'놓치지 않기':'';
  const logs=entries.map((entry,i)=>`<div class="completion-item"><span class="completion-bullet">✓</span><span><b>${esc(entry.who)}</b> <time>${esc(entry.at)}</time> 완료함</span></div>`).join('');
+ const exception=r.exception?`<div class="exception-note">⚑ 미기록 사유 · ${esc(r.exception.who)} ${esc(r.exception.at)} — ${esc(r.exception.reason)}</div>`:'';
  const hand=r.handoffTo?`<div class="handoff-note">↪ 인계 ${esc(r.handoffFrom||'')} → ${esc(r.handoffTo)} · ${esc(r.handoffReason||'')}</div>`:'';
- return `<article class="task ${has?'done-history':''} ${m==='now'?'current':''} ${!has&&m==='late'?'overdue':''}"><span class="time">${esc(t.time)}</span>${badge?`<span class="rightflag ${m==='late'?'overdueflag':''}">${badge}</span>`:''}<div class="text">${esc(t.text)}</div><div class="task-bottom">${hand}${has?`<div class="completion-history">${logs}</div>`:''}<button class="finish-btn" data-finish="${t.id}">✓ 완료함</button><button class="handoff-small" data-quickhandoff="${t.id}">↪ 인계 남기기</button></div></article>`;
+ return `<article class="task ${locked?'condition-locked':''} ${has?'done-history':''} ${m==='now'?'current':''} ${!has&&m==='late'?'overdue':''}"><span class="time">${esc(t.time)}</span>${badge?`<span class="rightflag ${m==='late'?'overdueflag':''}">${badge}</span>`:''}<span class="category">${esc(t.group||'일반 업무')}</span><div class="text">${esc(t.text)}</div><div class="task-bottom">${exception}${hand}${has?`<div class="completion-history">${logs}</div>`:''}<button class="finish-btn" ${locked?'disabled title="공실 X 선택 후 활성화"':''} data-finish="${t.id}">${locked?'공실 X 선택 후 활성화':'✓ 완료함'}</button><button class="handoff-small" data-quickhandoff="${t.id}">↪ 인계 남기기</button></div></article>`;
 }
 function quickHandoff(id){
  if(!identity)return;const opts=['없음',...roles].filter(x=>x!==identity).map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join('');
@@ -153,16 +180,22 @@ function quickHandoff(id){
  },'인계 기록');$('#nextWho').onchange=()=>{$('#handoffNameWrap').hidden=!$('#nextWho').value.startsWith('파트타이머')};
 }
 function groupHTML(items){let groups=new Map();items.forEach(t=>{if(!groups.has(t.time))groups.set(t.time,[]);groups.get(t.time).push(t)});return [...groups].map(([time,items])=>`<section class="section"><div class="sectionhead"><h2>✦ ${time} 업무</h2><span>${items.length}가지</span></div><div class="cards">${items.map(taskCard).join('')}</div></section>`).join('')}
-function render(){if(identity)$('#bigIdentity').textContent=identity;else $('#bigIdentity').textContent='로그인해 주세요';$('#zones').innerHTML=zoneNames.map(([name,desc],i)=>`<button class="zone" data-zone="${i}"><strong>${name}</strong><small>${desc}</small><span class="occupant">${zones[i]?esc(zones[i].who)+' · '+esc(zones[i].at):'＋ 담당자 지정'}</span></button>`).join('');$$('[data-shift]').forEach(b=>b.classList.toggle('active',b.dataset.shift===shift));$$('[data-filter]').forEach(b=>b.classList.toggle('active',b.dataset.filter===filter));let visible=shift==='all'?rows:rows.filter(t=>t.shifts.includes(shift)),prev=shift==='all'?[]:rows.filter(t=>minOf(t.time)<Number(shift)*60&&!t.shifts.includes(shift));const ok=t=>filter==='all'||(filter==='done'?taskEntries(t.id).length>0:taskEntries(t.id).length===0);let main=visible.filter(ok),older=prev.filter(ok);$('#main').innerHTML=main.length?groupHTML(main):'<div class="empty">해당 업무가 없어요 ♡</div>';$('#previous').innerHTML=older.length?`<section class="before ${priorExpanded?'expanded':''}"><header><h2>☁ 출근 전 업무</h2><button id="expand">${priorExpanded?'흐리게 보기':'펼쳐서 보기'}</button></header>${groupHTML(older)}</section>`:'';$('#expand')?.addEventListener('click',()=>{priorExpanded=!priorExpanded;render()});let waiting=[];$('#reviewpanel').innerHTML=admin()&&waiting.length?`<div class="reviewpanel"><b>📋 관리자 확인 대기 · ${waiting.length}건</b>${waiting.map(t=>`<div class="reviewitem"><span>${esc(t.time)} ${esc(t.text)}<br><small>${esc(records[t.id].who)} · ${esc(records[t.id].at)}</small></span><span><button data-approve="${t.id}">확인</button> <button class="reject" data-reject="${t.id}">반려</button></span></div>`).join('')}</div>`:'';$('#todayLabel').textContent='♡ '+clock()+' 기준'}
-document.addEventListener('click',e=>{let b=e.target.closest('button');if(!b||!identity)return;let d=b.dataset;if(d.finish!==undefined)return finishTask(d.finish);if(d.quickhandoff!==undefined)return quickHandoff(d.quickhandoff);if(d.start!==undefined)return start(d.start);if(d.complete!==undefined)return complete(d.complete);if(d.handoff!==undefined)return handoff(d.handoff);if(d.approve!==undefined)return approve(d.approve,true);if(d.reject!==undefined)return approve(d.reject,false);if(d.correct!==undefined)return correct(d.correct);if(d.zone!==undefined)return setZone(+d.zone);if(d.shift!==undefined){shift=d.shift;priorExpanded=false;render()}if(d.filter!==undefined){filter=d.filter;render()}});
+function isRelevant(t){return !t.condition||conditions[t.condition]==='X'}
+function overdue(t){return isRelevant(t)&&minOf(t.time)<new Date().getHours()*60+new Date().getMinutes()&&$('#date').value===today()&&taskEntries(t.id).length===0}
+function exceptionNote(id){if(!identity)return;const t=rows.find(x=>x.id===id);modal('미기록 사유 작성', '업무를 하지 못했거나 기록을 놓쳤다면 사실대로 사유를 남겨 주세요. 실제 완료한 업무라면 취소 후 완료함을 눌러 주세요.',`<textarea id="reason" placeholder="예: 고객 응대로 처리하지 못함 / 객실 정비팀으로 인계함"></textarea>`,()=>{const reason=$('#reason').value.trim();if(reason.length<5)return alert('구체적인 사유를 5자 이상 입력해 주세요.');const r=records[id]||{};r.exception={who:identity,at:localStamp(),reason};records[id]=r;audit.push({id,kind:'exception',who:identity,reason,at:localStamp()});save();closeModal();render()},'사유 저장')}
+function drawAccountability(){const current=$('#date').value===today(),late=current?rows.filter(overdue):[];const unresolved=late.filter(t=>!records[t.id]?.exception);$('#pendingSummary').innerHTML=`<p><span class="outstanding">지난 시간 미완료 ${late.length}건</span> · 사유 미작성 ${unresolved.length}건</p><div class="pending-list">${unresolved.slice(0,8).map(t=>`<div class="pending-line"><b>${esc(t.time)} · ${esc(t.text)}</b><button data-exception="${t.id}">사유 남기기</button></div>`).join('')}${unresolved.length>8?`<p>그 외 ${unresolved.length-8}건은 교대 점검에서 확인해 주세요.</p>`:''}</div>`;const defs=[['basement','지층 객실 (101·102호)'],['standard','스탠다드 객실'],['dehumid','지층 제습기 (101·102호)']];$('#vacancyControls').innerHTML=defs.map(([key,label])=>`<div class="vacancy-choice"><strong>${label}</strong><div class="vacancy-buttons"><button class="${conditions[key]==='O'?'selected':''}" data-vacancy="${key}" data-value="O">공실 O</button><button class="${conditions[key]==='X'?'selected':''}" data-vacancy="${key}" data-value="X">공실 X</button></div><small>${conditions[key]?'현재: 공실 '+conditions[key]:'공실 상태를 선택해 주세요'}</small></div>`).join('')}
+function shiftReview(){if(!identity)return;const remaining=rows.filter(overdue).filter(t=>!records[t.id]?.exception);if(!remaining.length)return alert('현재 기준으로 사유 없이 남아 있는 지난 업무가 없습니다.');$('#pendingSummary').scrollIntoView({behavior:'smooth',block:'start'});alert(`사유가 없는 지난 시간의 업무가 ${remaining.length}건 있습니다. 완료한 항목은 완료함을 누르고, 완료하지 못한 항목은 사유를 남겨 주세요.`)}
+$('#shiftReview').onclick=shiftReview;
+function render(){drawAccountability();if(identity)$('#bigIdentity').textContent=identity;else $('#bigIdentity').textContent='로그인해 주세요';$('#zones').innerHTML=zoneNames.map(([name,desc],i)=>`<button class="zone" data-zone="${i}"><strong>${name}</strong><small>${desc}</small><span class="occupant">${zones[i]?esc(zones[i].who)+' · '+esc(zones[i].at):'＋ 담당자 지정'}</span></button>`).join('');$$('[data-shift]').forEach(b=>b.classList.toggle('active',b.dataset.shift===shift));$$('[data-filter]').forEach(b=>b.classList.toggle('active',b.dataset.filter===filter));let visible=shift==='all'?rows:rows.filter(t=>t.shifts.includes(shift)),prev=shift==='all'?[]:rows.filter(t=>minOf(t.time)<Number(shift)*60&&!t.shifts.includes(shift));const ok=t=>filter==='all'||(filter==='done'?taskEntries(t.id).length>0:taskEntries(t.id).length===0);let main=visible.filter(ok),older=prev.filter(ok);$('#main').innerHTML=main.length?groupHTML(main):'<div class="empty">해당 업무가 없어요 ♡</div>';$('#previous').innerHTML=older.length?`<section class="before ${priorExpanded?'expanded':''}"><header><h2>☁ 출근 전 업무</h2><button id="expand">${priorExpanded?'흐리게 보기':'펼쳐서 보기'}</button></header>${groupHTML(older)}</section>`:'';$('#expand')?.addEventListener('click',()=>{priorExpanded=!priorExpanded;render()});let waiting=[];$('#reviewpanel').innerHTML=admin()&&waiting.length?`<div class="reviewpanel"><b>📋 관리자 확인 대기 · ${waiting.length}건</b>${waiting.map(t=>`<div class="reviewitem"><span>${esc(t.time)} ${esc(t.text)}<br><small>${esc(records[t.id].who)} · ${esc(records[t.id].at)}</small></span><span><button data-approve="${t.id}">확인</button> <button class="reject" data-reject="${t.id}">반려</button></span></div>`).join('')}</div>`:'';$('#todayLabel').textContent='♡ '+clock()+' 기준'}
+document.addEventListener('click',e=>{let b=e.target.closest('button');if(!b||!identity)return;let d=b.dataset;if(d.vacancy!==undefined){if(!confirm(`${d.vacancy==='basement'?'지층 객실':d.vacancy==='standard'?'스탠다드 객실':'지층 제습기'} 상태를 공실 ${d.value}로 기록할까요?`))return;conditions[d.vacancy]=d.value;audit.push({kind:'vacancy',group:d.vacancy,value:d.value,who:identity,at:localStamp()});save();render();return}if(d.exception!==undefined)return exceptionNote(d.exception);if(d.finish!==undefined)return finishTask(d.finish);if(d.quickhandoff!==undefined)return quickHandoff(d.quickhandoff);if(d.start!==undefined)return start(d.start);if(d.complete!==undefined)return complete(d.complete);if(d.handoff!==undefined)return handoff(d.handoff);if(d.approve!==undefined)return approve(d.approve,true);if(d.reject!==undefined)return approve(d.reject,false);if(d.correct!==undefined)return correct(d.correct);if(d.zone!==undefined)return setZone(+d.zone);if(d.shift!==undefined){shift=d.shift;priorExpanded=false;render()}if(d.filter!==undefined){filter=d.filter;render()}});
 $('#date').onchange=()=>{load();render()};
 function csvCell(s){s=String(s??'');if(/^[=+@\-\t\r]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'}
 function exportExcel(){
- const header=['날짜','예정시간','업무 내용','처리자','처리시간','기록상태','인계 전 담당','인계 담당자','인계 사유','인계 시간'];
+ const header=['날짜','예정시간','업무 내용','처리자','처리시간','기록상태','인계 전 담당','인계 담당자','인계 사유','인계 시간','업무 구역','공실 조건','미기록 사유','사유 기록자','사유 기록시간'];
  const data=[header];
  rows.forEach(t=>{
   const r=records[t.id]||{},entries=taskEntries(t.id);
-  const common=[r.handoffFrom||'',r.handoffTo||'',r.handoffReason||'',r.handoffStamp||''];
+  const common=[r.handoffFrom||'',r.handoffTo||'',r.handoffReason||'',r.handoffStamp||'',t.group||'',t.condition?conditions[t.condition]||'미선택':'해당 없음',r.exception?.reason||'',r.exception?.who||'',r.exception?.at||''];
   if(entries.length){entries.forEach(e=>data.push([$('#date').value,t.time,t.text,e.who,e.stamp||e.at,'완료함',...common]));}
   else data.push([$('#date').value,t.time,t.text,'','','미완료',...common]);
  });
@@ -171,7 +204,7 @@ function exportExcel(){
 }
 function download(blob,name){let url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1500)}
 $$('[data-excel]').forEach(b=>b.onclick=exportExcel);
-$('#export').onclick=()=>download(new Blob([JSON.stringify({version:5,date:$('#date').value,records,zones,audit},null,2)],{type:'application/json'}),`TOYU_백업_${$('#date').value}.json`);
-$('#import').onclick=()=>$('#file').click();$('#file').onchange=async e=>{let f=e.target.files[0];if(!f)return;try{let d=JSON.parse(await f.text());if(d.version!==5||d.date!==$('#date').value||!d.records)throw Error('날짜 또는 버전이 맞지 않습니다.');if(!admin())throw Error('백업 복구는 관리자만 할 수 있습니다.');if(confirm('현재 날짜의 기록을 백업 데이터로 교체할까요?')){records=d.records;zones=d.zones||{};audit=d.audit||[];save();render()}}catch(err){alert(err.message)}finally{$('#file').value=''}};
+$('#export').onclick=()=>download(new Blob([JSON.stringify({version:5,date:$('#date').value,records,zones,audit,conditions},null,2)],{type:'application/json'}),`TOYU_백업_${$('#date').value}.json`);
+$('#import').onclick=()=>$('#file').click();$('#file').onchange=async e=>{let f=e.target.files[0];if(!f)return;try{let d=JSON.parse(await f.text());if(d.version!==5||d.date!==$('#date').value||!d.records)throw Error('날짜 또는 버전이 맞지 않습니다.');if(!admin())throw Error('백업 복구는 관리자만 할 수 있습니다.');if(confirm('현재 날짜의 기록을 백업 데이터로 교체할까요?')){records=d.records;zones=d.zones||{};audit=d.audit||[];conditions=d.conditions||{};save();render()}}catch(err){alert(err.message)}finally{$('#file').value=''}};
 load();let remembered=sessionStorage.getItem('toyu-user-v5');if(remembered&&accounts()[remembered]){identity=remembered;$('#authcover').style.display='none'}render();setInterval(render,30000);
 </script></body></html>
