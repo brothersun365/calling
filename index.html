@@ -299,6 +299,144 @@ input,select,textarea,.picker,.control input[type=date],.assignment-select,.auth
   .sticky-progress{width:152px}
 }
 
+
+/* TOYU · Soft Mint Product UI — Toss-inspired, fully local */
+:root{--aqua-green:#94f7da;--light-green:#abfaef;--mint-green:#aefdda;--white:#fff;--cultured:#f1f1f1;--space-grey:#939393;--eerie-black:#161616;--text:#161616;--sub:#737373;--muted:#939393;--page:#f5f7f7;--stroke:#e8eded;--stroke2:#dce7e4;--mint-deep:#269e83;--mint-glow:rgba(148,247,218,.24);--soft-shadow:0 5px 25px rgba(22,22,22,.035),0 1px 4px rgba(22,22,22,.025)}
+html{scroll-behavior:smooth}
+body{background:var(--page)!important;color:var(--text)!important;font-family:ui-sans-serif,system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif!important;-webkit-font-smoothing:antialiased}
+body:before,body:after{display:none!important}
+.wrap{max-width:1190px;margin:0 auto;padding:0 22px 66px}
+.mast{border:0!important;box-shadow:none!important;display:flex;align-items:center;padding:27px 2px 10px;margin:0 0 3px}
+.brand{color:var(--text)!important;letter-spacing:-.035em;font-size:16px;font-weight:850}
+.logo{border:0!important;border-radius:13px!important;box-shadow:none!important;background:var(--aqua-green)!important;width:36px;height:36px;transform:rotate(-6deg)!important;color:var(--text)!important}
+.mini{color:var(--sub)!important;font-size:12px!important}
+.title{color:var(--text)!important;font-weight:850!important;letter-spacing:-.065em!important;margin:5px 0 17px!important;font-size:clamp(29px,4vw,43px)!important}
+.title span{color:var(--mint-deep)!important}
+.top-actions{margin:0 0 15px;align-items:center}
+.userhead,.panel,.accountability,.vacancy-panel,.reviewpanel,.exportbar,.task,.zone,.before,.modal,.authcard,.progress-dashboard,.assignment-panel,.staff-panel{
+ background:#fff!important;border:1px solid var(--stroke)!important;border-radius:25px!important;box-shadow:var(--soft-shadow)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+}
+.userhead,.panel,.accountability,.vacancy-panel,.before,.progress-dashboard,.assignment-panel,.staff-panel{padding:24px!important}
+.userhead{background:linear-gradient(125deg,#fff 65%,#effff9 100%)!important}
+.userhead small,.hint,.subnote,.zone-guide,.zone small,.control b,.localnote,.vacancy-panel p,.accountability p{color:var(--sub)!important}
+.userhead strong{color:var(--text)!important;font-size:clamp(22px,3.1vw,31px)!important}
+.progress-dashboard{background:linear-gradient(116deg,#fff 49%,#effff9 100%)!important;padding:26px!important}
+.progress-head h2,.assignment-head h2,.accountability h2,.vacancy-panel h2{font-weight:850;letter-spacing:-.052em;color:var(--text)!important}
+.progress-head small,.assignment-head small{color:var(--mint-deep)!important;letter-spacing:.105em;font-size:11px;font-weight:800}
+.progress-head strong,#progressPercent{color:var(--mint-deep)!important;font-size:clamp(28px,4vw,40px)!important}
+.progress-circle{box-shadow:0 8px 24px var(--mint-glow)!important;border:0!important}
+.progress-circle:before{border:0!important;background:#fff!important}
+.progress-track,.sticky-track{height:10px!important;border-radius:100px!important;background:#ebf0ee!important}
+.progress-track span,.sticky-track span{border-radius:100px!important;background:linear-gradient(90deg,var(--aqua-green),var(--mint-deep))!important}
+.progress-meta>div{background:#fff!important;border:1px solid var(--stroke)!important;border-radius:18px!important;box-shadow:none!important}
+.progress-meta b{color:var(--text)!important}
+.progress-meta small,.shift-progress span{color:var(--sub)!important}
+.shift-progress span{background:#eafff7!important;border:0!important;border-radius:100px!important;padding:7px 12px!important}
+/* controls with responsive microinteractions */
+button,.zone,.task,.assignment-item,.staff-card,.vacancy-choice,.completion-item{transition:transform .2s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease,background-color .2s ease,border-color .2s ease,filter .2s ease!important}
+button:active{transform:scale(.975)!important}
+button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--aqua-green)!important;outline-offset:3px!important}
+.primarybtn,#loginBtn,.review-btn,.excel,.reset-all,#export,#import,.assignment-clear,.assignment-person,.go-task,.quick-button,.handoff-small,.memo-add,.actions button,.vacancy-buttons button,.before header button,.undo-completion{
+ border:1px solid transparent!important;border-radius:13px!important;box-shadow:none!important;font-weight:790!important;color:var(--text)!important;background:#f1f5f4!important;
+}
+.primarybtn,#loginBtn,.review-btn,.memo-add,.assignment-person,.go-task{background:var(--aqua-green)!important}
+.primarybtn:hover,#loginBtn:hover,.review-btn:hover,.memo-add:hover,.assignment-person:hover,.go-task:hover{background:var(--light-green)!important;box-shadow:0 6px 17px var(--mint-glow)!important;transform:translateY(-2px)!important}
+.excel,.quick-button,.reset-all,.handoff-small,.assignment-clear,#export,#import,.before header button{background:#fff!important;border:1px solid var(--stroke2)!important}
+.excel:hover,.quick-button:hover,.reset-all:hover,.handoff-small:hover,.assignment-clear:hover,#export:hover,#import:hover,.before header button:hover,.undo-completion:hover{border-color:var(--aqua-green)!important;background:#eefff8!important;transform:translateY(-2px)!important;box-shadow:0 7px 18px var(--mint-glow)!important}
+.pill,.sync-indicator{background:#eafff7!important;color:#287b68!important;border:0!important;border-radius:100px!important;padding:9px 13px!important;font-size:11px!important}
+.shift,.tab{background:#fff!important;color:#666!important;border:1px solid var(--stroke)!important;border-radius:100px!important;box-shadow:none!important;padding:11px 17px!important}
+.shift.active,.tab.active{background:var(--text)!important;color:#fff!important;border-color:var(--text)!important;box-shadow:0 6px 13px #16161614!important}
+.shift:not(.active):hover,.tab:not(.active):hover{border-color:var(--aqua-green)!important;background:#effff8!important;color:#167a62!important;transform:translateY(-2px)!important}
+input,select,textarea,.picker,.control input[type=date],.assignment-select,.authcard select,.authcard input,.handoff-ui select,.handoff-ui textarea,.modal select,.modal textarea{background:#f9fbfa!important;color:var(--text)!important;border:1px solid var(--stroke2)!important;border-radius:13px!important;box-shadow:none!important}
+input:focus,select:focus,textarea:focus{background:#fff!important;border-color:var(--mint-deep)!important}
+.zone-title{color:var(--text)!important;letter-spacing:-.045em;font-size:17px!important}
+.zones{gap:12px!important}
+.zone{min-height:126px!important;padding:18px!important;overflow:hidden;background:#fff!important;text-align:left!important;border:1px solid var(--stroke)!important;border-radius:20px!important}
+.zone:before{content:''!important;right:14px;top:13px;width:10px;height:10px;background:var(--aqua-green);opacity:1;border-radius:50%;font-size:0}
+.zone:nth-child(3n + 2){background:#fcfffe!important}
+.zone:nth-child(3n + 3){background:#fafffc!important}
+.zone:hover,.assignment-item:hover,.staff-card:hover,.vacancy-choice:hover{transform:translateY(-3px)!important;box-shadow:0 12px 28px rgba(22,22,22,.065)!important;border-color:#b8eddd!important}
+.zone strong{color:var(--text)!important;font-size:16px!important;font-weight:850}
+.zone .occupant{border:0!important;border-radius:13px!important;box-shadow:none!important;background:#f0f7f4!important;padding:9px 11px!important;color:var(--text)!important;display:flex;flex-direction:column;align-items:flex-start;gap:5px}
+.zone-person{color:var(--text)!important;font-size:11px!important}
+.zone-person:before{border:0;background:var(--mint-deep)}
+.assignment-item,.staff-card,.vacancy-choice,.reviewitem,.pending-line{background:#fff!important;border:1px solid var(--stroke)!important;box-shadow:none!important;border-radius:18px!important;padding:16px!important}
+.assignment-item b,.staff-card>strong{color:var(--text)!important;font-weight:850!important}
+.assignment-item small,.staff-card p{color:var(--sub)!important}
+.assignment-select{background:#f8faf9!important}
+.vacancy-buttons button{border:1px solid var(--stroke2)!important;background:#fff!important;border-radius:12px!important}
+.vacancy-buttons button.selected{background:var(--aqua-green)!important;border-color:var(--aqua-green)!important}
+.vacancy-buttons button:not(.selected):hover{background:#effff9!important;border-color:var(--aqua-green)!important}
+.sectionhead h2{font-size:clamp(19px,3vw,24px)!important;font-weight:850!important;letter-spacing:-.055em;color:var(--text)!important}
+.sectionhead span{background:#fff!important;border:0!important;color:var(--sub)!important;box-shadow:none!important}
+.cards{gap:15px!important}
+.task{background:#fff!important;border:1px solid var(--stroke)!important;border-radius:23px!important;padding:20px 19px!important;min-height:300px!important;overflow:hidden!important;text-align:center!important}
+.task:before{height:4px!important;left:22px!important;right:22px!important;top:0!important;border-radius:0 0 8px 8px!important;background:linear-gradient(90deg,var(--aqua-green),var(--mint-green))!important}
+.task:hover{transform:translateY(-3px)!important;box-shadow:0 12px 32px rgba(22,22,22,.065)!important;border-color:#c5efe4!important}
+.task.current{background:#fafffd!important;border-color:#a9ead8!important;box-shadow:0 6px 24px rgba(148,247,218,.17)!important;animation:none!important}
+.task.current:before{background:var(--mint-deep)!important}
+.task.done-history{background:#fbfefd!important;border-color:var(--stroke)!important;box-shadow:var(--soft-shadow)!important}
+.task.done-history:before{background:var(--mint-green)!important}
+.task.overdue{border:1px solid #e3e5e5!important;box-shadow:var(--soft-shadow)!important}
+.task.condition-locked{opacity:.70!important}
+.task .time,.task .category,.rightflag{background:#f3f7f5!important;color:#5f766d!important;border:0!important;border-radius:100px!important;box-shadow:none!important;padding:7px 11px!important;font-size:11px!important}
+.task .category{background:#eafff7!important;color:#28806a!important}
+.rightflag{background:var(--aqua-green)!important;color:#145d4e!important}
+.overdue .rightflag,.overdueflag{background:var(--cultured)!important;color:var(--sub)!important}
+.task .text{font-weight:850!important;color:var(--text)!important;line-height:1.58!important;font-size:clamp(16px,2vw,19px)!important;margin:18px 0 17px!important}
+.task.done-history .text{opacity:1!important;filter:none!important}
+.task-bottom{gap:10px!important}
+.finish-btn{background:linear-gradient(110deg,var(--aqua-green),var(--mint-green))!important;color:#174b3f!important;border:0!important;border-radius:15px!important;box-shadow:none!important;font-size:14px!important;padding:15px!important}
+.finish-btn:not(:disabled):hover{transform:translateY(-2px)!important;box-shadow:0 9px 20px rgba(148,247,218,.44)!important;filter:saturate(1.05)}
+.finish-btn:active:not(:disabled){transform:scale(.97)!important}
+.finish-btn.is-done,.finish-btn.is-done:disabled{background:#eff7f3!important;color:#408472!important;border:0!important;opacity:1!important;box-shadow:none!important}
+.finish-btn:disabled,.task.condition-locked .finish-btn{background:#f1f3f2!important;color:#9fa8a4!important;border:0!important}
+.finish-btn::after{display:block!important;content:'';position:absolute;inset:0;border-radius:inherit;transform:translateX(-110%);background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transition:transform .5s ease}
+.finish-btn:hover::after,.finish-btn.is-done::after{transform:translateX(115%)}
+.completion-history{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;padding:1px 0!important;max-height:238px!important}
+.completion-item{border:1px solid var(--stroke)!important;border-left:4px solid var(--space-grey)!important;border-radius:14px!important;padding:10px 12px!important;background:#fff!important;box-shadow:none!important;gap:8px!important}
+.completion-item + .completion-item{margin-top:7px!important;border-top:1px solid var(--stroke)!important}
+.completion-item:hover{transform:translateX(2px)!important;box-shadow:0 4px 12px #16161609!important}
+.completion-item .completion-bullet{border:0!important;background:#eafff7!important;color:#20836e!important;flex:0 0 20px;width:20px;height:20px;font-size:11px}
+.completion-main{gap:7px!important}
+.completion-name{background:var(--aqua-green)!important;border:0!important;border-radius:8px!important;padding:5px 8px!important;color:#205246!important;font-weight:900!important}
+.completion-item.person-0{border-left-color:var(--aqua-green)!important;background:#fafffd!important}.completion-item.person-0 .completion-name{background:var(--aqua-green)!important}
+.completion-item.person-1{border-left-color:var(--light-green)!important;background:#fafffe!important}.completion-item.person-1 .completion-name{background:var(--light-green)!important}
+.completion-item.person-2{border-left-color:var(--mint-green)!important;background:#fcfffd!important}.completion-item.person-2 .completion-name{background:var(--mint-green)!important}
+.completion-item.person-3{border-left-color:var(--cultured)!important;background:#fff!important}.completion-item.person-3 .completion-name{background:var(--cultured)!important;color:var(--text)!important}
+.completion-item.person-4{border-left-color:var(--space-grey)!important;background:#fff!important}.completion-item.person-4 .completion-name{background:#ededed!important;color:var(--text)!important}
+.completion-item.person-5{border-left-color:var(--eerie-black)!important;background:#fff!important}.completion-item.person-5 .completion-name{background:var(--eerie-black)!important;color:#fff!important}
+.completion-item time,.completion-text{color:var(--sub)!important;font-size:11px!important}
+.task-memo-area{background:#f8fbf9!important;border:1px solid var(--stroke)!important;border-radius:17px!important;padding:13px!important}
+.task-memo-heading{color:var(--text)!important}.task-memo-heading span,.task-memo-item time{color:var(--sub)!important}
+.task-memo-item{background:#fff!important;border:1px solid var(--stroke)!important;border-radius:12px!important;box-shadow:none!important;padding:10px 11px!important}
+.task-memo-item p{color:var(--text)!important}
+.handoff-note,.exception-note,.finish-confirm{background:#f7fbf9!important;border:1px solid var(--stroke)!important;border-radius:13px!important;color:#4c5f59!important}
+.before:not(.expanded) .cards{filter:blur(2.2px);opacity:.48;pointer-events:none}
+.before:not(.expanded) .task{opacity:1!important;filter:none!important}
+.quicknav{right:17px;bottom:18px;gap:8px!important;z-index:65}
+.sticky-progress{width:190px!important;background:#fff!important;border:1px solid var(--stroke)!important;border-radius:20px!important;padding:14px!important;box-shadow:0 12px 30px rgba(22,22,22,.085)!important}
+.sticky-donut{border:0!important;background:conic-gradient(var(--aqua-green) var(--p),#e9f1ed 0)!important}
+.sticky-donut span{border:0!important;background:#fff!important;color:var(--text)!important}
+.quick-button{border:1px solid var(--stroke)!important;border-radius:14px!important;box-shadow:0 7px 22px rgba(22,22,22,.075)!important;background:#fff!important}
+.toc-menu{background:#fff!important;border:1px solid var(--stroke)!important;border-radius:18px!important;box-shadow:0 17px 40px #16161617!important}
+.toc-menu button{border-radius:11px!important;color:var(--text)!important}
+.toc-menu button:hover{background:#eafff7!important}
+.authcover{background:rgba(246,249,248,.93)!important;backdrop-filter:blur(9px)!important}
+.authcard,.modal{background:#fff!important;border:1px solid var(--stroke)!important;border-radius:25px!important;box-shadow:0 22px 65px rgba(22,22,22,.08)!important}
+.authcard h2,.modal h2{color:var(--text)!important;letter-spacing:-.05em}
+.quest-toast{background:#fff!important;border:1px solid var(--stroke)!important;border-radius:20px!important;box-shadow:0 16px 38px rgba(22,22,22,.1)!important}
+.quest-toast .quest-kicker{color:var(--mint-deep)!important}.quest-toast b{color:var(--text)!important}.quest-toast span{color:var(--sub)!important}
+/* completion: preserve and enhance a gentle pop and spark animation */
+.task.quest-pop{animation:tossCompletePop .75s cubic-bezier(.2,.85,.2,1.15)!important}
+.task.quest-pop .finish-btn{animation:tossButtonCelebrate .65s cubic-bezier(.2,.8,.2,1.15)!important}
+.task.quest-pop .quest-label{background:var(--aqua-green)!important;color:#1f5a4b!important;border-radius:100px!important;box-shadow:0 8px 18px var(--mint-glow)!important}
+.task.quest-pop .quest-burst i{background:var(--aqua-green)!important;box-shadow:0 0 0 3px rgba(174,253,218,.45)!important}
+@keyframes tossCompletePop{0%{transform:scale(.982)}32%{transform:scale(1.017)}65%{transform:scale(.997)}100%{transform:scale(1)}}
+@keyframes tossButtonCelebrate{0%{transform:scale(1)}35%{transform:scale(1.045)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+@media(max-width:720px){.wrap{padding:0 13px 50px}.userhead,.panel,.accountability,.vacancy-panel,.before,.progress-dashboard,.assignment-panel,.staff-panel{padding:17px!important;border-radius:21px!important}.zone{padding:13px!important;min-height:114px!important;border-radius:17px!important}.zones{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}.task{padding:18px 12px!important;min-height:275px!important;border-radius:19px!important}.task .text{font-size:15px!important}.cards{gap:10px!important}.sticky-progress{width:151px!important;padding:10px!important}.quicknav{right:9px;bottom:12px}.quick-button{min-width:88px;padding:11px!important}.progress-head h2,.assignment-head h2{font-size:19px!important}}
+
 </style></head><body>
 <div class="authcover" id="authcover"><div class="authcard"><h2>🌷 오늘의 기록</h2><p>본인 계정으로 들어와 업무를 시작해 주세요.</p><label>직원 / 직위</label><select id="loginWho"><option value="">선택해 주세요</option><option>지배인</option><option>매니저</option><option>최일웅</option><option>김은진</option><option>파트타이머 1</option><option>파트타이머 2</option></select><div id="ptname" hidden><label>파트타이머 이름</label><input id="loginName" maxlength="30" placeholder="실제 이름을 적어 주세요"></div><label>개인 PIN (숫자 4~8자리)</label><input id="loginPin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="8" autocomplete="off" placeholder="처음 접속하면 PIN을 등록합니다"><button class="primarybtn" id="loginBtn">로그인 / 최초 등록</button><p id="loginNote">이 기기에서 계정별 PIN을 등록합니다. 완료 기록은 본인이 확인한 후 즉시 누적됩니다.</p><p class="subnote">※ 단독 HTML의 PIN은 기기 내 편의 인증입니다. 서버 인증이나 직원 간 실시간 동기화를 제공하지 않습니다.</p></div></div>
 <div class="wrap"><header class="mast"><div class="brand"><span class="logo">✿</span> TOYU WORK</div><span class="mini" id="todayLabel"></span></header><h1 class="title">오늘의 기록 <span style="color:#8ee2cc">♥</span></h1><div class="top-actions"><button id="resetAll" class="reset-all">↺ 전체 초기화</button><span class="sync-indicator" id="syncIndicator">● 이 브라우저 저장 · 공유 미연결</span></div>
@@ -306,11 +444,11 @@ input,select,textarea,.picker,.control input[type=date],.assignment-select,.auth
 <section class="assignment-panel" id="assignments"><div class="assignment-head"><div><small>DAILY ASSIGNMENTS</small><h2>오늘의 업무 분장</h2><p>담당자를 지정하거나 담당자 이름을 눌러 해당 직원이 맡은 일을 확인하세요.</p></div><button type="button" id="assignmentReset" class="assignment-clear">업무분장 초기화</button></div><div class="assignment-grid" id="assignmentGrid"></div></section>
 <section class="staff-panel" id="staffActivity"><div class="assignment-head"><div><small>STAFF ACTIVITY</small><h2>직원 실시간 업무중 <span class="live-dot"></span></h2><p>직원별 현재 업무 기록을 확인하고 업무 카드로 이동할 수 있습니다.</p></div></div><div id="staffGrid" class="staff-grid"></div></section>
 <div class="userhead"><div><small>오늘 로그인한 직원</small><strong id="bigIdentity">로그인해 주세요</strong></div><button class="primarybtn" id="logout">로그아웃</button></div>
-<div class="exportbar"><span class="pill">🌸 누가 무엇을 맡고 있는지 한눈에</span><button class="excel" data-excel>📗 엑셀로 출력</button></div>
-<h2 class="zone-title">✦ 지금 어디에서 일하고 있나요?</h2><p class="zone-guide">여러 활동을 동시에 선택할 수 있습니다. 선택한 항목을 다시 누르면 본인의 표시만 해제됩니다.</p><div class="zones" id="zones"></div>
+<div class="exportbar"><span class="pill">오늘의 팀워크, 한눈에</span><button class="excel" data-excel>📗 엑셀로 출력</button></div>
+<h2 class="zone-title">지금 어디에서 일하고 있나요?</h2><p class="zone-guide">여러 활동을 동시에 선택할 수 있습니다. 선택한 항목을 다시 누르면 본인의 표시만 해제됩니다.</p><div class="zones" id="zones"></div>
 <div class="panel"><div class="controls"><div class="control"><b>나의 출근 시간</b><div class="shift-group"><button class="shift active" data-shift="07">07:00</button><button class="shift" data-shift="09">09:00</button><button class="shift" data-shift="14">14:00</button><button class="shift" data-shift="all">전체</button></div></div><div class="control"><b>업무 날짜</b><input type="date" id="date"></div></div><p class="hint">업무를 실제로 마쳤을 때 ‘완료함’을 누르고 확인해 주세요. 같은 업무의 완료 기록은 계속 누적됩니다.</p><div class="utils"><button id="export">기록 백업(JSON)</button><button id="import">백업 불러오기</button><input hidden type="file" accept="application/json" id="file"></div></div>
-<div class="accountability" id="accountability"><div class="accountability-head"><div><h2>🌷 교대 전 확인</h2><p>지나간 시간의 미기록 업무를 확인하고, 빠뜨린 업무는 사유를 남겨 주세요.</p></div><button id="shiftReview" class="review-btn">교대 점검하기</button></div><div id="pendingSummary"></div></div>
-<div class="vacancy-panel"><h2>🏡 객실 공실 여부</h2><p>각 객실 구분의 공실 O / 공실 X를 먼저 선택해 주세요. <b>공실 X</b>인 경우 지정된 점검 카드가 활성화됩니다. 제습기 종료는 실제 입실 직전에 확인해 주세요.</p><div id="vacancyControls" class="vacancy-grid"></div></div><div id="reviewpanel"></div><nav class="tabs"><button class="tab active" data-filter="all">모든 업무</button><button class="tab" data-filter="open">미완료 · 진행 중</button><button class="tab" data-filter="done">처리한 업무</button></nav><main id="main"></main><div id="previous"></div><div class="exportbar"><span class="pill">✿ 오늘의 기록을 파일로 남기세요</span><button class="excel" data-excel>📗 엑셀로 출력</button></div><footer class="foot">로그인한 이름과 완료 시각을 업무별로 누적 기록합니다. 인계 기록도 보관합니다. 개인별 순위는 표시하지 않습니다.<br>※ 초록색 표시등은 실시간 움직임 감지가 아니라 지정된 구역의 담당자 표시입니다. 다른 휴대폰에서 같은 기록을 실시간으로 보려면 서버와 공용 데이터베이스가 필요합니다. 본 파일은 브라우저별 저장 버전입니다.</footer></div>
+<div class="accountability" id="accountability"><div class="accountability-head"><div><h2>교대 전 확인</h2><p>지나간 시간의 미기록 업무를 확인하고, 빠뜨린 업무는 사유를 남겨 주세요.</p></div><button id="shiftReview" class="review-btn">교대 점검하기</button></div><div id="pendingSummary"></div></div>
+<div class="vacancy-panel"><h2>객실 공실 여부</h2><p>각 객실 구분의 공실 O / 공실 X를 먼저 선택해 주세요. <b>공실 X</b>인 경우 지정된 점검 카드가 활성화됩니다. 제습기 종료는 실제 입실 직전에 확인해 주세요.</p><div id="vacancyControls" class="vacancy-grid"></div></div><div id="reviewpanel"></div><nav class="tabs"><button class="tab active" data-filter="all">모든 업무</button><button class="tab" data-filter="open">미완료 · 진행 중</button><button class="tab" data-filter="done">처리한 업무</button></nav><main id="main"></main><div id="previous"></div><div class="exportbar"><span class="pill">✿ 오늘의 기록을 파일로 남기세요</span><button class="excel" data-excel>📗 엑셀로 출력</button></div><footer class="foot">로그인한 이름과 완료 시각을 업무별로 누적 기록합니다. 인계 기록도 보관합니다. 개인별 순위는 표시하지 않습니다.<br>※ 초록색 표시등은 실시간 움직임 감지가 아니라 지정된 구역의 담당자 표시입니다. 다른 휴대폰에서 같은 기록을 실시간으로 보려면 서버와 공용 데이터베이스가 필요합니다. 본 파일은 브라우저별 저장 버전입니다.</footer></div>
 <aside id="quicknav" class="quicknav"><div class="sticky-progress" id="stickyProgress"></div><button id="tocToggle" class="quick-button" type="button">☷ 목차</button><button id="toTop" class="quick-button" type="button">↑ 맨 위로</button><nav id="tocMenu" class="toc-menu" hidden></nav></aside><div class="dialog" id="dialog"><div class="modal"><h2 id="modalTitle"></h2><p id="modalText"></p><div id="modalFields"></div><div class="actions"><button id="cancel">취소</button><button class="yes" id="confirm">확인</button></div></div></div><script>
 const rows=[];let next=0;const add=(time,shifts,text)=>rows.push({id:'t'+(++next),time,shifts:shifts.split('/'),text});
 add('07:00','07','카카오톡으로 온 공지 내용 확인');rows[rows.length-1].group='카카오톡 공지 확인';
