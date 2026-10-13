@@ -107,6 +107,198 @@ input,select,textarea,.picker,.control input[type=date]{background:rgba(255,255,
 
 /* Multi-status activity boards and time-stamped task notes */
 .zones{grid-template-columns:repeat(3,minmax(0,1fr))}.zone{min-height:116px}.zone .occupant{display:flex;flex-direction:column;gap:5px;align-items:flex-start;border-radius:12px;white-space:normal;line-height:1.45;word-break:break-word}.zone-person{display:block;text-align:left}.zone-guide{font-size:12px;color:#607d74;margin:-4px 0 14px}.task-memo-area{width:100%;padding:12px;border-radius:15px;border:1px solid #d5ece5;background:#f7fffc;text-align:left;display:grid;gap:8px}.task-memo-heading{font-weight:950;font-size:13px;color:#216d5a;display:flex;justify-content:space-between}.task-memo-heading span{color:#718c83}.task-memo-item{background:#fff;border-radius:10px;padding:9px 10px;font-size:12px;overflow-wrap:anywhere}.task-memo-item time{color:#7e8f8a;font-size:11px}.task-memo-item p{white-space:pre-wrap;margin:6px 0 0;line-height:1.5;color:#3a4e47}.task-memo-area small{font-size:11px;color:#899b93}.memo-add{border:0;border-radius:10px;background:#cef4e8;color:#176f5b;padding:10px;font-size:12px;font-weight:900}.task-memo-area .memo-add{width:100%}@media(max-width:650px){.zones{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.zone{min-height:110px}.zone .occupant{font-size:10px}.zone small{font-size:10px}}
+
+
+/* --- MUSINSA-style mint editorial refresh --- */
+:root{
+  --aqua-green:#94f7da;
+  --light-green:#abfaef;
+  --mint-green:#aefdda;
+  --white:#ffffff;
+  --cultured:#f1f1f1;
+  --space-grey:#939393;
+  --eerie-black:#161616;
+  --line-strong:#161616;
+  --line-soft:#d7d7d7;
+  --text-main:#161616;
+  --text-sub:#5f5f5f;
+  --surface:#ffffff;
+  --surface-soft:#f1f1f1;
+}
+html{scroll-behavior:smooth}
+body{
+  background:linear-gradient(180deg,#ffffff 0%,#f7f7f7 100%)!important;
+  color:var(--text-main)!important;
+  font-family:Inter,system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif!important;
+}
+body:before,body:after{display:none!important}
+.wrap{max-width:1320px;padding:0 20px 48px}
+.mast{padding-top:22px;border-bottom:2px solid var(--line-strong);margin-bottom:18px}
+.brand{font-size:15px;font-weight:950;letter-spacing:.02em;text-transform:uppercase;color:var(--eerie-black)!important}
+.logo{
+  width:34px;height:34px;border-radius:10px!important;transform:none!important;
+  background:var(--aqua-green)!important;color:var(--eerie-black)!important;
+  border:1.5px solid var(--line-strong);box-shadow:none!important;font-size:18px;
+}
+.mini{color:var(--text-sub)!important;font-weight:800}
+.title{
+  margin:12px 0 20px!important;color:var(--eerie-black)!important;
+  font-size:clamp(30px,4.4vw,52px)!important;font-weight:1000!important;letter-spacing:-.07em;
+}
+.title span{color:var(--aqua-green)!important}
+.userhead,.panel,.accountability,.vacancy-panel,.reviewpanel,.exportbar,.task,.zone,.before,.modal,.authcard,.progress-dashboard,.assignment-panel,.staff-panel{
+  background:var(--surface)!important;
+  border:1.5px solid var(--line-strong)!important;
+  border-radius:22px!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+}
+.userhead,.panel,.accountability,.vacancy-panel,.before,.progress-dashboard,.assignment-panel,.staff-panel,.exportbar{padding:18px 20px!important}
+.userhead{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,#fff,#f9f9f9)!important}
+.userhead strong{color:var(--eerie-black)!important;font-size:clamp(24px,3.2vw,34px)!important}
+.userhead small,.zone small,.hint,.subnote,.localnote,.vacancy-panel p,.accountability p,.task-memo-area small{color:var(--text-sub)!important}
+.top-actions{gap:10px;margin-bottom:16px}
+.reset-all,.primarybtn,#loginBtn,.review-btn,.excel,#export,#import,.assignment-clear,.assignment-person,.go-task,.quick-button,.handoff-small,.memo-add,.actions button,.vacancy-buttons button,.before header button,.undo-completion{
+  border:1.5px solid var(--line-strong)!important;
+  border-radius:14px!important;
+  background:var(--white)!important;color:var(--eerie-black)!important;
+  box-shadow:none!important;font-weight:900!important;
+}
+.primarybtn,#loginBtn,.finish-btn:not(.is-done):not(:disabled),.review-btn{
+  background:var(--aqua-green)!important;color:var(--eerie-black)!important;
+}
+.finish-btn{
+  border:1.5px solid var(--line-strong)!important;border-radius:16px!important;
+  background:var(--aqua-green)!important;color:var(--eerie-black)!important;
+  box-shadow:none!important;letter-spacing:-.02em;
+}
+.finish-btn::after{display:none!important}
+.finish-btn.is-done,.finish-btn.is-done:disabled{
+  background:var(--cultured)!important;color:var(--eerie-black)!important;border-color:var(--space-grey)!important;
+}
+.finish-btn:disabled,.task.condition-locked .finish-btn{
+  background:#ececec!important;color:#7a7a7a!important;border-color:#cfcfcf!important;
+}
+.excel,.assignment-person,.go-task,.memo-add,.handoff-small{background:var(--light-green)!important}
+#export,#import,.assignment-clear,.undo-completion,.before header button,.quick-button,.vacancy-buttons button{background:var(--white)!important}
+.reset-all{background:var(--cultured)!important}
+.sync-indicator,.pill{
+  border:1.5px solid var(--line-strong);background:var(--cultured)!important;color:var(--eerie-black)!important;
+  border-radius:999px!important;font-weight:900!important;
+}
+.shift,.tab{
+  border:1.5px solid var(--line-strong)!important;border-radius:999px!important;background:var(--white)!important;color:var(--eerie-black)!important;
+}
+.shift.active,.tab.active{background:var(--eerie-black)!important;color:var(--white)!important}
+input,select,textarea,.picker,.control input[type=date],.assignment-select,.authcard select,.authcard input,.handoff-ui select,.handoff-ui textarea,.modal select,.modal textarea{
+  background:var(--white)!important;color:var(--eerie-black)!important;border:1.5px solid var(--line-strong)!important;border-radius:14px!important;box-shadow:none!important;
+}
+.zone-title{font-size:15px!important;color:var(--eerie-black)!important;letter-spacing:-.02em}
+.zones{gap:12px!important}
+.zone{
+  min-height:124px!important;padding:16px 14px!important;text-align:left!important;
+  background:linear-gradient(180deg,#fff,#fafafa)!important;
+}
+.zone:before{content:none!important}
+.zone strong{font-size:17px!important;color:var(--eerie-black)!important}
+.zone .occupant{
+  margin-top:10px;background:var(--cultured)!important;border:1px solid #d9d9d9!important;color:var(--eerie-black)!important;
+  padding:10px 11px!important;border-radius:14px!important;box-shadow:none!important;
+}
+.zone-person{padding-left:11px;position:relative;font-size:12px;font-weight:800;color:var(--eerie-black)!important}
+.zone-person:before{content:'';position:absolute;left:0;top:.52em;width:6px;height:6px;border-radius:50%;background:var(--aqua-green);border:1px solid var(--line-strong)}
+.progress-dashboard,.assignment-panel,.staff-panel{
+  background:linear-gradient(180deg,#fff,#f9f9f9)!important;
+}
+.progress-head small,.assignment-head small{color:var(--text-sub)!important;letter-spacing:.14em}
+.progress-head h2,.assignment-head h2,.accountability h2,.vacancy-panel h2{color:var(--eerie-black)!important;letter-spacing:-.04em}
+.progress-circle{border:1.5px solid var(--line-strong)!important;box-shadow:none!important}
+.progress-circle:before{background:var(--white)!important;border:1px solid #dadada}
+.progress-track,.sticky-track{background:#e4e4e4!important}
+.progress-track span,.sticky-track span{background:var(--aqua-green)!important}
+.progress-meta>div,.shift-progress span,.assignment-item,.staff-card,.vacancy-choice,.pending-line,.reviewitem,.sticky-progress{
+  background:var(--white)!important;border:1.5px solid var(--line-strong)!important;box-shadow:none!important;border-radius:16px!important;
+}
+.progress-meta b,.staff-card>strong,.assignment-item b{color:var(--eerie-black)!important}
+.assignment-item small,.staff-card p,.progress-meta small,.shift-progress span,.reviewitem small{color:var(--text-sub)!important}
+.assignment-select{background:var(--cultured)!important}
+.sticky-progress{width:196px;background:var(--white)!important}
+.sticky-donut{background:conic-gradient(var(--aqua-green) var(--p), #e0e0e0 0)!important;border:1.5px solid var(--line-strong)}
+.sticky-donut span{background:var(--white)!important;color:var(--eerie-black)!important;border:1px solid #d6d6d6}
+.quicknav{gap:10px!important}
+.quick-button{min-width:108px}
+.toc-menu{
+  background:var(--white)!important;border:1.5px solid var(--line-strong)!important;border-radius:18px!important;box-shadow:none!important;
+}
+.toc-menu button{border-radius:12px!important;color:var(--eerie-black)!important}
+.toc-menu button:hover{background:var(--cultured)!important}
+.sectionhead h2{color:var(--eerie-black)!important;font-size:22px!important}
+.sectionhead span{background:var(--cultured)!important;color:var(--text-sub)!important;border:1px solid #d8d8d8;box-shadow:none!important}
+.cards{gap:16px!important}
+.task{
+  min-height:320px!important;padding:20px 18px 18px!important;border-radius:24px!important;
+  background:var(--white)!important;justify-content:flex-start!important;
+}
+.task:before{left:0;right:0;top:0;height:7px;border-radius:22px 22px 0 0;background:var(--aqua-green)!important;opacity:1!important}
+.task .time,.task .category,.rightflag{
+  border:1.5px solid var(--line-strong)!important;box-shadow:none!important;border-radius:999px!important;
+}
+.task .time{background:var(--cultured)!important;color:var(--eerie-black)!important}
+.task .category{background:var(--white)!important;color:var(--text-sub)!important}
+.rightflag{background:var(--mint-green)!important;color:var(--eerie-black)!important}
+.overdue .rightflag,.overdueflag{background:#dcdcdc!important;color:var(--eerie-black)!important}
+.task .text{color:var(--eerie-black)!important;font-size:clamp(16px,1.9vw,20px)!important;font-weight:950!important;margin:18px 0 14px!important}
+.task.current{border-color:var(--eerie-black)!important;box-shadow:none!important;background:#fcfffe!important}
+.task.current:before{background:var(--light-green)!important}
+.task.overdue{border-style:dashed!important;border-color:var(--space-grey)!important;box-shadow:none!important}
+.task.done-history{background:linear-gradient(180deg,#fff,#fbfbfb)!important;border-color:var(--line-strong)!important}
+.task.done-history:before{background:var(--mint-green)!important}
+.completion-history{
+  max-height:230px;background:var(--white)!important;border:1.5px solid var(--line-strong)!important;border-radius:16px!important;padding:10px!important;
+}
+.completion-item{
+  display:flex;align-items:flex-start;gap:10px;padding:11px 12px!important;margin:0!important;
+  border:1px solid #d3d3d3;border-left:8px solid var(--space-grey);border-radius:14px!important;background:var(--surface-soft)!important;color:var(--eerie-black)!important;
+}
+.completion-item + .completion-item{margin-top:9px!important;border-top:1px solid #d3d3d3!important}
+.completion-item .completion-bullet{
+  width:22px;height:22px;display:inline-grid;place-items:center;border-radius:50%;background:var(--white);border:1.5px solid var(--line-strong);color:var(--eerie-black)!important;flex:0 0 22px;margin-top:1px;
+}
+.completion-main{display:flex;flex-wrap:wrap;align-items:center;gap:7px 8px}
+.completion-name{
+  display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;border:1.5px solid var(--line-strong);font-size:12px;font-weight:1000;color:var(--eerie-black)!important;background:var(--white)!important;
+}
+.completion-text{font-size:12px;font-weight:900;color:var(--eerie-black)!important}
+.completion-item time{display:inline-flex;align-items:center;font-size:11px;color:var(--text-sub)!important;font-weight:900;background:transparent!important}
+.completion-item.person-0{border-left-color:var(--aqua-green);background:#f5fffb!important}
+.completion-item.person-0 .completion-name{background:var(--aqua-green)!important}
+.completion-item.person-1{border-left-color:var(--light-green);background:#f8fffd!important}
+.completion-item.person-1 .completion-name{background:var(--light-green)!important}
+.completion-item.person-2{border-left-color:var(--mint-green);background:#f7fff9!important}
+.completion-item.person-2 .completion-name{background:var(--mint-green)!important}
+.completion-item.person-3{border-left-color:var(--cultured);background:#fafafa!important}
+.completion-item.person-3 .completion-name{background:var(--cultured)!important}
+.completion-item.person-4{border-left-color:var(--space-grey);background:#f4f4f4!important}
+.completion-item.person-4 .completion-name{background:#e9e9e9!important}
+.completion-item.person-5{border-left-color:var(--eerie-black);background:#f0f0f0!important}
+.completion-item.person-5 .completion-name{background:var(--eerie-black)!important;color:var(--white)!important}
+.exception-note,.handoff-note,.finish-confirm,.task-memo-area,.pending-line,.reviewitem{background:var(--white)!important;border:1.5px solid var(--line-strong)!important;color:var(--eerie-black)!important}
+.task-memo-heading{color:var(--eerie-black)!important}
+.task-memo-heading span,.task-memo-item time{color:var(--text-sub)!important}
+.task-memo-item{background:var(--surface-soft)!important;border:1px solid #d5d5d5;border-radius:12px!important}
+.task-memo-item p{color:var(--eerie-black)!important}
+.authcover{background:rgba(255,255,255,.92)!important;backdrop-filter:blur(4px)}
+.authcard h2,.modal h2{color:var(--eerie-black)!important;letter-spacing:-.05em}
+.quest-toast{background:var(--white)!important;border:1.5px solid var(--line-strong)!important;box-shadow:none!important}
+.quest-toast .quest-kicker,.quest-toast span{color:var(--text-sub)!important}.quest-toast b{color:var(--eerie-black)!important}
+@media(max-width:720px){
+  .wrap{padding:0 14px 36px}
+  .task{min-height:290px!important;padding:18px 14px 16px!important}
+  .zones{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .quick-button{min-width:92px}
+  .sticky-progress{width:152px}
+}
+
 </style></head><body>
 <div class="authcover" id="authcover"><div class="authcard"><h2>🌷 오늘의 기록</h2><p>본인 계정으로 들어와 업무를 시작해 주세요.</p><label>직원 / 직위</label><select id="loginWho"><option value="">선택해 주세요</option><option>지배인</option><option>매니저</option><option>최일웅</option><option>김은진</option><option>파트타이머 1</option><option>파트타이머 2</option></select><div id="ptname" hidden><label>파트타이머 이름</label><input id="loginName" maxlength="30" placeholder="실제 이름을 적어 주세요"></div><label>개인 PIN (숫자 4~8자리)</label><input id="loginPin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="8" autocomplete="off" placeholder="처음 접속하면 PIN을 등록합니다"><button class="primarybtn" id="loginBtn">로그인 / 최초 등록</button><p id="loginNote">이 기기에서 계정별 PIN을 등록합니다. 완료 기록은 본인이 확인한 후 즉시 누적됩니다.</p><p class="subnote">※ 단독 HTML의 PIN은 기기 내 편의 인증입니다. 서버 인증이나 직원 간 실시간 동기화를 제공하지 않습니다.</p></div></div>
 <div class="wrap"><header class="mast"><div class="brand"><span class="logo">✿</span> TOYU WORK</div><span class="mini" id="todayLabel"></span></header><h1 class="title">오늘의 기록 <span style="color:#8ee2cc">♥</span></h1><div class="top-actions"><button id="resetAll" class="reset-all">↺ 전체 초기화</button><span class="sync-indicator" id="syncIndicator">● 이 브라우저 저장 · 공유 미연결</span></div>
@@ -229,6 +421,8 @@ const minOf=t=>Number(t.slice(0,2))*60+Number(t.slice(3,5));
 function moment(t){if($('#date').value!==today())return 'other';let d=new Date(),m=d.getHours()*60+d.getMinutes(),at=minOf(t.time);return m<at?'future':m<at+40?'now':'late'}
 function state(t){return records[t.id]?.status||'open'}
 function roleIndex(w){let n=roles.findIndex(r=>w===r||w.startsWith(r+' ·'));return Math.max(0,n)}
+function personThemeIndex(w){return roleIndex(w)%6}
+function completionClass(w){return 'person-'+personThemeIndex(w)}
 function activeCount(w){return rows.filter(t=>records[t.id]?.status==='doing'&&records[t.id]?.who===w).length}
 function start(id){if(!identity)return alert('로그인이 필요해요.');if($('#date').value!==today())return alert('오늘 날짜의 업무만 시작할 수 있어요.');if(records[id]&&records[id].status!=='open')return alert('이미 담당자가 등록된 업무예요.');if(activeCount(identity)>=2)return alert('이미 진행 중인 업무가 2개예요. 먼저 마무리하거나 인계해 주세요.');let t=rows.find(x=>x.id===id);if(moment(t)==='future'&&!confirm('예정 시간보다 이릅니다. 실제 지금 시작했나요?'))return;records[id]={...(records[id]||{}),status:'doing',who:identity,started:clock(),startedStamp:localStamp()};audit.push({id,kind:'start',who:identity,at:localStamp()});save();render()}
 function complete(id){let r=records[id];if(!r||r.status!=='doing')return;if(r.who!==identity)return alert('현재 담당자만 완료 요청을 할 수 있어요.');if(!confirm('실제 업무를 마쳤나요? 관리자 확인 대기로 등록됩니다.'))return;r.status='pending';r.at=clock();r.completedStamp=localStamp();audit.push({id,kind:'completion_requested',who:identity,at:localStamp()});save();render()}
@@ -292,7 +486,7 @@ function stopWorking(id){let r=records[id];if(!r||r.status!=='doing')return;if(r
 function taskCard(t){
  const r=records[t.id]||{},entries=taskEntries(t.id),m=moment(t),has=entries.length>0,locked=!!t.condition&&conditions[t.condition]!=='X';
  const badge=locked?'조건 확인 필요':m==='now'?'💗 지금 해야 할 일':m==='late'&&!has?'놓치지 않기':'';
- const logs=entries.map((entry,i)=>`<div class="completion-item"><span class="completion-bullet">✓</span><span><b>${esc(entry.who)}</b> <time>${esc(entry.at)}</time> 완료함</span></div>`).join('');
+ const logs=entries.map((entry,i)=>`<div class="completion-item ${completionClass(entry.who)}"><span class="completion-bullet">✓</span><span class="completion-main"><span class="completion-name">${esc(entry.who)}</span><time>${esc(entry.at)}</time><span class="completion-text">완료함</span></span></div>`).join('');
  const exception=r.exception?`<div class="exception-note">⚑ 미기록 사유 · ${esc(r.exception.who)} ${esc(r.exception.at)} — ${esc(r.exception.reason)}</div>`:'';
  const hand=r.handoffTo?`<div class="handoff-note">↪ 인계 ${esc(r.handoffFrom||'')} → ${esc(r.handoffTo)} · ${esc(r.handoffReason||'')}</div>`:'';
  const notes=(taskMemos[t.id]||[]).map(n=>`<div class="task-memo-item"><div><b>${esc(n.who)}</b> <time>${esc(n.at)}</time></div><p>${esc(n.text)}</p></div>`).join('');
