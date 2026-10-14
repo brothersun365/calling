@@ -567,6 +567,28 @@ button,input,select,textarea,.finish-btn,.tab,.shift,.primarybtn,.excel,.actions
   .task.blue-completed .completion-history{grid-template-columns:1fr}
 }
 
+
+/* Polished mobile completion typography and admin controls */
+.task.blue-completed{border-radius:11px!important;padding:18px 16px!important;gap:0!important}
+.task.blue-completed .text{font-size:clamp(21px,4vw,30px)!important;letter-spacing:-.04em!important;line-height:1.38!important;margin:43px 0 18px!important;font-weight:850!important;word-break:keep-all}
+.task.blue-completed .category{font-size:12px!important;font-weight:750!important}
+.task.blue-completed .completion-history{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+.task.blue-completed .completion-chip{min-width:0;min-height:60px!important;grid-template-columns:27px minmax(0,1fr)!important;column-gap:7px!important;padding:9px!important;border:1px solid #c7d9f6!important;border-left:5px solid var(--employee,#85a5d1)!important;border-radius:8px!important;box-shadow:none!important}
+.task.blue-completed .chip-check{width:26px!important;height:26px!important;font-size:16px!important;border-width:2px!important}
+.task.blue-completed .chip-name{font-size:clamp(16px,2.5vw,21px)!important;letter-spacing:-.03em!important;word-break:break-word}
+.task.blue-completed .chip-time{font-size:12px!important;letter-spacing:0!important}
+.task.blue-completed .done-word{font-size:clamp(27px,5vw,35px)!important;letter-spacing:-.04em!important;padding:8px 0!important}
+.task.blue-completed .finish-btn.add-my-completion{display:block!important;background:#e8f3ff!important;color:#1459ad!important;border:1px solid #b5d3f8!important;box-shadow:none!important;min-height:47px!important;padding:10px!important;font-size:14px!important;border-radius:7px!important}
+.task.blue-completed .finish-btn.add-my-completion::before{content:none!important}
+.task.blue-completed .card-undo{align-self:flex-end!important;color:#eaf4ff!important;font-size:12px!important;text-decoration:none!important}
+.admin-manager{padding:18px;margin:12px 0 19px;background:#f5f9ff;border:1px solid #cbdcee;border-radius:10px}
+.admin-manager[hidden],#selectTaskLabel[hidden],#selectPersonLabel[hidden]{display:none!important}
+.manager-head{display:flex;justify-content:space-between;gap:9px;align-items:center}.manager-head h2{font-size:21px;margin:0;letter-spacing:-.035em}.manager-head small{color:#48637f;font-size:11px}
+.manager-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin-top:14px}.manager-fields label{display:grid;gap:6px;font-size:12px;font-weight:800}.manager-fields select{min-width:0;width:100%;padding:10px;border:1px solid #c5d6e6!important;border-radius:7px!important;font-size:13px}
+.manager-buttons{display:flex;gap:9px;margin:15px 0 10px;flex-wrap:wrap}.manager-buttons button{padding:10px 12px;border:1px solid #b7cada;border-radius:7px;background:white;font-size:13px;font-weight:800}.manager-buttons #applyReset{border-color:#e5adb7;background:#fff0f2;color:#a82d46}
+.admin-manager p{font-size:12px;color:#596b81;line-height:1.6}
+@media(max-width:650px){.task.blue-completed .text{font-size:clamp(21px,6vw,27px)!important}.task.blue-completed .chip-name{font-size:16px!important}.task.blue-completed .chip-time{font-size:11px!important}.manager-fields{grid-template-columns:1fr}.manager-head{align-items:start;flex-direction:column}}
+@media(max-width:355px){.task.blue-completed .completion-history{grid-template-columns:1fr!important}}
 </style><style>
 /* TOYU MOBILE FIRST • EMPLOYEE IDENTITY • FRESH START */
 :root{--mobile-line:#d9e8e3;--mobile-ink:#23352f}html{scroll-padding-top:12px;-webkit-text-size-adjust:100%}body{overflow-x:hidden;max-width:100vw}button,select,input,textarea{touch-action:manipulation}button{min-height:42px}button:focus-visible{outline:3px solid #309b85;outline-offset:2px}
@@ -631,7 +653,7 @@ button,input,select,textarea,.finish-btn,.tab,.shift,.primarybtn,.excel,.actions
 
 </style></head><body>
 <div class="authcover" id="authcover"><div class="authcard"><h2>토유 프론트- 오늘의기록</h2><p>본인 이름/직급으로 들어와 업무를 시작해 주세요.</p><label>직원 / 직위</label><select id="loginWho"><option value="">선택해 주세요</option><option>대표자</option><option>지배인</option><option>매니저(선영)</option><option>일웅</option><option>은진</option><option>파트타이머1</option><option>파트타이머2</option><option>파트타이머3</option><option>기타 임원</option></select><div id="ptname" hidden><label>파트타이머 이름</label><input id="loginName" maxlength="30" placeholder="실제 이름을 적어 주세요"></div><label>직원별 비밀번호 (영문·숫자 6자리)</label><input id="loginPin" type="password" inputmode="text" maxlength="6" autocomplete="off" placeholder="직원별 지정 PIN을 입력하세요"><button class="primarybtn" id="loginBtn">로그인 / 최초 등록</button><p id="loginNote">이 기기에서는 프론트 직원 계정별 PIN을 사용합니다. 모든 기록은 본인이 확인한 후 즉시 기록됩니다.</p><p class="subnote">※ 이 파일은 같은 브라우저 내 탭 간 변경 사항을 반영합니다. 직원 간 기기별 실시간 동기화는 별도 서버 연결이 필요합니다.</p></div></div>
-<div class="wrap"><header class="mast"><div class="brand"><span class="logo">✿</span> TOYU WORK</div><span class="mini" id="todayLabel"></span></header><section class="date-hero" aria-label="선택한 업무 날짜"><div class="date-hero-inner"><span class="date-kicker">TOYU 프론트 일일 업무기록</span><div class="date-hero-text"><strong id="heroDate">오늘은 오늘입니다</strong><span id="heroWeekday">업무 기록</span></div><p>모든 업무진행은 여기서 확인할 수 있습니다</p></div><span class="date-hero-orbit" aria-hidden="true">✳</span></section><h1 class="title">오늘의 토유 기록 <span style="color:#8ee2cc">✦</span></h1><div class="top-actions"><button id="resetAll" class="reset-all">↺ 전체 초기화</button><span class="sync-indicator" id="syncIndicator">● 이 브라우저 저장 · 공유 미연결</span></div>
+<div class="wrap"><header class="mast"><div class="brand"><span class="logo">✿</span> TOYU WORK</div><span class="mini" id="todayLabel"></span></header><section class="date-hero" aria-label="선택한 업무 날짜"><div class="date-hero-inner"><span class="date-kicker">TOYU 프론트 일일 업무기록</span><div class="date-hero-text"><strong id="heroDate">오늘은 오늘입니다</strong><span id="heroWeekday">업무 기록</span></div><p>모든 업무진행은 여기서 확인할 수 있습니다</p></div><span class="date-hero-orbit" aria-hidden="true">✳</span></section><h1 class="title">오늘의 토유 기록 <span style="color:#8ee2cc">✦</span></h1><section id="adminManager" hidden class="admin-manager"><div class="manager-head"><h2>관리자 기록 관리</h2><small>업무 기록 백업 · 선택 초기화</small></div><div class="manager-fields"><label>초기화 항목<select id="resetMode"><option value="task">선택한 업무 기록</option><option value="person">선택한 직원의 완료 기록</option><option value="completions">전체 업무 완료 기록 (선택 날짜)</option><option value="memos">메모 및 인계 기록 (선택 날짜)</option><option value="positions">직원 현재 근무 위치 (선택 날짜)</option><option value="assignments">업무분장 (선택 날짜)</option><option value="dehumid">제습 기록 (선택 날짜)</option><option value="attendance">출퇴근 기록 (선택 날짜)</option><option value="date">선택 날짜 모든 기록</option><option value="all">모든 날짜의 모든 운영 기록 (이 기기)</option></select></label><label id="selectTaskLabel">업무 선택<select id="adminTask"></select></label><label id="selectPersonLabel" hidden>직원 선택<select id="adminPerson"></select></label></div><div class="manager-buttons"><button id="backupJson">JSON 기록 백업</button><button id="applyReset">선택 항목 초기화</button></div><p>초기화 전 반드시 백업해 주세요. 다른 기기의 저장 기록은 삭제되지 않습니다.</p></section><div class="top-actions"><button id="resetAll" class="reset-all">↺ 전체 초기화</button><span class="sync-indicator" id="syncIndicator">● 이 브라우저 저장 · 공유 미연결</span></div>
 <section id="progressDashboard" class="progress-dashboard" aria-label="전체 업무 진행 현황"><div class="progress-head"><div><small>DAILY WORK FLOW</small><h2>오늘의 업무 진행 상황</h2></div><strong id="progressPercent">0%</strong></div><div id="progressRing" class="progress-flex"><div class="ring-wrap"><div id="progressCircle" class="progress-circle"><span id="ringValue">0%</span></div></div><div class="progress-meta"><div><b id="doneCount">0</b><small>완료</small></div><div><b id="remainingCount">0</b><small>남은 업무</small></div><div><b id="excludedCount">0</b><small>조건 미활성</small></div></div></div><div class="progress-track"><span id="progressFill"></span></div><div id="shiftProgress" class="shift-progress"></div><small class="localnote">선택한 날짜 · 해당 근무조의 업무 기준 / 실제 완료 항목 수</small></section>
 
 <section class="staff-panel" id="staffActivity"><div class="assignment-head"><div><small>STAFF ACTIVITY</small><h2>직원별 업무 상황실 <span class="live-dot"></span></h2><p>직원별 현재 업무 기록을 확인하고 업무 카드로 이동할 수 있습니다.</p></div></div><div id="staffGrid" class="staff-grid"></div></section>
@@ -871,7 +893,7 @@ function taskCard(t){
    ${exception}
    ${has&&alreadyMine?`<button type="button" class="undo-completion card-undo" data-undo="${t.id}">↶ 내 기록 취소</button>`:''}
    ${has?`<div class="completion-history big-badge-history">${logs}</div><div class="done-word">완료됨!</div>`:''}
-   ${!has?`<button class="finish-btn" ${locked?'disabled title="공실 X 선택 후 활성화"':''} data-finish="${t.id}">${btnText}</button>`:''}
+   ${!alreadyMine?`<button class="finish-btn add-my-completion" ${locked?'disabled title="공실 X 선택 후 활성화"':''} data-finish="${t.id}">${has?'＋ 나도 완료 기록 남기기':btnText}</button>`:''}
  </div></article>`;
 }
 function quickHandoff(id){
@@ -953,7 +975,7 @@ function saveDehumid(data){localStorage.setItem('toyu-dehumid-fresh-v8:'+$('#dat
 function drawDehumid(){const data=dehumidStore();const room=(n)=>{const d=data[n]||{},vac=d.vac||'';return `<div class="dehumid-cell"><h3>${n}호 · 공실 여부</h3><div class="vacancy-buttons"><button data-room="${n}" data-vac="O" class="${vac==='O'?'selected':''}">공실 O (공실입니다)</button><button data-room="${n}" data-vac="X" class="${vac==='X'?'selected':''}">공실 X</button></div><fieldset ${vac==='O'?'':'disabled'}><legend>객실 제습기 2대</legend>${[1,2].map(k=>`<label>제습기 ${k} · 물의 양</label><select id="water-${n}-${k}"><option value="">선택</option><option>0%</option><option>25%</option><option>50%</option><option>75%</option><option>100%</option><option>조금</option><option>절반 정도</option><option>거의 가득</option></select><label><input type="checkbox" id="emptied-${n}-${k}"> 물 비웠습니다</label>`).join('')}<button data-save-water="${n}">물통 기록 저장</button></fieldset>${n!=='401'?`<fieldset><legend>백오피스 제습기 조종상황</legend><label>전원</label><select id="power-${n}"><option>ON - 시작했습니다</option><option>ON - 이미 켜져 있습니다</option><option>OFF - 시작했습니다</option><option>OFF - 이미 꺼져 있습니다</option></select><label>습도 (%)</label><input id="humidity-${n}" type="number" min="0" max="100" placeholder="현재 습도"><button data-save-office="${n}">백오피스 기록 저장</button></fieldset>`:''}</div>`};$('#dehumidGrid').innerHTML=['101','102','401'].map(room).join('');$('#dehumidHistory').innerHTML=(data.history||[]).slice().reverse().slice(0,15).map(r=>`<div class="dehumid-log">${esc(r.at)} · <b style="color:${employeeColor(r.who)}">${esc(r.who)}</b> · ${esc(r.room)}호 · ${esc(r.detail)}</div>`).join('')}
 $('#dehumidGrid').addEventListener('click',e=>{const b=e.target.closest('button');if(!b||!identity)return;const d=dehumidStore();d.history??=[];const n=b.dataset.room||b.dataset.saveWater||b.dataset.saveOffice;if(!n)return;d[n]??={};let detail='';if(b.dataset.vac){d[n].vac=b.dataset.vac;detail='공실 '+b.dataset.vac} else if(b.dataset.saveWater){if(d[n].vac!=='O')return alert('공실 O일 때만 기록할 수 있습니다.');const v=[1,2].map(k=>`제습기${k} ${$('#water-'+n+'-'+k).value||'미입력'}, ${$('#emptied-'+n+'-'+k).checked?'물 비움':'물 비우지 않음'}`);if(v.some(x=>x.includes('미입력')))return alert('두 제습기의 물 상태를 선택해 주세요.');detail=v.join(' / ')}else{const hum=$('#humidity-'+n).value;if(hum===''||+hum<0||+hum>100)return alert('습도를 0~100%로 입력해 주세요.');detail=$('#power-'+n).value+', 습도 '+hum+'%'}d.history.push({room:n,detail,who:identity,at:localStamp()});saveDehumid(d)});
 const oldRender=render;
-render=function(){oldRender();displayHours();drawDehumid();$('#resetAll').style.display=admin()?'':'none';$('#assignmentReset').disabled=!admin();$('#adminLock').textContent=admin()?'🔓':'♧';};
+render=function(){oldRender();displayHours();drawDehumid();$('#resetAll').style.display=admin()?'':'none';$('#assignmentReset').disabled=!admin();$('#adminLock').textContent=admin()?'🔓':'♧';managerRefresh();};
 const oldBuildToc=buildToc;
 buildToc=function(){const target=[['오늘의 업무분장','assignments'],['업무 진행 상황','progressDashboard'],['직원 실시간 업무 상황실 + 지금 어디에서 일하고 있나요?','staffActivity'],['제습상황실','dehumidRoom'],['나의 출근시간대 미기록 업무 요약','accountability']];$('#tocMenu').innerHTML=target.map(([t,id])=>`<button type="button" data-scrollto="${id}">${t}</button>`).join('')};
 // Preserve old records while preventing unverified session restoration.
@@ -967,5 +989,35 @@ buildToc=function(){const target=[['오늘의 업무분장','assignments'],['업
  ['toyu-user-v5','toyu-role-v6','toyu-user-fresh-v8','toyu-role-fresh-v8'].forEach(k=>sessionStorage.removeItem(k));
  localStorage.setItem(marker,'1');
 })();
+
+function managerRefresh(){
+ $('#adminManager').hidden=!admin();if(!admin())return;
+ const mode=$('#resetMode').value;
+ $('#selectTaskLabel').hidden=mode!=='task';$('#selectPersonLabel').hidden=mode!=='person';
+ const t=$('#adminTask'),keep=t.value;t.innerHTML=rows.map(r=>`<option value="${esc(r.id)}">${esc(r.time+' · '+r.text)}</option>`).join('');if(rows.some(r=>String(r.id)===keep))t.value=keep;
+ const p=$('#adminPerson'),old=p.value;p.innerHTML=staffNames().map(n=>`<option value="${esc(n)}">${esc(n)}</option>`).join('');if(staffNames().includes(old))p.value=old;
+}
+$('#resetMode').onchange=managerRefresh;
+$('#backupJson').onclick=()=>{if(!admin())return;const data={exported:new Date().toISOString(),entries:{}};for(let i=0;i<localStorage.length;i++){const key=localStorage.key(i);if(/^toyu-(lovely-v5:|hours-fresh-v8:|dehumid-fresh-v8:)/.test(key))data.entries[key]=localStorage.getItem(key)}const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='TOYU_기록백업_'+today()+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
+$('#applyReset').onclick=()=>{
+ if(!admin())return alert('관리자 전용입니다.');const mode=$('#resetMode').value,date=$('#date').value,name=$('#adminPerson').value,id=$('#adminTask').value;
+ if(!confirm('선택 항목의 기록을 초기화합니다. 계속할까요?'))return;
+ if(prompt('확인하려면 초기화라고 입력해 주세요.')!=='초기화')return;
+ const time=localStamp();
+ if(mode==='task'){delete records[id];delete taskMemos[id];audit.push({kind:'admin_reset_task',id,who:identity,at:time})}
+ else if(mode==='person'){
+  if(!name)return alert('직원을 선택해 주세요.');
+  for(const r of Object.values(records)){if(Array.isArray(r.entries)){r.entries=r.entries.filter(e=>e.who!==name);if(r.entries.length){r.who=r.entries.at(-1).who;r.at=r.entries.at(-1).at}else{delete r.who;delete r.at;if(r.status==='done')r.status='open'}}}
+  audit.push({kind:'admin_reset_staff',target:name,who:identity,at:time});
+ }else if(mode==='completions'){for(const r of Object.values(records)){r.entries=[];if(r.status==='done')r.status='open';delete r.completedStamp;delete r.at}audit.push({kind:'admin_reset_completions',who:identity,at:time})}
+ else if(mode==='memos'){taskMemos={};for(const r of Object.values(records)){delete r.handoffTo;delete r.handoffFrom;delete r.handoffReason}audit.push({kind:'admin_reset_memos',who:identity,at:time})}
+ else if(mode==='positions'){zones={};audit.push({kind:'admin_reset_positions',who:identity,at:time})}
+ else if(mode==='assignments'){assignments={};audit.push({kind:'admin_reset_assignments',who:identity,at:time})}
+ else if(mode==='dehumid')localStorage.removeItem('toyu-dehumid-fresh-v8:'+date);
+ else if(mode==='attendance')localStorage.removeItem(hoursKey());
+ else if(mode==='date'){records={};zones={};audit=[];conditions={};assignments={};taskMemos={};localStorage.removeItem('toyu-dehumid-fresh-v8:'+date);localStorage.removeItem(hoursKey())}
+ else if(mode==='all'){for(let i=localStorage.length-1;i>=0;i--){const k=localStorage.key(i);if(/^toyu-(lovely-v5:|hours-fresh-v8:|dehumid-fresh-v8:)/.test(k))localStorage.removeItem(k)}records={};zones={};audit=[];conditions={};assignments={};taskMemos={}}
+ save();render();alert('초기화했습니다.');
+};
 load();let remembered=sessionStorage.getItem('toyu-user-fresh-v8');if(remembered&&sessionStorage.getItem('toyu-role-fresh-v8')&&fixedPins[sessionStorage.getItem('toyu-role-fresh-v8')]){identity=remembered;$('#authcover').style.display='none'}render();setInterval(render,30000);
 </script></body></html>
