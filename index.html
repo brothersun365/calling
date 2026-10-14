@@ -513,6 +513,15 @@ button,input,select,textarea,.finish-btn,.tab,.shift,.primarybtn,.excel,.actions
 .shift-clock{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.shift-clock span{font-weight:800;color:#45665e}.myshift p{margin-bottom:0;color:#5e746d}.dehumid-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.dehumid-cell{border:1px solid #dbe9e5;padding:14px;border-radius:8px;background:#fafffd}.dehumid-cell h3{margin:0 0 9px;font-size:16px}.dehumid-cell input[type=checkbox]{width:auto!important;vertical-align:middle}.dehumid-cell label{display:block;font-size:12px;font-weight:800;margin:9px 0 4px}.dehumid-cell select,.dehumid-cell input{width:100%;padding:9px!important}.dehumid-cell button{margin-top:10px;padding:9px 12px;background:#b6f2e0;border:1px solid #a2dfcb}.dehumid-cell fieldset{border:1px solid #ddeae6;border-radius:7px;margin-top:10px;padding:8px}.dehumid-cell fieldset:disabled{opacity:.43}.dehumid-log{font-size:12px;padding:8px 0;border-bottom:1px solid #e4eeeb}.person-0{--person-color:#5e67ad}.person-1{--person-color:#7c5cff}.person-2{--person-color:#0e9e92}.person-3{--person-color:#e18132}.person-4{--person-color:#d05889}.person-5{--person-color:#427caa}.person-6{--person-color:#9562b3}.person-7{--person-color:#348a66}.person-8{--person-color:#8f6c47}
 .completion-item{border-left:4px solid var(--person-color,#6acbb4)!important;background:#f8fcfb!important}.completion-item b{color:var(--person-color,#285f53)!important}
 @media(max-width:750px){.dehumid-grid{grid-template-columns:1fr}.task .text{font-size:15px!important}.quick-button{min-width:86px!important}}
+
+/* 업무별 확인문장 / 완료 상태 시각적 분리 */
+.task .finish-btn:not(.is-done):not(:disabled){background:#e5f7f1!important;color:#145a4d!important;border:1px solid #95d4c1!important;box-shadow:none!important;text-align:center;white-space:normal;line-height:1.5;font-weight:800!important;padding:14px 12px!important;min-height:58px}
+.task .finish-btn.is-done{background:#e9ebef!important;color:#59636e!important;border:1px solid #cbd2d9!important;box-shadow:none!important;font-weight:700!important;min-height:45px!important}
+.task.done-history{background:#f8fafb!important;border-color:#cad9d6!important}
+.task.done-history .text{color:#3c4a49!important}
+.task .finish-btn:not(.is-done):not(:disabled)::before{content:'□  ';font-weight:900}
+.task .finish-btn.is-done::before{content:' ';}
+@media(max-width:650px){.task .finish-btn:not(.is-done):not(:disabled){font-size:14px!important;line-height:1.6;padding:14px 12px!important}.task .finish-btn.is-done{font-size:13px!important}}
 </style><style>
 /* TOYU MOBILE FIRST • EMPLOYEE IDENTITY • FRESH START */
 :root{--mobile-line:#d9e8e3;--mobile-ink:#23352f}html{scroll-padding-top:12px;-webkit-text-size-adjust:100%}body{overflow-x:hidden;max-width:100vw}button,select,input,textarea{touch-action:manipulation}button{min-height:42px}button:focus-visible{outline:3px solid #309b85;outline-offset:2px}
@@ -558,91 +567,91 @@ button,input,select,textarea,.finish-btn,.tab,.shift,.primarybtn,.excel,.actions
 <section class="vacancy-panel" id="dehumidRoom"><h2>제습상황실</h2><p>객실 공실 여부를 선택하면 객실 제습기 기록이 활성화됩니다. 지층 백오피스는 공실 여부와 관계없이 기록할 수 있습니다.</p><div id="dehumidGrid" class="dehumid-grid"></div><div id="dehumidHistory"></div></section>
 <div class="exportbar"><span class="pill">오늘의 팀워크, 한눈에</span><button class="excel" data-excel>📗 엑셀로 출력</button></div>
 <h2 class="zone-title">지금 어디에서 일하고 있나요?</h2><p class="zone-guide">여러 활동을 동시에 선택할 수 있습니다. 선택한 항목을 다시 누르면 본인의 표시만 해제됩니다.</p><div class="zones" id="zones"></div>
-<div class="panel"><div class="controls"><div class="control"><b>나의 출근 시간</b><div class="shift-group"><button class="shift active" data-shift="07">07:00</button><button class="shift" data-shift="09">09:00</button><button class="shift" data-shift="14">14:00</button><button class="shift" data-shift="all">전체</button></div></div><div class="control"><b>업무 날짜</b><input type="date" id="date"></div></div><p class="hint">업무를 실제로 마쳤을 때 ‘완료함’을 누르고 확인해 주세요. 같은 업무의 완료 기록은 계속 누적됩니다.</p><div class="utils"><button id="export">기록 백업(JSON)</button><button id="import">백업 불러오기</button><input hidden type="file" accept="application/json" id="file"></div></div>
+<div class="panel"><div class="controls"><div class="control"><b>나의 출근 시간</b><div class="shift-group"><button class="shift active" data-shift="07">07:00</button><button class="shift" data-shift="09">09:00</button><button class="shift" data-shift="14">14:00</button><button class="shift" data-shift="all">전체</button></div></div><div class="control"><b>업무 날짜</b><input type="date" id="date"></div></div><p class="hint">업무 내용에 맞게 적힌 확인 문장을 읽고, 실제로 끝낸 경우에만 눌러 주세요. 같은 업무의 완료 기록은 계속 누적됩니다.</p><div class="utils"><button id="export">기록 백업(JSON)</button><button id="import">백업 불러오기</button><input hidden type="file" accept="application/json" id="file"></div></div>
 <div class="accountability" id="accountability"><div class="accountability-head"><div><h2>나의 출근시간대 미기록 업무 요약</h2><p>지나간 시간의 미기록 업무를 확인하고, 빠뜨린 업무는 사유를 남겨 주세요.</p></div><button id="shiftReview" class="review-btn">교대 점검하기</button></div><div id="pendingSummary"></div></div>
 <div class="vacancy-panel"><h2>객실 공실 여부</h2><p>각 객실 구분의 공실 O / 공실 X를 먼저 선택해 주세요. <b>공실 X</b>인 경우 지정된 점검 카드가 활성화됩니다. 제습기 종료는 실제 입실 직전에 확인해 주세요.</p><div id="vacancyControls" class="vacancy-grid"></div></div><div id="reviewpanel"></div><nav class="tabs"><button class="tab active" data-filter="all">모든 업무</button><button class="tab" data-filter="open">미완료 · 진행 중</button><button class="tab" data-filter="done">처리한 업무</button></nav><main id="main"></main><div id="previous"></div><section class="assignment-panel" id="assignments"><div class="assignment-head"><div><small>DAILY ASSIGNMENTS</small><h2>오늘의 업무 분장</h2><p>담당자를 지정하거나 담당자 이름을 눌러 해당 직원이 맡은 일을 확인하세요.</p></div><button type="button" id="assignmentReset" class="assignment-clear">업무분장 초기화</button></div><div class="assignment-grid" id="assignmentGrid"></div></section>
 <div class="exportbar"><span class="pill">✿ 오늘의 기록을 파일로 남기세요</span><button class="excel" data-excel>📗 엑셀로 출력</button></div><footer class="foot">로그인한 이름과 완료 시각을 업무별로 누적 기록합니다. 인계 기록도 보관합니다. 개인별 순위는 표시하지 않습니다.<br>※ 초록색 표시등은 실시간 움직임 감지가 아니라 지정된 구역의 담당자 표시입니다. 다른 휴대폰에서 같은 기록을 실시간으로 보려면 서버와 공용 데이터베이스가 필요합니다. 본 파일은 브라우저별 저장 버전입니다.</footer></div>
 <aside id="quicknav" class="quicknav"><div class="sticky-progress" id="stickyProgress"></div><button id="tocToggle" class="quick-button" type="button">☷ 목차</button><button id="toTop" class="quick-button" type="button">↑ 맨 위로</button><button id="toBottom" class="quick-button" type="button">↓ 맨 아래로</button><button id="adminLock" class="admin-lock" type="button" aria-label="관리자 접속" title="관리자 접속">♙</button><nav id="tocMenu" class="toc-menu" hidden></nav></aside><div class="dialog" id="dialog"><div class="modal"><h2 id="modalTitle"></h2><p id="modalText"></p><div id="modalFields"></div><div class="actions"><button id="cancel">취소</button><button class="yes" id="confirm">확인</button></div></div></div><script>
 const rows=[];let next=0;const add=(time,shifts,text)=>rows.push({id:'t'+(++next),time,shifts:shifts.split('/'),text});
-add('07:00','07','카카오톡으로 온 공지 내용 확인');rows[rows.length-1].group='카카오톡 공지 확인';
-add('07:00','07','전날 이슈 사항과 전달 사항 카카오톡 확인');rows[rows.length-1].group='전날 인수인계';
-add('07:00','07','지층 문 살짝 열어놓기');rows[rows.length-1].group='지층 오픈';
-add('07:00','07','지층 전등 켜기');rows[rows.length-1].group='지층 오픈';
-add('07:00','07','비디오 CCTV 확인하기');rows[rows.length-1].group='고객 동선 점검';
-add('07:00','07','창고·복도·객실 문, 쓰레기, 조명 및 고객 동선을 확인하고 보기 좋지 않은 부분 정리하기');rows[rows.length-1].group='고객 동선 점검';
-add('07:00','07','주전자 물 채우기');rows[rows.length-1].group='프론트';
-add('07:00','07','냉수 주전자 얼음과 함께 채우기');rows[rows.length-1].group='프론트';
-add('07:00','07','따뜻한 물 준비하기');rows[rows.length-1].group='프론트';
-add('07:00','07','커피 머신 세팅하기');rows[rows.length-1].group='프론트';
-add('07:00','07','커피 도구·템퍼 정리하기');rows[rows.length-1].group='프론트';
-add('07:00','07','음료 재고가 모두 채워져 있는지 확인하기');rows[rows.length-1].group='프론트';
-add('07:00','07','101호·102호 객실 상태 확인하기');rows[rows.length-1].group='지층 객실 점검';rows[rows.length-1].condition='basement';
-add('07:00','07','101호·102호 팬 작동 확인하기');rows[rows.length-1].group='지층 객실 점검';rows[rows.length-1].condition='basement';
-add('07:00','07','101호·102호 객실 향기 확인 후 룸스프레이 뿌리기');rows[rows.length-1].group='지층 객실 점검';rows[rows.length-1].condition='basement';
-add('07:00','07','스탠다드 객실 상태 확인하기');rows[rows.length-1].group='스탠다드 객실 점검';rows[rows.length-1].condition='standard';
-add('07:00','07','스탠다드 객실 팬 작동 확인하기');rows[rows.length-1].group='스탠다드 객실 점검';rows[rows.length-1].condition='standard';
-add('07:00','07','스탠다드 객실 향기 확인 후 룸스프레이 뿌리기');rows[rows.length-1].group='스탠다드 객실 점검';rows[rows.length-1].condition='standard';
-add('07:00','07','101호 제습기 물 비우기');rows[rows.length-1].group='지층 제습기';rows[rows.length-1].condition='dehumid';
-add('07:00','07','102호 제습기 물 비우기');rows[rows.length-1].group='지층 제습기';rows[rows.length-1].condition='dehumid';
-add('07:00','07','101호 제습기 입실 전 끄기');rows[rows.length-1].group='지층 제습기';rows[rows.length-1].condition='dehumid';
-add('07:00','07','102호 제습기 입실 전 끄기');rows[rows.length-1].group='지층 제습기';rows[rows.length-1].condition='dehumid';
-add('07:00','07','외부 음악 볼륨 높이기');rows[rows.length-1].group='프론트·홀 배경 음악';
-add('07:00','07','홀·로비 음악 볼륨 조절하기');rows[rows.length-1].group='프론트·홀 배경 음악';
-add('08:50','07','복도 음악 볼륨 조절하기 (08:50)');rows[rows.length-1].group='프론트·홀 배경 음악';
-add('07:00','07','프론트 제습기 1대 물 비우기');rows[rows.length-1].group='제습기 물 비우기';
-add('07:00','07','레스토랑 제습기 1 물 비우기');rows[rows.length-1].group='제습기 물 비우기';
-add('07:00','07','레스토랑 제습기 2 물 비우기');rows[rows.length-1].group='제습기 물 비우기';
-add('07:00','07','1~4층 복도 조명 모두 켜기');rows[rows.length-1].group='전층 정비';
-add('07:00','07','추가 침구 창고에 넣기');rows[rows.length-1].group='전층 정비';
-add('07:00','07','이동식 생수 선반 창고에 넣기');rows[rows.length-1].group='전층 정비';
-add('07:00','07','전층 룸스프레이로 향기 입히기');rows[rows.length-1].group='전층 정비';
-add('07:00','07','각 테이블 태블릿 켜기');rows[rows.length-1].group='레스토랑 업무 시작';
-add('07:00','07','블렌딩 티 1.5L 준비하기');rows[rows.length-1].group='레스토랑 업무 시작';
-add('07:30','07','블렌딩 티 우린 지 30분 후 티백 빼기 (준비 시점 기준)');rows[rows.length-1].group='레스토랑 업무 시작';
-add('07:00','07','각종 소스·샐러드·동치미·반찬 세팅하기');rows[rows.length-1].group='조식 플레이팅';
-add('07:00','07','태블릿 배터리 연결하기');rows[rows.length-1].group='조식 플레이팅';
-add('07:00','07','테이블 물 주전자 배치하기');rows[rows.length-1].group='조식 플레이팅';
-add('07:00','07','모닝티 찻잔 뒤집어서 세팅하기');rows[rows.length-1].group='조식 플레이팅';
-add('07:40','07','오픈 업무 처리 확인 후 마감보고창에 공유');
-add('08:00','07','조식 고객 응대 및 아침 인사');
-add('08:00','07','연박 고객 다음날 조식 메뉴·시간 / 당일 룸터치·외출시간 확인');
-add('08:00','07','기물 정리 및 체크아웃 고객 웰컴드링크 응대');
-add('09:00','09','복도·외부·지하 음악 볼륨 확인');
-add('09:00','09','지층 천장 환풍기 ON(백오피스 조절)');
-add('09:00','09','조식 및 워크인 고객 응대');
-add('09:50','09','기물 핸들링·소독·정리 및 직원 식사');
-add('10:00','07','조식 노쇼 여부 프런트 채팅방에 보고');
-add('11:00','07/09','체크아웃 고객 응대 및 웰컴드링크');
-add('11:00','09','인원·침구 추가 사항 재확인');
-add('11:00','09/14','객실 정비 채팅방 확인 및 진행 과정 수시 확인');
-add('11:00','09','실시간 예약 확인 및 체크인 객실 카드키 세팅');
-add('11:00','09','지층·스탠다드 객실 향 확인 및 환기 팬 작동');
-add('11:00','07/09','레스토랑 고객 응대(라스트오더 15:30)');
-add('11:10','07','미퇴실 객실 연락 및 레이트 체크아웃 확인');
-add('11:30','09','카페 물품 채우기(컵·빨대·냅킨)');
-add('11:30','07/09','층별 린넨실 휴지 화장실 비치(여유 있을 때)');
-add('11:30','07','얼리 체크인용 레지카드·안내문·조식 안내·자쿠지 안내 준비');
-add('12:00','09','지층·스탠다드 객실 향 확인 및 환기 팬 작동');
-add('12:00','09','주말·성수기 얼리체크인 안내 메시지 확인');
-add('12:00','09','연박 객실 룸터치·인원 확인 후 객실팀 전달');
-add('12:30','09','객실 청소 진행 속도 확인 및 객실팀과 인스펙 가능 여부 소통');
-add('12:30','09','인력 상황에 맞춰 객실 인스펙 준비·진행');
-add('14:00','14','룸터치 문고리 재확인 및 객실팀 요청');
-add('14:00','14','욕조·변기·세면대·샤워실·용품·휴지 점검');
-add('14:00','14','침구·베딩 상태 점검, 자쿠지 물기·이물질 제거');
-add('14:00','14','바닥·테이블 청결 및 머리카락 점검 / 인스펙 후 조명 확인');
-add('14:00','14','202·302 스탠다드 주말 POP 및 부산맥주 준비 확인');
-add('14:00','14','당일 입실 객실 에어컨·보일러·온도 설정');
-add('15:00','09','얼리 체크인 고객 응대·결제·객실 준비 상태 확인');
-add('15:00','14','체크인 레지카드·안내문·조식사진·자쿠지 안내 준비');
-add('15:00','14','객실 당일 할인율·시간대별 가격 조정 확인');
-add('15:30','09','레스토랑 홀 마감: 태블릿 충전·물 냉장·집기 세척·POS 마감·식기 정리');
-add('15:30','09','수요일 홀 주전자 세척 / 목요일 린넨 삶기(해당 요일만)');
-add('16:00','09','마감보고: 레지카드·객실현황·조식·식당·매출·현장결제·시설 작동·체크인상황');
-add('16:00','09','레스토랑 마감 후 에어컨 송풍 전환');
-add('16:00','09','공실 객실 에어컨 OFF');
-add('16:00','07','지층 입실 없으면 제습기 ON 유지, 입실 때 OFF / 인수인계');
-add('17:00','09','제습기 물 비우기');
+add('07:00','07','카카오톡으로 온 공지 내용 확인');rows[rows.length-1].group='카카오톡 공지 확인';rows[rows.length-1].doneLabel='카카오톡으로 온 공지 내용을 모두 확인하였습니다!';
+add('07:00','07','전날 이슈 사항과 전달 사항 카카오톡 확인');rows[rows.length-1].group='전날 인수인계';rows[rows.length-1].doneLabel='전날 이슈와 전달 사항을 카카오톡으로 모두 확인하였습니다!';
+add('07:00','07','지층 문 살짝 열어놓기');rows[rows.length-1].group='지층 오픈';rows[rows.length-1].doneLabel='지층 문을 살짝 열어두었습니다!';
+add('07:00','07','지층 전등 켜기');rows[rows.length-1].group='지층 오픈';rows[rows.length-1].doneLabel='지층 전등을 켰습니다!';
+add('07:00','07','비디오 CCTV 확인하기');rows[rows.length-1].group='고객 동선 점검';rows[rows.length-1].doneLabel='비디오 CCTV를 확인하였습니다!';
+add('07:00','07','창고·복도·객실 문, 쓰레기, 조명 및 고객 동선을 확인하고 보기 좋지 않은 부분 정리하기');rows[rows.length-1].group='고객 동선 점검';rows[rows.length-1].doneLabel='창고·복도·객실 문과 쓰레기, 조명, 고객 동선을 점검하고 정리하였습니다!';
+add('07:00','07','주전자 물 채우기');rows[rows.length-1].group='프론트';rows[rows.length-1].doneLabel='주전자에 물을 채웠습니다!';
+add('07:00','07','냉수 주전자 얼음과 함께 채우기');rows[rows.length-1].group='프론트';rows[rows.length-1].doneLabel='냉수 주전자에 얼음과 물을 채웠습니다!';
+add('07:00','07','따뜻한 물 준비하기');rows[rows.length-1].group='프론트';rows[rows.length-1].doneLabel='따뜻한 물을 준비하였습니다!';
+add('07:00','07','커피 머신 세팅하기');rows[rows.length-1].group='프론트';rows[rows.length-1].doneLabel='커피 머신 세팅을 마쳤습니다!';
+add('07:00','07','커피 도구·템퍼 정리하기');rows[rows.length-1].group='프론트';rows[rows.length-1].doneLabel='커피 도구와 템퍼를 정리하였습니다!';
+add('07:00','07','음료 재고가 모두 채워져 있는지 확인하기');rows[rows.length-1].group='프론트';rows[rows.length-1].doneLabel='음료 재고를 확인하고 부족한 수량을 채웠습니다!';
+add('07:00','07','101호·102호 객실 상태 확인하기');rows[rows.length-1].group='지층 객실 점검';rows[rows.length-1].condition='basement';rows[rows.length-1].doneLabel='101호·102호 객실 상태를 확인하였습니다!';
+add('07:00','07','101호·102호 팬 작동 확인하기');rows[rows.length-1].group='지층 객실 점검';rows[rows.length-1].condition='basement';rows[rows.length-1].doneLabel='101호·102호 팬 작동을 확인하였습니다!';
+add('07:00','07','101호·102호 객실 향기 확인 후 룸스프레이 뿌리기');rows[rows.length-1].group='지층 객실 점검';rows[rows.length-1].condition='basement';rows[rows.length-1].doneLabel='101호·102호 객실 향기를 확인하고 룸스프레이를 뿌렸습니다!';
+add('07:00','07','스탠다드 객실 상태 확인하기');rows[rows.length-1].group='스탠다드 객실 점검';rows[rows.length-1].condition='standard';rows[rows.length-1].doneLabel='스탠다드 객실 상태를 확인하였습니다!';
+add('07:00','07','스탠다드 객실 팬 작동 확인하기');rows[rows.length-1].group='스탠다드 객실 점검';rows[rows.length-1].condition='standard';rows[rows.length-1].doneLabel='스탠다드 객실 팬 작동을 확인하였습니다!';
+add('07:00','07','스탠다드 객실 향기 확인 후 룸스프레이 뿌리기');rows[rows.length-1].group='스탠다드 객실 점검';rows[rows.length-1].condition='standard';rows[rows.length-1].doneLabel='스탠다드 객실 향기를 확인하고 룸스프레이를 뿌렸습니다!';
+add('07:00','07','101호 제습기 물 비우기');rows[rows.length-1].group='지층 제습기';rows[rows.length-1].condition='dehumid';rows[rows.length-1].doneLabel='101호 제습기 물을 비웠습니다!';
+add('07:00','07','102호 제습기 물 비우기');rows[rows.length-1].group='지층 제습기';rows[rows.length-1].condition='dehumid';rows[rows.length-1].doneLabel='102호 제습기 물을 비웠습니다!';
+add('07:00','07','101호 제습기 입실 전 끄기');rows[rows.length-1].group='지층 제습기';rows[rows.length-1].condition='dehumid';rows[rows.length-1].doneLabel='101호 제습기를 입실 전에 껐습니다!';
+add('07:00','07','102호 제습기 입실 전 끄기');rows[rows.length-1].group='지층 제습기';rows[rows.length-1].condition='dehumid';rows[rows.length-1].doneLabel='102호 제습기를 입실 전에 껐습니다!';
+add('07:00','07','외부 음악 볼륨 높이기');rows[rows.length-1].group='프론트·홀 배경 음악';rows[rows.length-1].doneLabel='외부 음악 볼륨을 높였습니다!';
+add('07:00','07','홀·로비 음악 볼륨 조절하기');rows[rows.length-1].group='프론트·홀 배경 음악';rows[rows.length-1].doneLabel='홀·로비 음악 볼륨을 조절하였습니다!';
+add('08:50','07','복도 음악 볼륨 조절하기 (08:50)');rows[rows.length-1].group='프론트·홀 배경 음악';rows[rows.length-1].doneLabel='08:50 복도 음악 볼륨을 조절하였습니다!';
+add('07:00','07','프론트 제습기 1대 물 비우기');rows[rows.length-1].group='제습기 물 비우기';rows[rows.length-1].doneLabel='프론트 제습기 물을 비웠습니다!';
+add('07:00','07','레스토랑 제습기 1 물 비우기');rows[rows.length-1].group='제습기 물 비우기';rows[rows.length-1].doneLabel='레스토랑 제습기 1의 물을 비웠습니다!';
+add('07:00','07','레스토랑 제습기 2 물 비우기');rows[rows.length-1].group='제습기 물 비우기';rows[rows.length-1].doneLabel='레스토랑 제습기 2의 물을 비웠습니다!';
+add('07:00','07','1~4층 복도 조명 모두 켜기');rows[rows.length-1].group='전층 정비';rows[rows.length-1].doneLabel='1~4층 복도 조명을 모두 켰습니다!';
+add('07:00','07','추가 침구 창고에 넣기');rows[rows.length-1].group='전층 정비';rows[rows.length-1].doneLabel='추가 침구를 창고에 넣었습니다!';
+add('07:00','07','이동식 생수 선반 창고에 넣기');rows[rows.length-1].group='전층 정비';rows[rows.length-1].doneLabel='이동식 생수 선반을 창고에 넣었습니다!';
+add('07:00','07','전층 룸스프레이로 향기 입히기');rows[rows.length-1].group='전층 정비';rows[rows.length-1].doneLabel='전층에 룸스프레이를 뿌려 향기를 정돈하였습니다!';
+add('07:00','07','각 테이블 태블릿 켜기');rows[rows.length-1].group='레스토랑 업무 시작';rows[rows.length-1].doneLabel='각 테이블의 태블릿을 모두 켰습니다!';
+add('07:00','07','블렌딩 티 1.5L 준비하기');rows[rows.length-1].group='레스토랑 업무 시작';rows[rows.length-1].doneLabel='블렌딩 티 1.5L를 준비하였습니다!';
+add('07:30','07','블렌딩 티 우린 지 30분 후 티백 빼기 (준비 시점 기준)');rows[rows.length-1].group='레스토랑 업무 시작';rows[rows.length-1].doneLabel='블렌딩 티를 30분 우린 후 티백을 뺐습니다!';
+add('07:00','07','각종 소스·샐러드·동치미·반찬 세팅하기');rows[rows.length-1].group='조식 플레이팅';rows[rows.length-1].doneLabel='각종 소스·샐러드·동치미·반찬 세팅을 마쳤습니다!';
+add('07:00','07','태블릿 배터리 연결하기');rows[rows.length-1].group='조식 플레이팅';rows[rows.length-1].doneLabel='태블릿 배터리를 연결하였습니다!';
+add('07:00','07','테이블 물 주전자 배치하기');rows[rows.length-1].group='조식 플레이팅';rows[rows.length-1].doneLabel='테이블에 물 주전자를 배치하였습니다!';
+add('07:00','07','모닝티 찻잔 뒤집어서 세팅하기');rows[rows.length-1].group='조식 플레이팅';rows[rows.length-1].doneLabel='모닝티 찻잔을 뒤집어 세팅하였습니다!';
+add('07:40','07','오픈 업무 처리 확인 후 마감보고창에 공유');rows[rows.length-1].doneLabel='오픈 업무를 확인하고 마감보고창에 공유하였습니다!';
+add('08:00','07','조식 고객 응대 및 아침 인사');rows[rows.length-1].doneLabel='조식 고객 응대와 아침 인사를 마쳤습니다!';
+add('08:00','07','연박 고객 다음날 조식 메뉴·시간 / 당일 룸터치·외출시간 확인');rows[rows.length-1].doneLabel='연박 고객의 다음날 조식 메뉴·시간과 당일 룸터치·외출시간을 확인하였습니다!';
+add('08:00','07','기물 정리 및 체크아웃 고객 웰컴드링크 응대');rows[rows.length-1].doneLabel='기물을 정리하고 체크아웃 고객 웰컴드링크 응대를 마쳤습니다!';
+add('09:00','09','복도·외부·지하 음악 볼륨 확인');rows[rows.length-1].doneLabel='복도·외부·지하 음악 볼륨을 확인하였습니다!';
+add('09:00','09','지층 천장 환풍기 ON(백오피스 조절)');rows[rows.length-1].doneLabel='백오피스에서 지층 천장 환풍기를 켰습니다!';
+add('09:00','09','조식 및 워크인 고객 응대');rows[rows.length-1].doneLabel='조식 및 워크인 고객 응대를 마쳤습니다!';
+add('09:50','09','기물 핸들링·소독·정리 및 직원 식사');rows[rows.length-1].doneLabel='기물 핸들링·소독·정리 및 직원 식사를 마쳤습니다!';
+add('10:00','07','조식 노쇼 여부 프런트 채팅방에 보고');rows[rows.length-1].doneLabel='조식 노쇼 여부를 프런트 채팅방에 보고하였습니다!';
+add('11:00','07/09','체크아웃 고객 응대 및 웰컴드링크');rows[rows.length-1].doneLabel='체크아웃 고객 응대와 웰컴드링크 제공을 마쳤습니다!';
+add('11:00','09','인원·침구 추가 사항 재확인');rows[rows.length-1].doneLabel='추가 인원과 침구 요청 사항을 재확인하였습니다!';
+add('11:00','09/14','객실 정비 채팅방 확인 및 진행 과정 수시 확인');rows[rows.length-1].doneLabel='객실 정비 채팅방을 확인하고 진행 과정을 점검하였습니다!';
+add('11:00','09','실시간 예약 확인 및 체크인 객실 카드키 세팅');rows[rows.length-1].doneLabel='실시간 예약을 확인하고 체크인 객실 카드키를 세팅하였습니다!';
+add('11:00','09','지층·스탠다드 객실 향 확인 및 환기 팬 작동');rows[rows.length-1].doneLabel='지층·스탠다드 객실 향과 환기 팬 작동을 확인하였습니다!';
+add('11:00','07/09','레스토랑 고객 응대(라스트오더 15:30)');rows[rows.length-1].doneLabel='레스토랑 고객 응대를 마쳤고 15:30 라스트오더를 확인하였습니다!';
+add('11:10','07','미퇴실 객실 연락 및 레이트 체크아웃 확인');rows[rows.length-1].doneLabel='미퇴실 객실에 연락하고 레이트 체크아웃 여부를 확인하였습니다!';
+add('11:30','09','카페 물품 채우기(컵·빨대·냅킨)');rows[rows.length-1].doneLabel='카페 물품(컵·빨대·냅킨)을 채웠습니다!';
+add('11:30','07/09','층별 린넨실 휴지 화장실 비치(여유 있을 때)');rows[rows.length-1].doneLabel='층별 린넨실에 화장실 휴지를 비치하였습니다!';
+add('11:30','07','얼리 체크인용 레지카드·안내문·조식 안내·자쿠지 안내 준비');rows[rows.length-1].doneLabel='얼리 체크인용 레지카드·안내문·조식·자쿠지 안내를 준비하였습니다!';
+add('12:00','09','지층·스탠다드 객실 향 확인 및 환기 팬 작동');rows[rows.length-1].doneLabel='지층·스탠다드 객실 향과 환기 팬 작동을 확인하였습니다!';
+add('12:00','09','주말·성수기 얼리체크인 안내 메시지 확인');rows[rows.length-1].doneLabel='주말·성수기 얼리체크인 안내 메시지를 확인하였습니다!';
+add('12:00','09','연박 객실 룸터치·인원 확인 후 객실팀 전달');rows[rows.length-1].doneLabel='연박 객실 룸터치·인원을 확인하고 객실팀에 전달하였습니다!';
+add('12:30','09','객실 청소 진행 속도 확인 및 객실팀과 인스펙 가능 여부 소통');rows[rows.length-1].doneLabel='객실 청소 속도를 확인하고 객실팀과 인스펙 가능 여부를 논의하였습니다!';
+add('12:30','09','인력 상황에 맞춰 객실 인스펙 준비·진행');rows[rows.length-1].doneLabel='인력 상황을 확인하고 객실 인스펙을 준비·진행하였습니다!';
+add('14:00','14','룸터치 문고리 재확인 및 객실팀 요청');rows[rows.length-1].doneLabel='룸터치 문고리를 재확인하고 객실팀에 요청하였습니다!';
+add('14:00','14','욕조·변기·세면대·샤워실·용품·휴지 점검');rows[rows.length-1].doneLabel='욕조·변기·세면대·샤워실·용품·휴지를 점검하였습니다!';
+add('14:00','14','침구·베딩 상태 점검, 자쿠지 물기·이물질 제거');rows[rows.length-1].doneLabel='침구·베딩을 점검하고 자쿠지 물기와 이물질을 제거하였습니다!';
+add('14:00','14','바닥·테이블 청결 및 머리카락 점검 / 인스펙 후 조명 확인');rows[rows.length-1].doneLabel='바닥·테이블·머리카락을 점검하고 인스펙 후 조명도 확인하였습니다!';
+add('14:00','14','202·302 스탠다드 주말 POP 및 부산맥주 준비 확인');rows[rows.length-1].doneLabel='202·302 스탠다드 주말 POP와 부산맥주 준비를 확인하였습니다!';
+add('14:00','14','당일 입실 객실 에어컨·보일러·온도 설정');rows[rows.length-1].doneLabel='당일 입실 객실의 에어컨·보일러·온도를 설정하였습니다!';
+add('15:00','09','얼리 체크인 고객 응대·결제·객실 준비 상태 확인');rows[rows.length-1].doneLabel='얼리 체크인 고객 응대·결제와 객실 준비 상태 확인을 마쳤습니다!';
+add('15:00','14','체크인 레지카드·안내문·조식사진·자쿠지 안내 준비');rows[rows.length-1].doneLabel='체크인 레지카드·안내문·조식사진·자쿠지 안내를 준비하였습니다!';
+add('15:00','14','객실 당일 할인율·시간대별 가격 조정 확인');rows[rows.length-1].doneLabel='객실 당일 할인율과 시간대별 가격 조정을 확인하였습니다!';
+add('15:30','09','레스토랑 홀 마감: 태블릿 충전·물 냉장·집기 세척·POS 마감·식기 정리');rows[rows.length-1].doneLabel='레스토랑 홀 마감(태블릿·물·집기·POS·식기)을 모두 마쳤습니다!';
+add('15:30','09','수요일 홀 주전자 세척 / 목요일 린넨 삶기(해당 요일만)');rows[rows.length-1].doneLabel='해당 요일의 주전자 세척 또는 린넨 삶기를 완료하였습니다!';
+add('16:00','09','마감보고: 레지카드·객실현황·조식·식당·매출·현장결제·시설 작동·체크인상황');rows[rows.length-1].doneLabel='레지카드·객실·조식·식당·매출·현장결제·시설·체크인 마감보고를 마쳤습니다!';
+add('16:00','09','레스토랑 마감 후 에어컨 송풍 전환');rows[rows.length-1].doneLabel='레스토랑 마감 후 에어컨을 송풍으로 전환하였습니다!';
+add('16:00','09','공실 객실 에어컨 OFF');rows[rows.length-1].doneLabel='공실 객실 에어컨을 모두 껐습니다!';
+add('16:00','07','지층 입실 없으면 제습기 ON 유지, 입실 때 OFF / 인수인계');rows[rows.length-1].doneLabel='지층 입실 여부에 맞춰 제습기를 조작하고 인수인계를 마쳤습니다!';
+add('17:00','09','제습기 물 비우기');rows[rows.length-1].doneLabel='제습기 물을 비웠습니다!';
 
 
 const $=s=>document.querySelector(s),$$=s=>Array.from(document.querySelectorAll(s));
@@ -780,7 +789,7 @@ function taskCard(t){
  const exception=r.exception?`<div class="exception-note">⚑ 미기록 사유 · ${esc(r.exception.who)} ${esc(r.exception.at)} — ${esc(r.exception.reason)}</div>`:'';
  const hand=r.handoffTo?`<div class="handoff-note">↪ 인계 ${esc(r.handoffFrom||'')} → ${esc(r.handoffTo)} · ${esc(r.handoffReason||'')}</div>`:'';
  const notes=(taskMemos[t.id]||[]).map(n=>`<div class="task-memo-item"><div><b>${esc(n.who)}</b> <time>${esc(n.at)}</time></div><p>${esc(n.text)}</p></div>`).join('');
- const alreadyMine=entries.some(e=>e.who===identity);const working=r.status==='doing';const btnText=locked?'공실 X 선택 후 활성화':has?'✓ 완료됨':'✓ 완료함';
+ const alreadyMine=entries.some(e=>e.who===identity);const working=r.status==='doing';const btnText=locked?'공실 상태 확인 후 진행 가능':has?'✓ 완료 기록 있음':t.doneLabel;
  return `<article data-task="${t.id}" class="task ${locked?'condition-locked':''} ${has?'done-history':''} ${m==='now'?'current':''} ${!has&&m==='late'?'overdue':''}"><span class="time">${esc(t.time)}</span>${badge?`<span class="rightflag ${m==='late'?'overdueflag':''}">${badge}</span>`:''}<span class="category">${esc(t.group||'일반 업무')}</span><div class="text">${esc(t.text)}</div><div class="task-bottom">${working?`<div class="handoff-note">🟢 ${esc(r.who||'')} · ${esc(r.started||'')}부터 업무 진행 중</div><button type="button" class="undo-completion" data-stopwork="${t.id}">업무 진행 표시 종료</button>`:!has&&!locked?`<button type="button" class="undo-completion" data-start="${t.id}">▶ 지금 이 업무 시작</button>`:''}${exception}${hand}${has?`<div class="completion-history">${logs}</div>`:''}${alreadyMine?`<button type="button" class="undo-completion" data-undo="${t.id}">↶ 내 완료 기록 취소</button>`:''}<button class="finish-btn ${has?'is-done':''}" ${locked?'disabled title="공실 X 선택 후 활성화"':alreadyMine?'disabled title="이미 기록했습니다"':''} data-finish="${t.id}">${btnText}</button><div class="task-memo-area"><div class="task-memo-heading">📝 업무 메모 <span>${(taskMemos[t.id]||[]).length}건</span></div>${notes||'<small>아직 남긴 메모가 없습니다.</small>'}<button type="button" class="memo-add" data-memo="${t.id}">＋ 메모 남기기</button></div><button class="handoff-small" data-quickhandoff="${t.id}">↪ 인계 남기기</button></div></article>`;
 }
 function quickHandoff(id){
