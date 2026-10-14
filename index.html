@@ -589,6 +589,27 @@ button,input,select,textarea,.finish-btn,.tab,.shift,.primarybtn,.excel,.actions
 .admin-manager p{font-size:12px;color:#596b81;line-height:1.6}
 @media(max-width:650px){.task.blue-completed .text{font-size:clamp(21px,6vw,27px)!important}.task.blue-completed .chip-name{font-size:16px!important}.task.blue-completed .chip-time{font-size:11px!important}.manager-fields{grid-template-columns:1fr}.manager-head{align-items:start;flex-direction:column}}
 @media(max-width:355px){.task.blue-completed .completion-history{grid-template-columns:1fr!important}}
+
+/* Typography and centered task content */
+.task .text,.task.blue-completed .text,.task:not(.blue-completed) .text{width:100%;text-align:center!important;align-self:center!important;word-break:keep-all;line-height:1.4!important;letter-spacing:-.035em!important}
+.task .category,.task:not(.blue-completed) .category{align-self:center!important}
+.task .finish-btn{text-align:center!important}
+.task.blue-completed .text{font-size:clamp(21px,4vw,29px)!important;margin:40px auto 17px!important;font-weight:850!important}
+.task.blue-completed .done-word{text-align:center!important}
+.task.blue-completed .completion-history{justify-content:center}
+.task.blue-completed .completion-chip{grid-template-columns:28px minmax(0,1fr)}
+.admin-pins{margin:17px 0;padding:13px;border:1px solid #d5e4f2;border-radius:9px;background:#f8fbff}
+.admin-pins summary{cursor:pointer;font-size:14px;font-weight:800;color:#1e568b}
+.admin-pin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:12px}
+.admin-pin-line{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px;background:white;border:1px solid #dde8f4;border-radius:7px;font-size:12px}
+.admin-pin-line code{font-weight:800;font-size:12px;color:#1358a8}
+.admin-pins p{font-size:11px;color:#6a7c90}
+.authcard{position:relative}
+.login-admin-lock{position:absolute;top:12px;right:12px;border:0;background:transparent;color:#97a7b6;font-size:20px;opacity:.55;cursor:pointer;padding:10px;border-radius:8px}
+.login-admin-lock:hover,.login-admin-lock:focus-visible{opacity:1;background:#edf5ff}
+#dehumidRoom{scroll-margin-top:14px}
+@media(max-width:650px){.admin-pin-grid{grid-template-columns:1fr}.task.blue-completed .text{font-size:clamp(21px,6vw,27px)!important}.task.blue-completed .completion-history{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:355px){.task.blue-completed .completion-history{grid-template-columns:1fr!important}}
 </style><style>
 /* TOYU MOBILE FIRST • EMPLOYEE IDENTITY • FRESH START */
 :root{--mobile-line:#d9e8e3;--mobile-ink:#23352f}html{scroll-padding-top:12px;-webkit-text-size-adjust:100%}body{overflow-x:hidden;max-width:100vw}button,select,input,textarea{touch-action:manipulation}button{min-height:42px}button:focus-visible{outline:3px solid #309b85;outline-offset:2px}
@@ -689,8 +710,8 @@ body{background:linear-gradient(180deg,#f9fcff 0%,#f6f9ff 48%,#fffafc 100%)!impo
  .date-hero p{font-size:12px!important}
 }
 </style></head><body>
-<div class="authcover" id="authcover"><div class="authcard"><h2>토유 프론트- 오늘의기록</h2><p>본인 이름/직급으로 들어와 업무를 시작해 주세요.</p><label>직원 / 직위</label><select id="loginWho"><option value="">선택해 주세요</option><option>대표자</option><option>지배인</option><option>매니저(선영)</option><option>일웅</option><option>은진</option><option>파트타이머1</option><option>파트타이머2</option><option>파트타이머3</option><option>기타 임원</option></select><div id="ptname" hidden><label>파트타이머 이름</label><input id="loginName" maxlength="30" placeholder="실제 이름을 적어 주세요"></div><label>직원별 비밀번호 (영문·숫자 6자리)</label><input id="loginPin" type="password" inputmode="text" maxlength="6" autocomplete="off" placeholder="직원별 지정 PIN을 입력하세요"><button class="primarybtn" id="loginBtn">로그인 / 최초 등록</button><p id="loginNote">이 기기에서는 프론트 직원 계정별 PIN을 사용합니다. 모든 기록은 본인이 확인한 후 즉시 기록됩니다.</p><p class="subnote">※ 이 파일은 같은 브라우저 내 탭 간 변경 사항을 반영합니다. 직원 간 기기별 실시간 동기화는 별도 서버 연결이 필요합니다.</p></div></div>
-<div class="wrap"><header class="mast"><div class="brand"><span class="logo">✿</span> TOYU WORK</div><span class="mini" id="todayLabel"></span></header><section class="date-hero" aria-label="선택한 업무 날짜"><div class="date-hero-inner"><span class="date-kicker">TOYU 프론트 일일 업무기록</span><div class="date-hero-text"><strong id="heroDate">오늘은 오늘입니다</strong><span id="heroWeekday">업무 기록</span></div><p>오늘의 작은 수고도 하나씩, 함께 남겨요.</p></div><span class="date-hero-orbit" aria-hidden="true">✳</span></section><h1 class="title">오늘의 토유 기록 <span style="color:#8ee2cc">✦</span></h1><section id="adminManager" hidden class="admin-manager"><div class="manager-head"><h2>관리자 기록 관리</h2><small>업무 기록 백업 · 선택 초기화</small></div><div class="manager-fields"><label>초기화 항목<select id="resetMode"><option value="task">선택한 업무 기록</option><option value="person">선택한 직원의 완료 기록</option><option value="completions">전체 업무 완료 기록 (선택 날짜)</option><option value="memos">메모 및 인계 기록 (선택 날짜)</option><option value="positions">직원 현재 근무 위치 (선택 날짜)</option><option value="assignments">업무분장 (선택 날짜)</option><option value="dehumid">제습 기록 (선택 날짜)</option><option value="attendance">출퇴근 기록 (선택 날짜)</option><option value="date">선택 날짜 모든 기록</option><option value="all">모든 날짜의 모든 운영 기록 (이 기기)</option></select></label><label id="selectTaskLabel">업무 선택<select id="adminTask"></select></label><label id="selectPersonLabel" hidden>직원 선택<select id="adminPerson"></select></label></div><div class="manager-buttons"><button id="backupJson">JSON 기록 백업</button><button id="applyReset">선택 항목 초기화</button></div><p>초기화 전 반드시 백업해 주세요. 다른 기기의 저장 기록은 삭제되지 않습니다.</p></section><div class="top-actions"><button id="resetAll" class="reset-all">↺ 전체 초기화</button><span class="sync-indicator" id="syncIndicator">● 이 브라우저 저장 · 공유 미연결</span></div>
+<div class="authcover" id="authcover"><div class="authcard"><button id="loginAdminLock" class="login-admin-lock" type="button" aria-label="관리자 접속" title="관리자 접속">♙</button><h2>토유 프론트- 오늘의기록</h2><p>본인 이름/직급으로 들어와 업무를 시작해 주세요.</p><label>직원 / 직위</label><select id="loginWho"><option value="">선택해 주세요</option><option>대표자</option><option>지배인</option><option>매니저(선영)</option><option>일웅</option><option>은진</option><option>파트타이머1</option><option>파트타이머2</option><option>파트타이머3</option><option>기타 임원</option></select><div id="ptname" hidden><label>파트타이머 이름</label><input id="loginName" maxlength="30" placeholder="실제 이름을 적어 주세요"></div><label>직원별 비밀번호 (영문·숫자 6자리)</label><input id="loginPin" type="password" inputmode="text" maxlength="6" autocomplete="off" placeholder="직원별 지정 PIN을 입력하세요"><button class="primarybtn" id="loginBtn">로그인 / 최초 등록</button><p id="loginNote">이 기기에서는 프론트 직원 계정별 PIN을 사용합니다. 모든 기록은 본인이 확인한 후 즉시 기록됩니다.</p><p class="subnote">※ 이 파일은 같은 브라우저 내 탭 간 변경 사항을 반영합니다. 직원 간 기기별 실시간 동기화는 별도 서버 연결이 필요합니다.</p></div></div>
+<div class="wrap"><header class="mast"><div class="brand"><span class="logo">✿</span> TOYU WORK</div><span class="mini" id="todayLabel"></span></header><section class="date-hero" aria-label="선택한 업무 날짜"><div class="date-hero-inner"><span class="date-kicker">TOYU 프론트 일일 업무기록</span><div class="date-hero-text"><strong id="heroDate">오늘은 오늘입니다</strong><span id="heroWeekday">업무 기록</span></div><p>오늘의 작은 수고도 하나씩, 함께 남겨요.</p></div><span class="date-hero-orbit" aria-hidden="true">✳</span></section><h1 class="title">오늘의 토유 기록 <span style="color:#8ee2cc">✦</span></h1><section id="adminManager" hidden class="admin-manager"><div class="manager-head"><h2>관리자 기록 관리</h2><small>업무 기록 백업 · 선택 초기화</small></div><div class="manager-fields"><label>초기화 항목<select id="resetMode"><option value="task">선택한 업무 기록</option><option value="person">선택한 직원의 완료 기록</option><option value="completions">전체 업무 완료 기록 (선택 날짜)</option><option value="memos">메모 및 인계 기록 (선택 날짜)</option><option value="positions">직원 현재 근무 위치 (선택 날짜)</option><option value="assignments">업무분장 (선택 날짜)</option><option value="dehumid">제습 기록 (선택 날짜)</option><option value="attendance">출퇴근 기록 (선택 날짜)</option><option value="date">선택 날짜 모든 기록</option><option value="all">모든 날짜의 모든 운영 기록 (이 기기)</option></select></label><label id="selectTaskLabel">업무 선택<select id="adminTask"></select></label><label id="selectPersonLabel" hidden>직원 선택<select id="adminPerson"></select></label></div><details class="admin-pins"><summary>🔐 직원별 접속 비밀번호 확인</summary><div class="admin-pin-grid" id="adminPinList"></div><p>관리자 화면에서만 볼 수 있습니다. 단독 HTML의 PIN은 강력한 보안 인증이 아닙니다.</p></details><div class="manager-buttons"><button id="backupJson">JSON 기록 백업</button><button id="applyReset">선택 항목 초기화</button></div><p>초기화 전 반드시 백업해 주세요. 다른 기기의 저장 기록은 삭제되지 않습니다.</p></section><div class="top-actions"><button id="resetAll" class="reset-all">↺ 전체 초기화</button><span class="sync-indicator" id="syncIndicator">● 이 브라우저 저장 · 공유 미연결</span></div>
 <section id="progressDashboard" class="progress-dashboard" aria-label="전체 업무 진행 현황"><div class="progress-head"><div><small>DAILY WORK FLOW</small><h2>우리의 오늘, 차곡차곡</h2></div><strong id="progressPercent">0%</strong></div><div id="progressRing" class="progress-flex"><div class="ring-wrap"><div id="progressCircle" class="progress-circle"><span id="ringValue">0%</span></div></div><div class="progress-meta"><div><b id="doneCount">0</b><small>완료</small></div><div><b id="remainingCount">0</b><small>남은 업무</small></div><div><b id="excludedCount">0</b><small>조건 미활성</small></div></div></div><div class="progress-track"><span id="progressFill"></span></div><div id="shiftProgress" class="shift-progress"></div><small class="localnote">선택한 날짜 · 해당 근무조의 업무 기준 / 실제 완료 항목 수</small></section>
 
 <section class="staff-panel" id="staffActivity"><div class="assignment-head"><div><small>STAFF ACTIVITY</small><h2>직원별 업무 상황실 <span class="live-dot"></span></h2><p>직원별 현재 업무 기록을 확인하고 업무 카드로 이동할 수 있습니다.</p></div></div><div id="staffGrid" class="staff-grid"></div></section>
@@ -996,7 +1017,7 @@ window.addEventListener('storage',e=>{if(e.key===storageKey()){load();render();}
  const actions=document.querySelector('.top-actions');
  const filterBar=document.createElement('div');filterBar.id='taskFilters';filterBar.appendChild(tabs);
  heading.after(user);user.after(mine);mine.after(filterBar);filterBar.after(main);main.after(prev);
- prev.after(progress);progress.after(staff);staff.append(zonesTitle,zonesHelp,zonesEl);staff.after(dehumid);const oldVac=document.querySelector('.vacancy-panel:not(#dehumidRoom)');if(oldVac){dehumid.appendChild(oldVac);const oh=oldVac.querySelector('h2');if(oh)oh.textContent='기존 업무 카드 공실 조건';}dehumid.after(accountability);accountability.after(assign);
+ prev.after(progress);progress.after(staff);staff.append(zonesTitle,zonesHelp,zonesEl);mine.after(dehumid);const oldVac=document.querySelector('.vacancy-panel:not(#dehumidRoom)');if(oldVac){dehumid.appendChild(oldVac);const oh=oldVac.querySelector('h2');if(oh)oh.textContent='기존 업무 카드 공실 조건';}dehumid.after(filterBar);staff.after(accountability);accountability.after(assign);
  actions.querySelector('#resetAll').style.display='none';
  assign.querySelector('.assignment-head p')?.append(' · 관리자 전용 변경');
 })();
@@ -1006,6 +1027,7 @@ function displayHours(){if(!identity)return;const h=employeeHours()[identity]||{
 $('#clockIn').onclick=()=>{const o=employeeHours();o[identity]??={};if(o[identity].start&&!confirm('출근 시간을 다시 기록할까요?'))return;o[identity].start=clock();localStorage.setItem(hoursKey(),JSON.stringify(o));displayHours()};
 $('#clockOut').onclick=()=>{const o=employeeHours();o[identity]??={};if(!o[identity].start)return alert('출근 기록을 먼저 남겨 주세요.');if(!confirm('지금 퇴근 시간을 저장하시겠습니까?'))return;o[identity].end=clock();localStorage.setItem(hoursKey(),JSON.stringify(o));displayHours()};
 $('#toBottom').onclick=()=>window.scrollTo({top:document.documentElement.scrollHeight,behavior:'smooth'});
+$('#loginAdminLock').onclick=()=>{const key=prompt('관리자 비밀번호를 입력해 주세요.');if(key===null)return;if(key!=='2u1004')return alert('관리자 비밀번호가 맞지 않습니다.');const list=Object.entries(fixedPins).map(([role,pin])=>role+' : '+pin).join('\\n');alert('관리자 전용 · 직원별 비밀번호\\n\\n'+list)};
 $('#adminLock').onclick=()=>{if(!identity)return alert('직원 계정으로 로그인해 주세요.');if(adminUnlocked){if(confirm('관리자 모드를 종료할까요?')){adminUnlocked=false;render()}return}modal('관리자 접속','관리자 비밀번호를 입력해 주세요.',`<input id="adminPassword" type="password" autocomplete="off" placeholder="관리자 비밀번호">`,()=>{if($('#adminPassword').value!=='2u1004')return alert('관리자 비밀번호가 틀립니다.');adminUnlocked=true;closeModal();render();alert('관리자 편집 권한이 활성화되었습니다.')},'관리자 접속')};
 function dehumidStore(){try{return JSON.parse(localStorage.getItem('toyu-dehumid-fresh-v8:'+$('#date').value)||'{}')}catch{return {}}}
 function saveDehumid(data){localStorage.setItem('toyu-dehumid-fresh-v8:'+$('#date').value,JSON.stringify(data));drawDehumid()}
@@ -1014,7 +1036,7 @@ $('#dehumidGrid').addEventListener('click',e=>{const b=e.target.closest('button'
 const oldRender=render;
 render=function(){oldRender();displayHours();drawDehumid();$('#resetAll').style.display=admin()?'':'none';$('#assignmentReset').disabled=!admin();$('#adminLock').textContent=admin()?'🔓':'♧';managerRefresh();};
 const oldBuildToc=buildToc;
-buildToc=function(){const target=[['오늘의 업무분장','assignments'],['업무 진행 상황','progressDashboard'],['직원 실시간 업무 상황실 + 지금 어디에서 일하고 있나요?','staffActivity'],['제습상황실','dehumidRoom'],['나의 출근시간대 미기록 업무 요약','accountability']];$('#tocMenu').innerHTML=target.map(([t,id])=>`<button type="button" data-scrollto="${id}">${t}</button>`).join('')};
+buildToc=function(){const target=[['오늘의 업무분장','assignments'],['업무 진행 상황','progressDashboard'],['직원 실시간 업무 상황실 + 지금 어디에서 일하고 있나요?','staffActivity'],['공실 여부 · 제습상황실','dehumidRoom'],['나의 출근시간대 미기록 업무 요약','accountability']];$('#tocMenu').innerHTML=target.map(([t,id])=>`<button type="button" data-scrollto="${id}">${t}</button>`).join('')};
 // Preserve old records while preventing unverified session restoration.
 
 // One-time clean start: erase previous version's saved operational data and active sessions.
@@ -1029,6 +1051,7 @@ buildToc=function(){const target=[['오늘의 업무분장','assignments'],['업
 
 function managerRefresh(){
  $('#adminManager').hidden=!admin();if(!admin())return;
+ $('#adminPinList').innerHTML=Object.entries(fixedPins).map(([role,pin])=>`<div class="admin-pin-line"><b>${esc(role)}</b><code>${esc(pin)}</code></div>`).join('');
  const mode=$('#resetMode').value;
  $('#selectTaskLabel').hidden=mode!=='task';$('#selectPersonLabel').hidden=mode!=='person';
  const t=$('#adminTask'),keep=t.value;t.innerHTML=rows.map(r=>`<option value="${esc(r.id)}">${esc(r.time+' · '+r.text)}</option>`).join('');if(rows.some(r=>String(r.id)===keep))t.value=keep;
