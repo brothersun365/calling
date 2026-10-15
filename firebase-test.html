@@ -2082,6 +2082,83 @@ document.querySelector('#tocMenu')?.addEventListener('click',e=>{
  renderV16();
 })();
 </script>
+<style id="toyu-cloud-memo-edit-ui">
+.toyu-memo-actions{display:flex;justify-content:flex-end;gap:6px;margin-top:7px;flex-wrap:wrap}
+.toyu-memo-actions button{min-height:34px;padding:6px 11px;border-radius:9px;border:1px solid #dce5f2;background:#fff;color:#27466e;font:600 12px/1.3 inherit;cursor:pointer}
+.toyu-memo-actions button.toyu-delete{color:#ae345f;background:#fff5f7;border-color:#f3d8e4}
+.toyu-task-memos{width:100%;background:#f4f8fe;border:1px solid #dfeafb;border-radius:13px;padding:11px;text-align:left;margin-top:10px;color:#19385c}
+.toyu-task-memos .toyu-memo-line{padding:9px 0;border-bottom:1px solid #dfeafb;white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.toyu-task-memos .toyu-memo-line:last-of-type{border:0}
+.toyu-task-memos small{display:block;color:#5f7797;font-size:11px;margin-bottom:5px}
+.toyu-task-memos button.toyu-add-memo{width:100%;min-height:43px;background:#e4efff;border:1px solid #c6d9fa;border-radius:10px;color:#225a9b;font-weight:750;margin-top:8px}
+.toyu-staffnote-entry{white-space:pre-wrap;overflow-wrap:anywhere}
+</style>
+<script id="toyu-cloud-memo-management-v2">
+/* Staff and task memo edit/delete. Reuse existing save() and staffNotesSave()
+   so Firebase bridge publishes the change to the second phone. */
+(function(){
+const escMemo=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const originalRender=render;
+render=function(){
+  originalRender();
+  // The existing staff board already renders memo text; add stable actions under it.
+  document.querySelectorAll('#staffGrid .staff-card[data-staff]').forEach(card=>{
+    const name=card.dataset.staff;
+    const memoEntries=card.querySelectorAll('.staff-event.note');
+    const list=Array.isArray(staffNotes[name])?staffNotes[name]:[];
+    const ordered=list.map((memo,index)=>({memo,index})).sort((a,b)=>String(a.memo.at||'').localeCompare(String(b.memo.at||'')));
+    memoEntries.forEach((item,i)=>{
+      const entry=ordered[i];if(!entry)return;
+      const index=entry.index;
+      if(item.querySelector('.toyu-memo-actions'))return;
+      item.insertAdjacentHTML('beforeend',`<div class="toyu-memo-actions"><button type="button" data-cloud-staff-edit="${escMemo(name)}" data-cloud-index="${index}">수정</button><button type="button" class="toyu-delete" data-cloud-staff-delete="${escMemo(name)}" data-cloud-index="${index}">삭제</button></div>`);
+    });
+  });
+  // Task-specific notes: previously saved but not consistently shown in cards.
+  document.querySelectorAll('.task[data-task]').forEach(card=>{
+    const id=card.dataset.task;
+    const list=Array.isArray(taskMemos[id])?taskMemos[id]:[];
+    const html=list.map((memo,i)=>`<div class="toyu-memo-line"><small>${escMemo(memo.who||'')} · ${escMemo(memo.at||'')}</small>${escMemo(memo.text||memo.note||'')}<div class="toyu-memo-actions"><button type="button" data-cloud-task-edit="${escMemo(id)}" data-cloud-index="${i}">수정</button><button type="button" class="toyu-delete" data-cloud-task-delete="${escMemo(id)}" data-cloud-index="${i}">삭제</button></div></div>`).join('');
+    const box=document.createElement('div');box.className='toyu-task-memos';
+    box.innerHTML=`<strong style="font-size:12px">업무 메모 ${list.length?`· ${list.length}건`:''}</strong>${html}<button type="button" class="toyu-add-memo" data-cloud-task-add="${escMemo(id)}">＋ 메모 남기기</button>`;
+    const bottom=card.querySelector('.task-bottom');if(bottom)bottom.appendChild(box);else card.appendChild(box);
+  });
+};
+const originalToc=buildToc;
+buildToc=function(){
+  originalToc();
+  const menu=document.getElementById('tocMenu');if(!menu)return;
+  menu.querySelectorAll('button').forEach(button=>{
+    const label=button.textContent.replace(/\s+/g,' ').trim();
+    if(/(?:^|\s)\d{1,2}:\d{2}\s*업무(?:\s|$)/.test(label)||/^(?:이전\s*[·-]\s*)?\d{1,2}:\d{2}\s*업무/.test(label))button.remove();
+  });
+};
+document.addEventListener('click',event=>{
+  const button=event.target.closest('[data-cloud-staff-edit],[data-cloud-staff-delete],[data-cloud-task-edit],[data-cloud-task-delete],[data-cloud-task-add]');
+  if(!button)return;
+  event.preventDefault();event.stopPropagation();
+  if(!identity)return alert('로그인 후 이용해 주세요.');
+  const index=Number(button.dataset.cloudIndex);
+  if(button.dataset.cloudTaskAdd!==undefined){addTaskMemo(button.dataset.cloudTaskAdd);return}
+  if(button.dataset.cloudStaffEdit!==undefined||button.dataset.cloudStaffDelete!==undefined){
+    const who=button.dataset.cloudStaffEdit??button.dataset.cloudStaffDelete;
+    const list=staffNotes[who];if(!Array.isArray(list)||!list[index])return alert('메모가 변경됐습니다. 새로고침 후 다시 시도해 주세요.');
+    const item=list[index];
+    if(item.by!==identity&&!admin())return alert('본인이 작성한 메모 또는 관리자만 수정·삭제할 수 있어요.');
+    if(button.dataset.cloudStaffDelete!==undefined){if(!confirm('이 직원 메모를 삭제할까요?'))return;list.splice(index,1)}
+    else{const changed=prompt('직원 메모 수정',item.text||'');if(changed===null)return;if(!changed.trim())return alert('메모를 입력해 주세요.');item.text=changed.trim();item.editedAt=localStamp();item.editedBy=identity}
+    staffNotesSave();render();return;
+  }
+  const id=button.dataset.cloudTaskEdit??button.dataset.cloudTaskDelete;
+  const list=taskMemos[id];if(!Array.isArray(list)||!list[index])return alert('메모가 변경됐습니다. 새로고침 후 다시 시도해 주세요.');
+  const item=list[index];
+  if(item.who!==identity&&!admin())return alert('본인이 작성한 메모 또는 관리자만 수정·삭제할 수 있어요.');
+  if(button.dataset.cloudTaskDelete!==undefined){if(!confirm('이 업무 메모를 삭제할까요?'))return;list.splice(index,1)}
+  else{const changed=prompt('업무 메모 수정',item.text||item.note||'');if(changed===null)return;if(!changed.trim())return alert('메모를 입력해 주세요.');item.text=changed.trim();item.editedAt=localStamp();item.editedBy=identity}
+  save();render();
+},true);
+})();
+</script>
 <script id="toyu-cloud-sync-bridge">
 /* Firebase realtime test bridge: scoped to the currently selected date. */
 (function(){
