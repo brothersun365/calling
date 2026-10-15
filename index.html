@@ -1,4 +1,4 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#fff8fc"><title>TOYU · 토유호텔 프론트 기록</title><style>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#fff8fc"><title>TOYU · Firebase 인증 연결 테스트</title><style>
 :root{--mint:#96e6a1;--pink:#ffdde1;--berry:#8ee2cc;--aqua:#acf7f0;--ink:#272533;--muted:#86818c;--line:#eee9f0;--shadow:0 13px 35px rgba(100,84,116,.10)}*{box-sizing:border-box}body{margin:0;color:var(--ink);font-family:system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:radial-gradient(circle at 10% 0%,#fff0f6 0,transparent 37%),radial-gradient(circle at 95% 20%,#e5fffa 0,transparent 34%),#fffafd}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #795ceb;outline-offset:3px}.wrap{max-width:1220px;margin:auto;padding:0 18px}.mast{padding:22px 0 10px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:9px;font-weight:1000;font-size:17px;letter-spacing:-.06em}.logo{background:linear-gradient(135deg,var(--mint),var(--aqua));border-radius:13px;width:39px;height:39px;display:grid;place-items:center;font-size:22px;transform:rotate(-7deg)}.mini{font-size:12px;color:var(--muted);font-weight:750}.title{font-size:clamp(29px,5vw,46px);letter-spacing:-.075em;font-weight:1000;margin:12px 0 22px}.zone-title{font-size:14px;font-weight:900;margin:0 0 13px}.zones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin-bottom:23px}.zone{border:2px solid #fff;box-shadow:var(--shadow);border-radius:23px;padding:17px 14px;min-height:120px;text-align:left;transition:transform .17s,box-shadow .17s;position:relative;overflow:hidden}.zone:hover{transform:translateY(-3px)}.zone:before{content:'✦';position:absolute;right:14px;top:8px;opacity:.19;font-size:33px}.zone:nth-child(1){background:#e5fbec}.zone:nth-child(2){background:#ffe9ef}.zone:nth-child(3){background:#ddfbf8}.zone strong{display:block;font-size:clamp(15px,2.2vw,19px);font-weight:1000;letter-spacing:-.05em}.zone small{display:block;color:#706b76;font-weight:700;margin:5px 0 12px;line-height:1.4}.zone .occupant{display:inline-block;background:#fff9;border:1px solid #fff9;border-radius:100px;padding:5px 12px;font-size:13px;font-weight:900;box-shadow:0 3px 9px #8881}.zone .occupant:empty{display:none}.panel{background:#ffffffd9;border:1px solid #fff;border-radius:25px;padding:19px 21px;box-shadow:var(--shadow);margin-bottom:24px}.controls{display:flex;gap:18px;flex-wrap:wrap;align-items:end;justify-content:space-between}.control{flex:1;min-width:180px}.control b{display:block;font-size:12px;color:#736e7d;margin-bottom:8px}.shift-group{display:flex;flex-wrap:wrap;gap:8px}.shift{border:1px solid #eee5f1;background:#fff;border-radius:13px;padding:11px 16px;font-weight:850;color:#756c7b}.shift.active{background:var(--berry);border-color:var(--berry);color:white;box-shadow:0 6px 15px #8ee2cc44}.picker{width:100%;max-width:260px;padding:11px 13px;background:white;border:1px solid #e8e1ec;border-radius:13px;font-weight:800;color:#403448}.control input[type=date]{padding:11px 12px;border:1px solid #e8e1ec;border-radius:13px;background:white;color:#403448;max-width:190px;width:100%}.personpick{display:flex;flex-wrap:wrap;gap:7px}.pick{border-radius:100px;padding:9px 13px;border:2px solid transparent;font-size:13px;font-weight:900;color:#413b48}.pick.active{border-color:#514057;box-shadow:0 0 0 3px #ffffff,0 3px 14px #67607a25}.r0{background:#d9f4d9}.r1{background:#ffe2e9}.r2{background:#f3d7fa}.r3{background:#caf5f2}.r4{background:#ffedcb}.r5{background:#dfedff}.hint{margin:11px 0 0;color:#88808d;font-size:12px;line-height:1.6}.tabs{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:16px}.tab{border:1px solid #ebe4eb;border-radius:100px;padding:10px 17px;background:#fff;font-weight:800;color:#7d7481}.tab.active{background:#2a2733;color:white;border-color:#2a2733}.section{margin:27px 0 35px}.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 15px}.sectionhead h2{font-size:clamp(19px,3.3vw,26px);margin:0;font-weight:1000;letter-spacing:-.06em}.sectionhead span{display:inline-block;padding:6px 11px;background:#fff;border-radius:99px;color:#8b7994;font-weight:850;font-size:12px}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.task{min-width:0;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:230px;padding:22px 13px 17px;border:3px solid #fff;border-radius:25px;background:linear-gradient(150deg,#f0f8ff 0%,#e9fffa 100%);box-shadow:0 9px 28px #819caa23,0 0 0 2px #d9f3fa;transition:.2s;overflow:hidden}.task:nth-child(4n+2){background:linear-gradient(145deg,#fff0f6,#fff7e5);box-shadow:0 9px 28px #a98ea523,0 0 0 2px #fae2ee}.task:nth-child(4n+3){background:linear-gradient(145deg,#f7eeff,#ffeef8);box-shadow:0 9px 28px #a58ca923,0 0 0 2px #eee0fc}.task:nth-child(4n+4){background:linear-gradient(145deg,#ecfff0,#efffff);box-shadow:0 9px 28px #819caa23,0 0 0 2px #d9f4de}.task .time{position:absolute;top:12px;left:14px;font-size:11px;font-weight:850;color:#8f8494}.task .text{font-size:clamp(14px,2.1vw,19px);font-weight:1000;letter-spacing:-.052em;line-height:1.52;word-break:keep-all;overflow-wrap:anywhere;margin:16px 0 19px}.people{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;width:100%}.person{border:1px solid #ffffff90;padding:9px 10px;border-radius:12px;font-size:12px;font-weight:900;box-shadow:0 4px 8px #665f7310;white-space:nowrap}.person:active{transform:scale(.97)}.task.done{background:#f3f5f7!important;box-shadow:0 7px 21px #adb2bd14,0 0 0 2px #e6e5ec;filter:saturate(.45);min-height:230px}.task.done .text{opacity:.45;filter:blur(.7px)}.donebox{margin-top:auto;padding:11px 12px;background:#fff9;border:1px solid white;border-radius:15px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;width:100%;font-size:12px}.donebox strong{font-size:14px}.donebox time{font-weight:850;color:#766a81;font-variant-numeric:tabular-nums}.undo{border:0;background:transparent;color:#928797;text-decoration:underline;font-size:11px;padding:5px}.before{padding:15px 15px 21px;background:#f5f1f9;border-radius:24px;margin-top:23px}.before header{display:flex;justify-content:space-between;align-items:center;gap:12px}.before header h2{margin:0;font-size:18px}.before header button{border:0;border-radius:100px;background:#fff;padding:10px 15px;font-weight:900}.before:not(.expanded) .cards{filter:blur(3px);opacity:.45;pointer-events:none;max-height:100px;overflow:hidden}.before:not(.expanded) .section{margin-bottom:0}.empty{text-align:center;padding:45px 15px;color:#8d8391;background:#fff;border-radius:20px}.foot{font-size:12px;color:#8b8190;padding:18px 0 55px;line-height:1.8}.dialog{position:fixed;inset:0;background:#20202a88;z-index:20;display:none;place-items:center;padding:18px}.dialog.show{display:grid}.modal{background:white;border-radius:25px;padding:24px;box-shadow:0 20px 80px #0003;width:min(430px,100%)}.modal h2{margin:0 0 10px;font-size:23px}.modal p{color:#7f7482;font-size:14px;line-height:1.6}.modal input{padding:13px 14px;border-radius:12px;border:1px solid #e7e3e9;width:100%;font-size:16px}.actions{display:flex;justify-content:end;gap:9px;margin-top:18px}.actions button{border:0;border-radius:12px;padding:11px 17px;font-weight:900;background:#f2f0f4}.actions .yes{background:var(--mint)}.utils{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.utils button{border:1px solid #eee4ec;background:#fff;border-radius:11px;padding:9px 12px;font-size:12px;color:#706575;font-weight:800}@media(max-width:650px){.wrap{padding:0 14px}.mast{padding-top:14px}.zones{gap:8px}.zone{min-height:131px;padding:12px 9px;border-radius:18px}.zone strong{font-size:14px}.zone small{font-size:10px}.zone .occupant{font-size:11px;padding:5px 8px}.panel{padding:16px;border-radius:20px}.control{min-width:100%}.cards{gap:11px}.task{border-radius:19px;padding:21px 9px 12px;min-height:260px}.task.done{min-height:260px}.task .text{font-size:15px}.person{padding:8px 7px;font-size:11px}.donebox{padding:8px 4px;gap:3px;flex-direction:column}.section{margin-top:24px}.title{margin-bottom:17px}}@media(max-width:350px){.zones{grid-template-columns:1fr}.zone{min-height:90px}.cards{grid-template-columns:1fr}}@media print{.zones,.panel,.tabs,.person,.undo,.utils{display:none!important}.task{break-inside:avoid}.task.done{filter:none}}
 
 .task.current{border:4px solid #ed74b8!important;box-shadow:0 0 0 6px #ffdde1,0 13px 35px #8ee2cc4b!important;animation:glow 2.7s ease-in-out infinite alternate}.task.current .text{margin-top:30px}.task.overdue{border:3px solid #e8a9cb!important;box-shadow:0 0 0 3px #ffebf4,0 12px 24px #9e8aa622!important}.rightflag{position:absolute;right:9px;top:9px;border-radius:40px;background:#8ee2cc;color:#fff;font-weight:1000;font-size:11px;padding:7px 10px;z-index:2}.overdueflag{background:#f8dce7;color:#a44c7c}.doingflag{background:#96e6a1;color:#356b43}.task.doing{border-color:#96e6a1!important;box-shadow:0 0 0 4px #c6f6d0,0 12px 26px #9ccdab33!important}.task.doing .text{margin-top:26px}.running{display:flex;flex-direction:column;align-items:center;gap:5px;width:100%;border-radius:15px;background:#ffffffb9;padding:10px 7px}.running>span{color:#267f59;font-size:12px;font-weight:1000}.running strong{font-size:15px}.running time{font-size:11px;color:#67616e}.running-actions{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-top:5px}.running-actions button{border:0;border-radius:11px;background:#96e6a1;padding:10px 10px;font-size:11px;font-weight:900}.running-actions button+button{background:#e9e3ef}.task.done .text{filter:blur(.85px);opacity:.48}.task.done .donebox{margin-top:auto}@keyframes glow{from{box-shadow:0 0 0 4px #ffdde1,0 10px 23px #8ee2cc20}to{box-shadow:0 0 0 7px #ffc4df,0 16px 35px #8ee2cc4d}}@media(prefers-reduced-motion:reduce){.task.current{animation:none}}@media(max-width:650px){.rightflag{font-size:9px;top:7px;right:7px;padding:5px 7px}.task.current .text,.task.doing .text{margin-top:30px}.running-actions button{padding:9px 8px}.task{min-height:282px}.task.done{min-height:282px}}
@@ -1061,8 +1061,8 @@ body{overflow-x:hidden;-webkit-text-size-adjust:100%}
 .v16-panel h2{font-size:clamp(19px,4.8vw,24px);margin:0 0 10px;color:#182f53;font-weight:850;letter-spacing:-.035em}.v16-muted{font-size:12px;color:#6a7d94;line-height:1.6}.v16-tools{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.v16-button{border:1px solid #ccdbef;border-radius:12px;padding:11px 13px;background:#f4f8ff;color:#164b91;font-weight:750;font-size:13px;min-height:44px}.v16-button.primary{background:#246cdb;color:#fff;border-color:#246cdb}.v16-button.danger{background:#fff3f5;color:#a62d57;border-color:#f1b8c7}.v16-button:disabled{opacity:.45}.v16-list{display:grid;gap:9px;margin:12px 0}.v16-item{background:#f7faff;border:1px solid #dce8f6;border-radius:14px;padding:12px;line-height:1.55}.v16-item header{display:flex;align-items:center;justify-content:space-between;gap:10px}.v16-item small{color:#6a7a90}.v16-item p{white-space:pre-wrap;overflow-wrap:anywhere;margin:6px 0;font-size:13px;color:#263a59}.v16-week-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}.v16-day{min-width:0;background:#f4f7fd;border:1px solid #dce6f6;border-radius:12px;padding:8px 4px;text-align:center}.v16-day strong{display:block;font-size:11px}.v16-day small{font-size:10px}.v16-day.today{background:#e5efff;border-color:#4f85e7}.v16-roster{display:grid;gap:8px;margin-top:12px}.v16-roster-line{display:flex;gap:8px;align-items:center;justify-content:space-between;border-bottom:1px solid #e6edf7;padding:8px 0;font-size:13px}.v16-roster-line input{max-width:170px;width:58%;font-size:13px;padding:9px}.v16-ranking{display:grid;gap:12px}.v16-person{border:1px solid #dce7f6;border-radius:16px;padding:14px;background:#fff}.v16-person-head{display:flex;gap:8px;align-items:center;font-weight:800}.v16-live{width:10px;height:10px;background:#11b978;border-radius:50%;box-shadow:0 0 0 3px #bdebdc;animation:v16pulse 2s infinite}.v16-online-orange{background:#ffa44d;box-shadow:0 0 0 3px #ffead1}.v16-person-location{font-size:12px;color:#517097;margin:7px 0}.v16-timeline{display:grid;gap:6px;margin-top:11px}.v16-event{display:grid;grid-template-columns:48px 1fr;gap:10px;padding:9px;border-radius:10px;background:#f5f8fd;font-size:12px}.v16-event time{font-variant-numeric:tabular-nums;color:#667b95;font-weight:750}.v16-event.memo{background:#fff3fa;color:#9f3576}.v16-event.memo time{color:#b44e8a}.v16-event .v16-button{min-height:30px;padding:4px 9px;font-size:11px}.v16-chiprow{display:flex;gap:8px;flex-wrap:wrap;padding:9px 0}.v16-chip{border:1px solid #d4deed;background:#fff;border-radius:999px;padding:9px 12px;min-height:40px;color:#254465;font-weight:750;font-size:12px;touch-action:manipulation}.v16-chip.selected{background:#ebf4ff;border-color:#3476df}.v16-assign-btn{padding:8px 10px;min-height:37px;font-size:12px;border-radius:9px;border:1px solid #c9d8eb;background:white;color:#29496d}.v16-assign-btn.selected{background:#2772e5;color:white;border-color:#2772e5}.v16-assignees{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}.v16-reason{font-size:12px;color:#bb317f;background:#fff1f8;border-left:3px solid #ef81b8;padding:9px;margin:7px 0;border-radius:6px;white-space:pre-wrap;overflow-wrap:anywhere}.v16-reason-actions{display:flex;gap:6px;flex-wrap:wrap}.v16-reason-actions button{border:1px solid #e8bdcd;background:#fff;border-radius:9px;padding:7px 11px;font-size:11px;min-height:35px;color:#975276}.v16-report-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.v16-report-grid .v16-button{margin:0}.v16-reason-inline{margin:5px 0 8px}.v16-history-select{font:inherit;border:1px solid #cad8ec;border-radius:10px;padding:9px;max-width:100%}@keyframes v16pulse{50%{box-shadow:0 0 0 7px #bdebdc66}}@media(min-width:800px){.v16-ranking{grid-template-columns:repeat(2,minmax(0,1fr))}.v16-report-grid{grid-template-columns:repeat(4,1fr)}}@media(max-width:600px){.v16-panel{padding:14px;margin:12px 0}.v16-week-grid{grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}.v16-day{padding:8px 1px}.v16-roster-line{align-items:flex-start}.v16-report-grid{grid-template-columns:1fr 1fr}.v16-person{padding:12px}.v16-chip{min-height:44px}}
 </style>
 </head><body>
-<div class="authcover" id="authcover"><div class="authcard"><button id="loginAdminLock" class="login-admin-lock" type="button" aria-label="관리자 접속" title="관리자 접속">♙</button><h2>TOYU RYOKAN<br>HOTEL WORK CLOUD</h2><p>본인 이름/직급으로 들어와 업무를 시작해 주세요.</p><label>직원 / 직위</label><select id="loginWho"><option value="">선택해 주세요</option><option>대표님</option><option>지배인님</option><option>매니저님(선영)</option><option>웅주임님(일웅)</option><option>은진</option><option>파트타이머1</option><option>파트타이머2</option><option>파트타이머3</option><option>기타 임원</option></select><div id="ptname" hidden><label>파트타이머 이름</label><input id="loginName" maxlength="30" placeholder="실제 이름을 적어 주세요"></div><label>직원별 비밀번호 (영문·숫자 6자리)</label><input id="loginPin" type="password" inputmode="text" maxlength="6" autocomplete="off" placeholder="직원별 지정 PIN을 입력하세요"><button class="primarybtn" id="loginBtn">로그인 / 최초 등록</button><p id="loginNote">이 기기에서는 프론트 직원 계정별 PIN을 사용합니다. 모든 기록은 본인이 확인한 후 즉시 기록됩니다.</p><p class="subnote">※ 이 파일은 같은 브라우저 내 탭 간 변경 사항을 반영합니다. 직원 간 기기별 실시간 동기화는 별도 서버 연결이 필요합니다.</p></div></div>
-<div class="wrap"><header class="mast"><div class="brand"><span class="logo">✳</span><span>TOYU RYOKAN <b>HOTEL WORK CLOUD</b></span></div><span class="mini" id="todayLabel"></span></header>
+<div class="authcover" id="authcover"><div class="authcard"><button id="loginAdminLock" class="login-admin-lock" type="button" aria-label="관리자 접속" title="관리자 접속">♙</button><h2>TOYU RYOKAN<br>HOTEL WORK CLOUD</h2><p>본인 이름/직급으로 들어와 업무를 시작해 주세요.</p><label>직원 / 직위</label><select id="loginWho"><option value="">선택해 주세요</option><option>대표님</option><option>지배인님</option><option>매니저님(선영)</option><option>웅주임님(일웅)</option><option>은진</option><option>파트타이머1</option><option>파트타이머2</option><option>파트타이머3</option><option>기타 임원</option></select><div id="ptname" hidden><label>파트타이머 이름</label><input id="loginName" maxlength="30" placeholder="실제 이름을 적어 주세요"></div><label>직원별 비밀번호 (영문·숫자 6자리)</label><label for="firebaseEmail">Firebase 로그인 이메일 (직원 개인 이메일이 아닌 내부 계정 사용 가능)</label><input id="firebaseEmail" type="email" autocomplete="username" placeholder="Firebase에 등록한 계정 이메일"><label for="loginPin">Firebase 비밀번호</label><input id="loginPin" type="password" inputmode="text" autocomplete="current-password" placeholder="Firebase 계정 비밀번호"><button class="primarybtn" id="loginBtn">Firebase로 로그인</button><p id="loginNote">Firebase 직원 인증 테스트 버전입니다. 업무 기록은 아직 이 기기의 브라우저에 보관됩니다.</p><p class="subnote">※ 현재 단계: 직원 인증 연동 테스트. 실시간 업무 기록 공유는 추가 작업 후 활성화합니다.</p></div></div>
+<div class="wrap"><div id="firebaseLoginState" style="padding:8px 12px;color:#245a84;font-size:12px;text-align:right">Firebase 연결 확인 중…</div><header class="mast"><div class="brand"><span class="logo">✳</span><span>TOYU RYOKAN <b>HOTEL WORK CLOUD</b></span></div><span class="mini" id="todayLabel"></span></header>
 <section class="date-hero" aria-label="선택한 업무 날짜"><div class="date-hero-inner"><div class="hero-top"><span class="date-kicker">TOYU RYOKAN HOTEL FRONT</span><span class="hero-eyebrow">토유 프론트 일일업무기록</span></div><div class="hero-main"><div><h1 class="hero-greeting">안녕하세요, <span id="heroGreetingName">직원</span><span id="heroHonorific">님</span>!</h1><p class="hero-date-line">오늘은 <strong id="heroDate">오늘 날짜</strong>입니다</p></div><div class="hero-shift" id="heroShiftSummary">오늘의 근무 시간</div></div></div></section>
 <h1 class="title">업무 기록 <span>WORK LOG</span></h1>
 <section id="adminManager" hidden class="admin-manager"><div class="manager-head"><h2>관리자 기록 관리</h2><small>업무 기록 백업 · 선택 초기화</small></div><div class="manager-fields"><label>초기화 항목<select id="resetMode"><option value="task">선택한 업무 기록</option><option value="person">선택한 직원의 완료 기록</option><option value="completions">전체 업무 완료 기록 (선택 날짜)</option><option value="memos">메모 및 인계 기록 (선택 날짜)</option><option value="positions">직원 현재 근무 위치 (선택 날짜)</option><option value="assignments">업무분장 (선택 날짜)</option><option value="dehumid">제습 기록 (선택 날짜)</option><option value="attendance">출퇴근 기록 (선택 날짜)</option><option value="date">선택 날짜 모든 기록</option><option value="all">모든 날짜의 모든 운영 기록 (이 기기)</option></select></label><label id="selectTaskLabel">업무 선택<select id="adminTask"></select></label><label id="selectPersonLabel" hidden>직원 선택<select id="adminPerson"></select></label></div><details class="admin-pins"><summary>🔐 직원별 접속 비밀번호 확인</summary><div class="admin-pin-grid" id="adminPinList"></div><p>관리자 화면에서만 볼 수 있습니다. 단독 HTML의 PIN은 강력한 보안 인증이 아닙니다.</p></details><div class="manager-buttons"><button id="backupJson">JSON 기록 백업</button><button id="applyReset">선택 항목 초기화</button></div><p>초기화 전 반드시 백업해 주세요. 다른 기기의 저장 기록은 삭제되지 않습니다.</p></section><div class="top-actions"><button id="resetAll" class="reset-all">↺ 전체 초기화</button><span class="sync-indicator" id="syncIndicator">● 이 브라우저 저장 · 공유 미연결</span></div>
@@ -1198,18 +1198,28 @@ function accounts(){try{return JSON.parse(localStorage.getItem('toyu-local-accou
 function pinHash(s){let h=2166136261;for(let c of s){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return (h>>>0).toString(16)}
 const fixedPins={'대표님':'2u1111','지배인님':'2u2222','매니저님(선영)':'2u3333','웅주임님(일웅)':'2u4444','은진':'2u5555','파트타이머1':'2u6666','파트타이머2':'2u7777','파트타이머3':'2u8888','기타 임원':'2u9999'};
 let adminUnlocked=false;
-function login(){const role=$('#loginWho').value,pin=$('#loginPin').value;
- if(!role)return alert('직원/직급을 선택해 주세요.');
- if(pin!==fixedPins[role])return alert('비밀번호가 일치하지 않습니다.');
- let name=role.startsWith('파트타이머')?$('#loginName').value.trim():'';
- if(role.startsWith('파트타이머')&&!name){name=localStorage.getItem('toyu-pt-name-fresh-v8:'+role)||'';if(!name)return alert('파트타이머 이름을 입력해 주세요.');}
- if(name)localStorage.setItem('toyu-pt-name-fresh-v8:'+role,name);
- identity=name?role+' · '+name:role;adminUnlocked=false;
- sessionStorage.setItem('toyu-user-fresh-v8',identity);sessionStorage.setItem('toyu-role-fresh-v8',role);
- $('#authcover').style.display='none';$('#loginPin').value='';render();}
+async function login(){
+ const role=$('#loginWho').value;
+ const pass=$('#loginPin').value;
+ const email=$('#firebaseEmail')?.value.trim() || '';
+ if(!role || !email || !pass){alert('직원, 로그인 이메일, Firebase 비밀번호를 입력해 주세요.');return;}
+ if(!window.TOYU_FB){alert('Firebase 연결을 준비하는 중입니다. 인터넷 연결을 확인해 주세요.');return;}
+ const btn=$('#loginBtn');btn.disabled=true;btn.textContent='인증 중…';
+ try {
+  const result=await window.TOYU_FB.signIn(email,pass);
+  if(!result || !result.staff || result.staff.active!==true) throw new Error('활성 직원 계정이 아닙니다.');
+  if(result.staff.name!==role){await window.TOYU_FB.signOut();throw new Error('선택한 직원 이름과 Firebase 등록 이름이 다릅니다.');}
+  identity=role;adminUnlocked=false;
+  sessionStorage.setItem('toyu-user-fresh-v8',identity);sessionStorage.setItem('toyu-role-fresh-v8',role);
+  $('#authcover').style.display='none';$('#loginPin').value='';render();
+  window.TOYU_FB.setStatus('Firebase 인증됨 · '+role);
+  window.TOYU_CLOUD_INIT?.();
+ }catch(err){alert('로그인 실패: '+(err?.message||String(err)));}
+ finally{btn.disabled=false;btn.textContent='Firebase로 로그인';}
+}
 $('#loginWho').onchange=()=>{const role=$('#loginWho').value;$('#ptname').hidden=!role.startsWith('파트타이머');$('#loginName').value=localStorage.getItem('toyu-pt-name-fresh-v8:'+role)||''};
 $('#loginBtn').onclick=login;$('#loginPin').onkeydown=e=>{if(e.key==='Enter')login()};
-$('#logout').onclick=()=>{identity='';adminUnlocked=false;sessionStorage.removeItem('toyu-user-fresh-v8');sessionStorage.removeItem('toyu-role-fresh-v8');$('#authcover').style.display='grid';render()};
+$('#logout').onclick=()=>{window.TOYU_FB?.signOut();identity='';adminUnlocked=false;sessionStorage.removeItem('toyu-user-fresh-v8');sessionStorage.removeItem('toyu-role-fresh-v8');$('#authcover').style.display='grid';render()};
 function admin(){return adminUnlocked}
 function modal(title,description,fields,callback,label='확인'){if($('#doingConfirm'))$('#doingConfirm').hidden=true;$('#modalTitle').textContent=title;$('#modalText').textContent=description;$('#modalFields').innerHTML=fields;$('#confirm').textContent=label;modalCallback=callback;$('#dialog').classList.add('show')}
 function closeModal(){$('#dialog').classList.remove('show');modalCallback=null}
@@ -1467,7 +1477,7 @@ buildToc=function(){const target=[['오늘의 업무분장','assignments'],['업
 
 function managerRefresh(){
  $('#adminManager').hidden=!admin();if(!admin())return;
- $('#adminPinList').innerHTML=Object.entries(fixedPins).map(([role,pin])=>`<div class="admin-pin-line"><b>${esc(role)}</b><code>${esc(pin)}</code></div>`).join('');
+ $('#adminPinList').innerHTML='<p>Firebase 계정으로 인증됩니다. 기존 PIN 목록은 더 이상 사용하지 않습니다.</p>';
  const mode=$('#resetMode').value;
  $('#selectTaskLabel').hidden=mode!=='task';$('#selectPersonLabel').hidden=mode!=='person';
  const t=$('#adminTask'),keep=t.value;t.innerHTML=rows.map(r=>`<option value="${esc(r.id)}">${esc(r.time+' · '+r.text)}</option>`).join('');if(rows.some(r=>String(r.id)===keep))t.value=keep;
@@ -1571,7 +1581,7 @@ function drawRoomops(force=false){
  drawRoomops(true);
 })();
 
-load();let remembered=sessionStorage.getItem('toyu-user-fresh-v8');if(remembered&&sessionStorage.getItem('toyu-role-fresh-v8')&&fixedPins[sessionStorage.getItem('toyu-role-fresh-v8')]){identity=remembered;$('#authcover').style.display='none'}render();setInterval(render,30000);
+load();sessionStorage.removeItem('toyu-user-fresh-v8');sessionStorage.removeItem('toyu-role-fresh-v8');$('#authcover').style.display='grid';render();setInterval(render,30000);
 
 
 // v6. Kakao notice saved separately per work date; multiple revisions are retained.
@@ -2071,4 +2081,325 @@ document.querySelector('#tocMenu')?.addEventListener('click',e=>{
  q('#v16Archive')?.parentNode?.insertBefore(q('#v16Archive'),q('#v16Weekly'));
  renderV16();
 })();
-</script></body></html>
+</script>
+<style id="toyu-cloud-memo-edit-ui">
+.toyu-memo-actions{display:flex;justify-content:flex-end;gap:6px;margin-top:7px;flex-wrap:wrap}
+.toyu-memo-actions button{min-height:34px;padding:6px 11px;border-radius:9px;border:1px solid #dce5f2;background:#fff;color:#27466e;font:600 12px/1.3 inherit;cursor:pointer}
+.toyu-memo-actions button.toyu-delete{color:#ae345f;background:#fff5f7;border-color:#f3d8e4}
+.toyu-task-memos{width:100%;background:#f4f8fe;border:1px solid #dfeafb;border-radius:13px;padding:11px;text-align:left;margin-top:10px;color:#19385c}
+.toyu-task-memos .toyu-memo-line{padding:9px 0;border-bottom:1px solid #dfeafb;white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.toyu-task-memos .toyu-memo-line:last-of-type{border:0}
+.toyu-task-memos small{display:block;color:#5f7797;font-size:11px;margin-bottom:5px}
+.toyu-task-memos button.toyu-add-memo{width:100%;min-height:43px;background:#e4efff;border:1px solid #c6d9fa;border-radius:10px;color:#225a9b;font-weight:750;margin-top:8px}
+.toyu-staffnote-entry{white-space:pre-wrap;overflow-wrap:anywhere}
+</style>
+<script id="toyu-cloud-memo-management-v2">
+/* Staff and task memo edit/delete. Reuse existing save() and staffNotesSave()
+   so Firebase bridge publishes the change to the second phone. */
+(function(){
+const escMemo=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const originalRender=render;
+render=function(){
+  originalRender();
+  // The existing staff board already renders memo text; add stable actions under it.
+  document.querySelectorAll('#staffGrid .staff-card[data-staff]').forEach(card=>{
+    const name=card.dataset.staff;
+    const memoEntries=card.querySelectorAll('.staff-event.note');
+    const list=Array.isArray(staffNotes[name])?staffNotes[name]:[];
+    const ordered=list.map((memo,index)=>({memo,index})).sort((a,b)=>String(a.memo.at||'').localeCompare(String(b.memo.at||'')));
+    memoEntries.forEach((item,i)=>{
+      const entry=ordered[i];if(!entry)return;
+      const index=entry.index;
+      if(item.querySelector('.toyu-memo-actions'))return;
+      item.insertAdjacentHTML('beforeend',`<div class="toyu-memo-actions"><button type="button" data-cloud-staff-edit="${escMemo(name)}" data-cloud-index="${index}">수정</button><button type="button" class="toyu-delete" data-cloud-staff-delete="${escMemo(name)}" data-cloud-index="${index}">삭제</button></div>`);
+    });
+  });
+  // Task-specific notes: previously saved but not consistently shown in cards.
+  document.querySelectorAll('.task[data-task]').forEach(card=>{
+    const id=card.dataset.task;
+    const list=Array.isArray(taskMemos[id])?taskMemos[id]:[];
+    const html=list.map((memo,i)=>`<div class="toyu-memo-line"><small>${escMemo(memo.who||'')} · ${escMemo(memo.at||'')}</small>${escMemo(memo.text||memo.note||'')}<div class="toyu-memo-actions"><button type="button" data-cloud-task-edit="${escMemo(id)}" data-cloud-index="${i}">수정</button><button type="button" class="toyu-delete" data-cloud-task-delete="${escMemo(id)}" data-cloud-index="${i}">삭제</button></div></div>`).join('');
+    const box=document.createElement('div');box.className='toyu-task-memos';
+    box.innerHTML=`<strong style="font-size:12px">업무 메모 ${list.length?`· ${list.length}건`:''}</strong>${html}<button type="button" class="toyu-add-memo" data-cloud-task-add="${escMemo(id)}">＋ 메모 남기기</button>`;
+    const bottom=card.querySelector('.task-bottom');if(bottom)bottom.appendChild(box);else card.appendChild(box);
+  });
+};
+const originalToc=buildToc;
+buildToc=function(){
+  originalToc();
+  const menu=document.getElementById('tocMenu');if(!menu)return;
+  menu.querySelectorAll('button').forEach(button=>{
+    const label=button.textContent.replace(/\s+/g,' ').trim();
+    if(/(?:^|\s)\d{1,2}:\d{2}\s*업무(?:\s|$)/.test(label)||/^(?:이전\s*[·-]\s*)?\d{1,2}:\d{2}\s*업무/.test(label))button.remove();
+  });
+};
+document.addEventListener('click',event=>{
+  const button=event.target.closest('[data-cloud-staff-edit],[data-cloud-staff-delete],[data-cloud-task-edit],[data-cloud-task-delete],[data-cloud-task-add]');
+  if(!button)return;
+  event.preventDefault();event.stopPropagation();
+  if(!identity)return alert('로그인 후 이용해 주세요.');
+  const index=Number(button.dataset.cloudIndex);
+  if(button.dataset.cloudTaskAdd!==undefined){addTaskMemo(button.dataset.cloudTaskAdd);return}
+  if(button.dataset.cloudStaffEdit!==undefined||button.dataset.cloudStaffDelete!==undefined){
+    const who=button.dataset.cloudStaffEdit??button.dataset.cloudStaffDelete;
+    const list=staffNotes[who];if(!Array.isArray(list)||!list[index])return alert('메모가 변경됐습니다. 새로고침 후 다시 시도해 주세요.');
+    const item=list[index];
+    if(item.by!==identity&&!admin())return alert('본인이 작성한 메모 또는 관리자만 수정·삭제할 수 있어요.');
+    if(button.dataset.cloudStaffDelete!==undefined){if(!confirm('이 직원 메모를 삭제할까요?'))return;list.splice(index,1)}
+    else{const changed=prompt('직원 메모 수정',item.text||'');if(changed===null)return;if(!changed.trim())return alert('메모를 입력해 주세요.');item.text=changed.trim();item.editedAt=localStamp();item.editedBy=identity}
+    staffNotesSave();render();return;
+  }
+  const id=button.dataset.cloudTaskEdit??button.dataset.cloudTaskDelete;
+  const list=taskMemos[id];if(!Array.isArray(list)||!list[index])return alert('메모가 변경됐습니다. 새로고침 후 다시 시도해 주세요.');
+  const item=list[index];
+  if(item.who!==identity&&!admin())return alert('본인이 작성한 메모 또는 관리자만 수정·삭제할 수 있어요.');
+  if(button.dataset.cloudTaskDelete!==undefined){if(!confirm('이 업무 메모를 삭제할까요?'))return;list.splice(index,1)}
+  else{const changed=prompt('업무 메모 수정',item.text||item.note||'');if(changed===null)return;if(!changed.trim())return alert('메모를 입력해 주세요.');item.text=changed.trim();item.editedAt=localStamp();item.editedBy=identity}
+  save();render();
+},true);
+})();
+</script>
+<script id="toyu-cloud-sync-bridge">
+/* Firebase realtime test bridge: scoped to the currently selected date. */
+(function(){
+  const originalSave=save, originalNotesSave=staffNotesSave;
+  let applyingRemote=false, ready=false, lastDate='';
+  const status=document.createElement('div');
+  status.id='cloudSyncStatus'; status.setAttribute('role','status'); status.setAttribute('aria-live','polite');
+  status.style.cssText='position:fixed;left:12px;bottom:12px;z-index:69;background:#0f294b;color:#fff;padding:9px 13px;border-radius:12px;font:600 12px/1.5 system-ui;max-width:calc(100vw - 100px);box-shadow:0 8px 22px #1233;pointer-events:none';
+  status.textContent='클라우드 연결 대기';document.body.appendChild(status);
+  function setStatus(t,bad=false){status.textContent=t;status.style.background=bad?'#972a47':'#0f294b';}
+  window.TOYU_SYNC_STATUS=setStatus;
+  function date(){return document.getElementById('date')?.value||''}
+  function safeCopy(x){return JSON.parse(JSON.stringify(x))}
+  function publishTaskChanges(oldRecords,newRecords){
+    if(!ready||applyingRemote||!window.TOYU_FB?.publishTask)return;
+    const ids=new Set([...Object.keys(oldRecords),...Object.keys(newRecords)]);
+    for(const id of ids){
+      const was=JSON.stringify(oldRecords[id]??null), now=JSON.stringify(newRecords[id]??null);
+      if(was!==now)window.TOYU_FB.publishTask(date(),id,newRecords[id]??null);
+    }
+  }
+  save=function(){
+    let prev={};try{prev=JSON.parse(localStorage.getItem(storageKey())||'{}').records||{}}catch(e){}
+    let oldMemo={};try{oldMemo=JSON.parse(localStorage.getItem(storageKey())||'{}').taskMemos||{}}catch(e){}
+    originalSave();publishTaskChanges(prev,records);
+    if(ready&&!applyingRemote&&JSON.stringify(oldMemo)!==JSON.stringify(taskMemos))window.TOYU_FB?.publishTaskMemos?.(date(),safeCopy(taskMemos));
+  };
+  staffNotesSave=function(){
+    originalNotesSave();
+    if(ready&&!applyingRemote&&window.TOYU_FB?.publishNotes)window.TOYU_FB.publishNotes(date(),safeCopy(staffNotes));
+  };
+  window.TOYU_CLOUD_RESET_TASKS=(day)=>{
+    if(date()!==day)return;
+    applyingRemote=true;
+    try{records={};originalSave();render()}finally{applyingRemote=false}
+  };
+  window.TOYU_CLOUD_APPLY_TASK=(day,id,value)=>{
+    if(date()!==day)return;
+    applyingRemote=true;
+    try{
+      if(value===null)delete records[id]; else records[id]=value;
+      originalSave();render();
+    }finally{applyingRemote=false}
+  };
+  window.TOYU_CLOUD_APPLY_TASKMEMOS=(day,value)=>{
+    if(date()!==day)return;
+    applyingRemote=true;
+    try{taskMemos=value||{};originalSave();render()}finally{applyingRemote=false}
+  };
+  window.TOYU_CLOUD_APPLY_NOTES=(day,value)=>{
+    if(date()!==day)return;
+    applyingRemote=true;
+    try{
+      staffNotes=value||{};originalNotesSave();render();
+    }finally{applyingRemote=false}
+  };
+  window.TOYU_CLOUD_ACTIVE=(active)=>{ready=Boolean(active);if(!ready)setStatus('클라우드 연결 중단');};
+  window.TOYU_CLOUD_DATE=()=>date();
+  window.TOYU_CLOUD_INIT=()=>{if(window.TOYU_FB?.startSync){lastDate=date();window.TOYU_FB.startSync(lastDate);}};
+  setInterval(()=>{const d=date();if(identity&&window.TOYU_FB?.startSync&&d!==lastDate){lastDate=d;ready=false;window.TOYU_FB.startSync(d)}},1500);
+})();
+</script>
+<script id="toyu-cloud-all-data-bridge">
+/* Cloud extension: synchronize individual operational stores, without uploading pre-existing phone data. */
+(function(){
+ const rawSet=Storage.prototype.setItem;
+ const rawRemove=Storage.prototype.removeItem;
+ let remote=false, cloudReady=false;
+ const date=()=>document.querySelector('#date')?.value||'';
+ const exactGlobal=new Set(['toyu-task-catalog-v8','toyu-v16-week-schedule']);
+ const namedPrefixes=['toyu-hours-fresh-v8:','toyu-dehumid-fresh-v8:','toyu-room-ops-v9:',
+  'toyu-kakao-assignment-v6:','toyu-daily-review:','toyu-v16-personnotes:',
+  'toyu-v16-reasons:','toyu-v16-multiassign:'];
+ const metaName={
+ 'toyu-hours-fresh-v8:':'attendance', 'toyu-dehumid-fresh-v8:':'dehumid',
+ 'toyu-room-ops-v9:':'roomOps', 'toyu-kakao-assignment-v6:':'kakao',
+ 'toyu-daily-review:':'reviews','toyu-v16-personnotes:':'personalNotes',
+ 'toyu-v16-reasons:':'reasons','toyu-v16-multiassign:':'multiAssignments',
+ 'toyu-task-catalog-v8':'catalog','toyu-v16-week-schedule':'weeklySchedule'};
+ function descriptor(k){
+  if(exactGlobal.has(k))return {name:metaName[k],date:'_shared'};
+  for(const prefix of namedPrefixes)if(k.startsWith(prefix)){
+    const d=k.slice(prefix.length);
+    if(/^\d{4}-\d{2}-\d{2}$/.test(d))return {name:metaName[prefix],date:d};
+  }
+  return null;
+ }
+ const keyFor=(name,d)=>{
+  if(name==='catalog')return 'toyu-task-catalog-v8';
+  if(name==='weeklySchedule')return 'toyu-v16-week-schedule';
+  const p=Object.keys(metaName).find(k=>metaName[k]===name&&k.endsWith(':'));
+  return p ? p+d : null;
+ };
+ function emit(k,v){
+  const desc=descriptor(k);
+  if(!desc||!cloudReady||remote||!window.TOYU_FB?.publishExtra)return;
+  window.TOYU_FB.publishExtra(desc.date,desc.name,v===null?null:JSON.parse(v));
+ }
+ Storage.prototype.setItem=function(k,v){
+  rawSet.call(this,k,v);
+  if(this===localStorage)emit(String(k),String(v));
+ };
+ Storage.prototype.removeItem=function(k){
+  rawRemove.call(this,k);
+  if(this===localStorage)emit(String(k),null);
+ };
+ const previousSave=save;
+ save=function(){
+  previousSave();
+  if(!remote&&cloudReady)window.TOYU_FB?.publishExtra?.(date(),'operations',
+    JSON.parse(JSON.stringify({zones,audit,conditions,assignments})));
+ };
+ function redraw(){
+  try{render()}catch(e){console.warn('Repaint failed',e)}
+  for(const fn of ['drawDehumid','drawRoomops','kakaoAssignmentDraw','displayHours','drawReviewsV13']){
+   try{const f=window[fn]||({drawDehumid,drawRoomops,kakaoAssignmentDraw,displayHours,drawReviewsV13})[fn];if(typeof f==='function')f()}catch(e){}
+  }
+ }
+ window.TOYU_EXTRA_READY=value=>{cloudReady=Boolean(value)};
+ window.TOYU_EXTRA_APPLY=(d,name,value)=>{
+  if(d!==date()&&d!=='_shared')return;
+  remote=true;
+  try{
+   if(name==='operations'){
+     if(value){zones=value.zones||{};audit=value.audit||[];conditions=value.conditions||{};assignments=value.assignments||{};
+       rawSet.call(localStorage,storageKey(),JSON.stringify({records,zones,audit,conditions,assignments,taskMemos}));}
+   }else{
+     const k=keyFor(name,d);if(!k)return;
+     if(value===null)rawRemove.call(localStorage,k);else rawSet.call(localStorage,k,JSON.stringify(value));
+     if(name==='catalog'&&value?.tasks){try{rows.splice(0,rows.length,...value.tasks)}catch(e){}}
+   }
+   redraw();
+  }finally{remote=false}
+ };
+ window.TOYU_EXTRA_DESCRIPTORS=()=>['operations','attendance','dehumid','roomOps','kakao','reviews',
+  'personalNotes','reasons','multiAssignments'];
+})();
+</script>
+<script type="module" id="toyu-firebase-auth-test">
+import {initializeApp} from 'https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js';
+import {getAuth,signInWithEmailAndPassword,signOut,onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js';
+import {getFirestore,doc,getDoc,collection,onSnapshot,runTransaction,serverTimestamp} from 'https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js';
+const config={apiKey:'AIzaSyBsksVrgM5tCaw3FCUxOZZkAmjOt6Nz5sA',authDomain:'front-ac40a.firebaseapp.com',projectId:'front-ac40a',storageBucket:'front-ac40a.firebasestorage.app',messagingSenderId:'986990525854',appId:'1:986990525854:web:c834f35d490042958bea8f'};
+const app=initializeApp(config),auth=getAuth(app),db=getFirestore(app);
+let unsubs=[],signedIn=false,generation=0;
+const versions=new Map(), loaded=new Set(), pending=new Set(), conflicts=[];
+const key=(day,kind,id)=>`${day}/${kind}/${id}`;
+const remoteValue=s=>s.exists()?(s.data().value??null):null;
+function status(t,error=false){window.TOYU_SYNC_STATUS?.(t,error)}
+function clearListeners(){++generation;for(const off of unsubs)try{off()}catch{}unsubs=[];versions.clear();loaded.clear();pending.clear();window.TOYU_CLOUD_ACTIVE?.(false);window.TOYU_EXTRA_READY?.(false)}
+function applySnapshot(s,day,kind,id){
+ const k=key(day,kind,id),wasLoaded=loaded.has(k);
+ // Listen to committed server state, not optimistic local writes.
+ if(s.metadata.hasPendingWrites)return;
+ versions.set(k,s.exists()?Number(s.data().__revision||0):0);
+ loaded.add(k);
+ const value=remoteValue(s);
+ if(kind==='task')window.TOYU_CLOUD_APPLY_TASK?.(day,id,value);
+ if(kind==='notes')window.TOYU_CLOUD_APPLY_NOTES?.(day,value||{});
+ if(kind==='taskMemos')window.TOYU_CLOUD_APPLY_TASKMEMOS?.(day,value||{});
+ if(kind==='extra')window.TOYU_EXTRA_APPLY?.(day,id,value);
+ return wasLoaded;
+}
+async function persist(day,kind,id,value){
+ if(!auth.currentUser||!signedIn){status('로그인되지 않아 저장할 수 없습니다.',true);return false}
+ const k=key(day,kind,id);
+ if(!loaded.has(k)){status('서버 데이터 수신 전입니다. 잠시 뒤 다시 저장해 주세요.',true);return false}
+ if(pending.has(k)){status('해당 항목 저장 중입니다. 완료 후 다시 시도해 주세요.',true);return false}
+ pending.add(k); status('클라우드 저장 중…');
+ const path=kind==='task'?['workdays',day,'tasks',id]:['workdays',day,'meta',id];
+ const ref=doc(db,...path),base=versions.get(k)||0;
+ try{
+   await runTransaction(db,async tx=>{
+     const snapshot=await tx.get(ref);
+     const revision=snapshot.exists()?Number(snapshot.data().__revision||0):0;
+     if(revision!==base)throw new Error('CONFLICT');
+     tx.set(ref,{value:value??null,__revision:revision+1,updatedAt:serverTimestamp(),updatedBy:auth.currentUser.uid});
+     // An immutable audit event written in the same transaction, no previous record overwritten.
+     const auditRef=doc(collection(db,'workdays',day,'audit'));
+     tx.set(auditRef,{kind,id,action:value===null?'delete':'save',actor:auth.currentUser.uid,at:serverTimestamp(),revision:revision+1,previous:snapshot.exists()?JSON.stringify(snapshot.data().value??null).slice(0,15000):null});
+   });
+   versions.set(k,base+1);status('✓ 클라우드 저장 완료');return true;
+ }catch(e){
+   const conflict=e.message==='CONFLICT';
+   if(conflict){
+     conflicts.push({date:day,kind,id,at:new Date().toISOString()});
+     status('⚠ 다른 직원이 먼저 변경했습니다. 최신 서버 기록으로 다시 불러옵니다.',true);
+   }else status('⚠ 저장 실패: '+(e.code||e.message)+' · 네트워크/권한을 확인하세요.',true);
+   try{
+     const server=await getDoc(ref);
+     applySnapshot(server,day,kind,id);
+   }catch(readErr){console.error('Could not refresh server data',readErr)}
+   console.warn('TOYU save failed',kind,id,e);return false;
+ }finally{pending.delete(k)}
+}
+window.TOYU_FB={
+ async signIn(email,password){
+  const cred=await signInWithEmailAndPassword(auth,email,password);
+  try{const snap=await getDoc(doc(db,'staff',cred.user.uid));
+   if(!snap.exists())throw new Error('직원 등록 정보가 없습니다.');
+   const staff=snap.data();if(staff.active!==true)throw new Error('비활성 계정입니다.');
+   signedIn=true;return{staff,uid:cred.user.uid};
+  }catch(e){await signOut(auth);throw e}
+ },
+ signOut:async()=>{signedIn=false;clearListeners();return signOut(auth)},
+ startSync(day){
+  clearListeners();if(!auth.currentUser||!signedIn||!/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(day))return;
+  const current=++generation;status('Firebase 서버와 연결 중…');
+  const extraNames=window.TOYU_EXTRA_DESCRIPTORS?.()||[];
+  const expected=new Set(['tasks','staffNotes','taskMemos',...extraNames.map(x=>'extra:'+day+':'+x),'extra:_shared:catalog','extra:_shared:weeklySchedule']);
+  const finished=new Set();
+  function ready(name){finished.add(name);if(finished.size===expected.size){window.TOYU_EXTRA_READY?.(true);window.TOYU_CLOUD_ACTIVE?.(true);status('● 서버 연결됨 · 기록 보호 활성화')}}
+  function onError(name,error){status('⚠ '+name+' 수신 오류: '+(error.code||error.message),true);window.TOYU_CLOUD_ACTIVE?.(false);window.TOYU_EXTRA_READY?.(false)}
+  const tasks=collection(db,'workdays',day,'tasks');
+  unsubs.push(onSnapshot(tasks,{includeMetadataChanges:true},snapshot=>{
+   if(current!==generation)return;
+   if(snapshot.metadata.fromCache){status('오프라인/캐시 상태 · 서버 저장을 확인하세요',true);return}
+   if(!finished.has('tasks'))window.TOYU_CLOUD_RESET_TASKS?.(day);
+   for(const ch of snapshot.docChanges()){if(!ch.doc.metadata.hasPendingWrites)applySnapshot(ch.doc,day,'task',ch.doc.id)}
+   ready('tasks');
+  },e=>onError('업무',e)));
+  function watch(dayKey,docName,kind,doneName){
+   const r=doc(db,'workdays',dayKey,'meta',docName);
+   unsubs.push(onSnapshot(r,{includeMetadataChanges:true},snapshot=>{
+    if(current!==generation)return;
+    if(snapshot.metadata.fromCache){status('오프라인/캐시 상태 · 서버 저장을 확인하세요',true);return}
+    applySnapshot(snapshot,dayKey,kind,docName);ready(doneName);
+   },e=>onError(docName,e)));
+  }
+  watch(day,'staffNotes','notes','staffNotes');watch(day,'taskMemos','taskMemos','taskMemos');
+  extraNames.forEach(n=>watch(day,n,'extra','extra:'+day+':'+n));
+  watch('_shared','catalog','extra','extra:_shared:catalog');
+  watch('_shared','weeklySchedule','extra','extra:_shared:weeklySchedule');
+ },
+ publishExtra:(d,n,v)=>persist(d,'extra',n,v),
+ publishTask:(d,id,v)=>persist(d,'task',id,v),
+ publishTaskMemos:(d,v)=>persist(d,'taskMemos','taskMemos',v),
+ publishNotes:(d,v)=>persist(d,'notes','staffNotes',v),
+ getConflicts:()=>conflicts.slice(),
+ setStatus(t){const el=document.querySelector('#firebaseLoginState');if(el)el.textContent=t}
+};
+onAuthStateChanged(auth,user=>{const el=document.querySelector('#firebaseLoginState');if(el)el.textContent=user?'Firebase 인증 연결됨':'Firebase 로그인 대기'});
+</script>
+<div id="toyuCloudNotice" style="margin:18px auto;max-width:900px;padding:12px 16px;border:1px solid #b5cafa;border-radius:14px;background:#f4f8ff;color:#153766;font:500 12px/1.6 system-ui;">Firebase 운영 안정화 시험판: 항목별 버전 검증으로 동시 저장 충돌을 알리고, 수정·삭제 내역을 감사 기록으로 남깁니다. 저장 실패 안내가 나오면 성공으로 간주하지 마세요. 운영 전 기기별 테스트가 필요합니다.</div></body></html>
