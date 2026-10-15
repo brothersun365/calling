@@ -997,6 +997,61 @@ body:has(.dialog.show) .quicknav,body:has(#timeSheet:not([hidden])) .quicknav{vi
 .staff-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.staff-card{border:1px solid #e0e7f0!important;border-radius:18px!important;background:#fff!important;padding:18px!important;min-width:0}.staff-card>strong{font-size:16px!important}.staff-card .staff-timeline{margin-top:13px;display:grid;gap:8px}.staff-event{display:grid;grid-template-columns:53px minmax(0,1fr);gap:10px;align-items:start;padding:10px 12px;border-radius:12px;background:#f4f7fb;color:#253349;font-size:12px;line-height:1.6}.staff-event time{font-variant-numeric:tabular-nums;font-weight:800;color:#5476a2}.staff-event.note{background:#fff0f6;color:#9d3f73}.staff-event.note time{color:#b14b84}.staff-event .body{white-space:pre-wrap;overflow-wrap:anywhere}.staff-note-add{display:block;width:100%;margin-top:12px;border:1px solid #cae1ff;border-radius:11px;background:#eff6ff;padding:10px;color:#2564ad;font-weight:800;font-size:12px;cursor:pointer}.staff-location{font-size:12px;color:#536879;line-height:1.7;margin:9px 0}.staff-empty{font-size:12px;color:#8290a1}.staff-panel{scroll-margin-top:26px}
 @media(max-width:760px){.staff-grid{grid-template-columns:1fr}.staff-card{padding:14px!important}.staff-event{grid-template-columns:45px minmax(0,1fr)}.zone-person{font-size:11px!important}}
 @media(prefers-reduced-motion:reduce){.presence-dot{animation:none}}
+</style><style id="toyu-mobile-v15">
+/* Touch-first layout, coherent sizes, and concise dehumid records. */
+#dehumidRoom .dh-occupied-info{margin-top:12px;padding:14px;border:1px solid #dce8fa;background:#f3f8ff;color:#39536f;border-radius:12px;font-size:13px;line-height:1.7}
+#dehumidRoom .dh-history-compact{margin-top:22px}
+#dehumidRoom .dh-history-guide{color:#65758d;font-size:12px;margin:4px 0 14px;line-height:1.6}
+#dehumidRoom .dh-history-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+#dehumidRoom .dh-history-room{background:#fff;border:1px solid #dce7f5;border-radius:14px;overflow:hidden;min-width:0}
+#dehumidRoom .dh-history-room>summary{list-style:none;cursor:pointer;padding:16px;display:grid;grid-template-columns:1fr auto;gap:7px;align-items:center;min-height:110px}
+#dehumidRoom .dh-history-room>summary::-webkit-details-marker{display:none}
+#dehumidRoom .dh-history-room-name{font-size:17px;font-weight:800;color:#213552}
+#dehumidRoom .dh-history-room-name small{font-size:11px;font-weight:650;color:#7b8ba3;margin-left:5px}
+#dehumidRoom .dh-history-preview{grid-column:1/-1;display:flex;gap:5px;flex-wrap:wrap;min-width:0;font-size:12px;line-height:1.5;color:#455771}
+#dehumidRoom .dh-history-preview b{color:#2774cf}
+#dehumidRoom .dh-history-preview span{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:100%}
+#dehumidRoom .dh-history-when{font-size:11px;color:#76869c}
+#dehumidRoom .dh-chevron{font-size:18px;color:#7f92ad;justify-self:end;transition:transform .2s}
+#dehumidRoom .dh-history-room[open] .dh-chevron{transform:rotate(180deg)}
+#dehumidRoom .dh-room-log-list{padding:0 13px 13px;max-height:300px;overflow:auto;border-top:1px solid #e9eef6}
+#dehumidRoom .dh-compact-log{padding:12px 2px;border-bottom:1px solid #edf1f7}
+#dehumidRoom .dh-compact-log:last-child{border-bottom:0}
+#dehumidRoom .dh-compact-meta{display:flex;flex-wrap:wrap;gap:8px;font-size:11px;color:#7b8aa0}
+#dehumidRoom .dh-compact-meta span:first-child{color:#2573cc;font-weight:800}
+#dehumidRoom .dh-compact-log p{margin:6px 0 0;color:#33465e;font-size:12px;line-height:1.55;overflow-wrap:anywhere}
+@media(max-width:800px){
+html{scroll-padding-top:12px}
+body{overflow-x:hidden;-webkit-text-size-adjust:100%}
+.wrap{width:100%;max-width:100%;padding-left:12px!important;padding-right:12px!important}
+#dehumidRoom .dehumid-grid,#dehumidRoom .dh-history-grid{grid-template-columns:1fr!important;gap:10px}
+#dehumidRoom .dehumid-cell{padding:14px!important}
+#dehumidRoom .dh-history-room>summary{min-height:0!important;grid-template-columns:1fr auto;padding:13px 14px;gap:5px}
+#dehumidRoom .dh-history-preview{grid-column:1/-1;font-size:12px}
+#dehumidRoom .dh-history-when{grid-column:1}
+#dehumidRoom .dh-chevron{grid-column:2;grid-row:3}
+#dehumidRoom .dh-history-room-name{font-size:15px}
+#dehumidRoom .dh-workflow,#dehumidRoom .dh-status-panel{padding:12px!important;margin-top:10px!important}
+#dehumidRoom .dh-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+#dehumidRoom .dh-choices button,#dehumidRoom .vacancy-buttons button{min-height:44px;padding:10px 7px!important;font-size:12px!important;white-space:normal}
+#dehumidRoom .dh-save{min-height:46px;font-size:13px!important}
+#dehumidRoom .dh-editor-details summary{min-height:44px;display:flex;align-items:center}
+#dehumidRoom .dh-machine{padding:10px 0}
+#dehumidRoom input[type=number]{min-height:44px;width:100%;font-size:16px}
+#dehumidRoom .dh-saved-record{padding:11px}
+#dehumidRoom .dh-saved-record p{font-size:13px}
+#dehumidRoom .dh-room-header h3{font-size:15px!important}
+.task .finish-btn,.task button,.assignment-grid button,.staff-panel button,.task-editor-toolbar button{min-height:44px}
+.task .text{font-size:16px!important;line-height:1.55!important;overflow-wrap:anywhere}
+.task .completion-item,.task .task-memo-item{line-height:1.6}
+.dialog .modal{max-height:calc(100dvh - 32px);overflow-y:auto}
+.modal input,.modal textarea,.modal select,#assignmentKakaoText{font-size:16px!important}
+.panel,.staff-panel,.assignment-panel,.progress-dashboard,.accountability{min-width:0}
+#staffGrid,.assignment-grid{grid-template-columns:1fr!important}
+#tocToggle{min-height:46px!important}
+}
+@media(max-width:380px){#dehumidRoom .dh-choices{grid-template-columns:repeat(2,minmax(0,1fr))}.task .text{font-size:15px!important}}
+@media(prefers-reduced-motion:reduce){#dehumidRoom .dh-chevron{transition:none}}
 </style></head><body>
 <div class="authcover" id="authcover"><div class="authcard"><button id="loginAdminLock" class="login-admin-lock" type="button" aria-label="관리자 접속" title="관리자 접속">♙</button><h2>TOYU RYOKAN<br>HOTEL WORK CLOUD</h2><p>본인 이름/직급으로 들어와 업무를 시작해 주세요.</p><label>직원 / 직위</label><select id="loginWho"><option value="">선택해 주세요</option><option>대표님</option><option>지배인님</option><option>매니저님(선영)</option><option>웅주임님(일웅)</option><option>은진</option><option>파트타이머1</option><option>파트타이머2</option><option>파트타이머3</option><option>기타 임원</option></select><div id="ptname" hidden><label>파트타이머 이름</label><input id="loginName" maxlength="30" placeholder="실제 이름을 적어 주세요"></div><label>직원별 비밀번호 (영문·숫자 6자리)</label><input id="loginPin" type="password" inputmode="text" maxlength="6" autocomplete="off" placeholder="직원별 지정 PIN을 입력하세요"><button class="primarybtn" id="loginBtn">로그인 / 최초 등록</button><p id="loginNote">이 기기에서는 프론트 직원 계정별 PIN을 사용합니다. 모든 기록은 본인이 확인한 후 즉시 기록됩니다.</p><p class="subnote">※ 이 파일은 같은 브라우저 내 탭 간 변경 사항을 반영합니다. 직원 간 기기별 실시간 동기화는 별도 서버 연결이 필요합니다.</p></div></div>
 <div class="wrap"><header class="mast"><div class="brand"><span class="logo">✳</span><span>TOYU RYOKAN <b>HOTEL WORK CLOUD</b></span></div><span class="mini" id="todayLabel"></span></header>
@@ -1008,7 +1063,7 @@ body:has(.dialog.show) .quicknav,body:has(#timeSheet:not([hidden])) .quicknav{vi
 <section class="staff-panel" id="staffActivity"><div class="assignment-head"><div><small>STAFF ACTIVITY</small><h2>직원실시간 업무상황실 <span class="live-dot"></span></h2><p>직원별 완료 업무와 처리 시각, 상세 메모 및 근무 위치를 확인합니다.</p></div></div><div id="staffGrid" class="staff-grid"></div></section>
 <div class="userhead"><div><small>오늘 로그인한 직원</small><strong id="bigIdentity">로그인해 주세요</strong></div><button class="primarybtn" id="logout">로그아웃</button></div>
 <section id="myShift" class="panel myshift"><h2 id="myShiftTitle">나의 오늘 근무</h2><div class="shift-clock"><button type="button" id="clockIn" class="primarybtn">출근 기록</button><button type="button" id="clockOut" class="primarybtn">퇴근 기록</button><button type="button" id="breakRecord" class="primarybtn light-btn">휴게시간</button><span id="clockStatus">출근·퇴근 시간을 기록해 주세요.</span><div id="breakHistory" class="break-history" aria-live="polite"></div></div><p id="myDuties">업무/담당 요약: 지정된 업무를 확인해 주세요.</p></section>
-<section class="vacancy-panel" id="dehumidRoom"><h2>제습 상황실</h2><p>객실 공실 여부를 선택하면 객실 제습기 기록이 활성화됩니다. 지층 백오피스는 공실 여부와 관계없이 기록할 수 있습니다.</p><div id="dehumidGrid" class="dehumid-grid"></div><div id="dehumidHistory"></div></section>
+<section class="vacancy-panel" id="dehumidRoom"><h2>제습 상황실</h2><p>객실 공실 여부를 선택하면 객실 제습기 기록이 활성화됩니다. 101·102호는 입실 시 백오피스 제습기를 조작할 수 있습니다. 401호는 백오피스 제습기 조작 대상이 아닙니다.</p><div id="dehumidGrid" class="dehumid-grid"></div><div id="dehumidHistory"></div></section>
 <div class="exportbar"><span class="pill">오늘의 업무 기록</span><button class="excel" data-excel>📗 엑셀로 출력</button></div>
 <h2 class="zone-title">직원 근무 위치</h2><p class="zone-guide">직원 이름을 드래그해 근무 구역에 배치하세요. 휴대폰에서는 이름을 선택한 뒤 구역을 누르세요.</p><div class="zones" id="zones"></div>
 <div class="panel"><div class="controls"><div class="control"><b>나의 출근 시간</b><div class="shift-group"><button class="shift active" data-shift="07">07:00</button><button class="shift" data-shift="09">09:00</button><button class="shift" data-shift="14">14:00</button><button class="shift" data-shift="all">전체</button></div></div><div class="control"><b>업무 날짜</b><input type="date" id="date"></div></div><p class="hint">업무 내용에 맞게 적힌 확인 문장을 읽고, 실제로 끝낸 경우에만 눌러 주세요. 같은 업무의 완료 기록은 계속 누적됩니다.</p><div class="utils"><button id="export">기록 백업(JSON)</button><button id="import">백업 불러오기</button><input hidden type="file" accept="application/json" id="file"></div></div>
@@ -1033,7 +1088,7 @@ add('07:00','07','101호·102호 객실 상태 확인하기');rows[rows.length-1
 add('07:00','07','101호·102호 팬 작동 확인하기');rows[rows.length-1].group='지층 객실 점검';rows[rows.length-1].condition='basement';rows[rows.length-1].doneLabel='101호·102호 팬 작동을 확인하였습니다!';
 add('07:00','07','101호·102호 객실 향기 확인 후 룸스프레이 뿌리기');rows[rows.length-1].group='지층 객실 점검';rows[rows.length-1].condition='basement';rows[rows.length-1].doneLabel='101호·102호 객실 향기를 확인하고 룸스프레이를 뿌렸습니다!';
 add('07:00','07','스탠다드 객실 상태 확인하기');rows[rows.length-1].group='스탠다드 객실 점검';rows[rows.length-1].condition='standard';rows[rows.length-1].doneLabel='스탠다드 객실 상태를 확인하였습니다!';
-add('07:00','07','스탠다드 객실 팬 작동 확인하기');rows[rows.length-1].group='스탠다드 객실 점검';rows[rows.length-1].condition='standard';rows[rows.length-1].doneLabel='스탠다드 객실 팬 작동을 확인하였습니다!';
+
 add('07:00','07','스탠다드 객실 향기 확인 후 룸스프레이 뿌리기');rows[rows.length-1].group='스탠다드 객실 점검';rows[rows.length-1].condition='standard';rows[rows.length-1].doneLabel='스탠다드 객실 향기를 확인하고 룸스프레이를 뿌렸습니다!';
 add('07:00','07','101호 제습기 물 비우기');rows[rows.length-1].group='지층 제습기';rows[rows.length-1].condition='dehumid';rows[rows.length-1].doneLabel='101호 제습기 물을 비웠습니다!';
 add('07:00','07','102호 제습기 물 비우기');rows[rows.length-1].group='지층 제습기';rows[rows.length-1].condition='dehumid';rows[rows.length-1].doneLabel='102호 제습기 물을 비웠습니다!';
@@ -1103,7 +1158,7 @@ const catalogKey='toyu-task-catalog-v8';
 const builtinTasks=rows.map(t=>({...t,shifts:[...t.shifts]}));
 function catalogLoad(){
  try{const saved=JSON.parse(localStorage.getItem(catalogKey)||'null');if(!saved||!Array.isArray(saved.tasks))return;
-  const list=saved.tasks.filter(t=>t&&typeof t.id==='string'&&typeof t.text==='string'&&Array.isArray(t.shifts));
+  const list=saved.tasks.filter(t=>t&&typeof t.id==='string'&&typeof t.text==='string'&&Array.isArray(t.shifts)&&t.text!=='스탠다드 객실 팬 작동 확인하기');
   if(list.length||saved.tasks.length===0)rows.splice(0,rows.length,...list.map(t=>({...t,shifts:t.shifts.filter(sh=>['07','09','14'].includes(sh))})));
  }catch(e){console.warn('업무 목록을 불러오지 못했습니다.',e)}
 }
@@ -1357,12 +1412,15 @@ function drawDehumid(){
  return `<article class="dehumid-cell" data-dh-room="${n}"><header class="dh-room-header"><h3>${name}</h3><span class="dh-status ${vac==='O'?'is-vacant':vac==='X'?'is-occupied':''}">${vac==='O'?'공실 O':vac==='X'?'입실 · 공실 X':'상태 미설정'}</span></header>
  <div class="dh-status-panel"><b>객실 상태 선택</b><p>상태를 선택한 뒤 저장해야 작업 화면에 반영됩니다.</p><div class="vacancy-buttons"><button type="button" data-room="${n}" data-vac="O" class="${vac==='O'?'selected':''}">공실 O</button><button type="button" data-room="${n}" data-vac="X" class="${vac==='X'?'selected':''}">입실 (공실 X)</button></div><button type="button" class="dh-save dh-save-subtle" data-save-vac="${n}">객실 상태 저장</button>${v?saved(v,'객실 상태 기록'):''}</div>
  ${vac==='O'?`<div class="dh-workflow"><h4>객실 제습기 점검</h4><p>공실 상태이므로 객실 제습기 1·2대를 점검할 수 있습니다.</p>${saved(water,'객실 제습 기록')}<details class="dh-editor-details" ${water?'':'open'}><summary>${water?'새 객실 제습 기록 입력':'제습기 1·2대 기록하기'}</summary>${waterForm}<button type="button" class="dh-save" data-save-water="${n}">객실 제습 기록 저장</button></details></div>`:''}
- ${vac==='X'?`<div class="dh-workflow"><h4>백오피스 제습기 조작</h4><p>입실 상태이므로 객실 제습기 점검은 표시하지 않습니다.</p>${saved(office,'백오피스 기록')}<details class="dh-editor-details" ${office?'':'open'}><summary>${office?'새 백오피스 기록 입력':'백오피스 제습기 기록하기'}</summary>${officeForm}<button type="button" class="dh-save" data-save-office="${n}">백오피스 기록 저장</button></details></div>`:''}
+ ${vac==='X'&&n!=='401'?`<div class="dh-workflow"><h4>백오피스 제습기 조작</h4><p>입실 상태이므로 객실 제습기 점검은 표시하지 않습니다.</p>${saved(office,'백오피스 기록')}<details class="dh-editor-details" ${office?'':'open'}><summary>${office?'새 백오피스 기록 입력':'백오피스 제습기 기록하기'}</summary>${officeForm}<button type="button" class="dh-save" data-save-office="${n}">백오피스 기록 저장</button></details></div>`:''}
+ ${vac==='X'&&n==='401'?'<div class="dh-occupied-info">입실 상태입니다. 401호는 백오피스 제습기 조작 대상이 아니므로 별도 제습기 입력이 필요하지 않습니다.</div>':''}
  ${!vac?'<div class="dh-empty-saved">객실 상태를 먼저 저장하면 해당 작업 항목이 나타납니다.</div>':''}</article>`;
  };
  $('#dehumidGrid').innerHTML=names.map(room).join('');
  const hist=(data.history||[]).slice().reverse();
- $('#dehumidHistory').innerHTML=`<section class="dh-history"><div class="dh-history-head"><h3>제습 상황 기록</h3><span>${hist.length}건</span></div>${hist.length?hist.map(r=>`<div class="dehumid-log"><div class="dh-log-meta"><b>${escH(r.room)}호</b><time>${escH(r.at)}</time><span>${escH(r.who)}</span></div><div class="dh-log-text">${escH(r.detail)}</div></div>`).join(''):'<p class="dh-empty">아직 저장된 기록이 없습니다.</p>'}</section>`;
+ const groups=['101','102','401'].map(n=>({n,entries:hist.filter(r=>r.room===n)}));
+ const latestLabel=r=>r.type==='vac'?'객실 상태':r.type==='office'?'백오피스':'객실 제습기';
+ $('#dehumidHistory').innerHTML=`<section class="dh-history dh-history-compact"><div class="dh-history-head"><h3>제습 상황 기록</h3><span>총 ${hist.length}건</span></div><p class="dh-history-guide">최근 기록을 한눈에 확인하고, 객실을 누르면 이전 기록이 펼쳐집니다.</p><div class="dh-history-grid">${groups.map(g=>{const top=g.entries[0];return `<details class="dh-history-room"><summary><span class="dh-history-room-name">${g.n}호 <small>${g.entries.length}건</small></span><span class="dh-history-preview">${top?`<b>${escH(latestLabel(top))}</b> <span>${escH(top.detail)}</span>`:'아직 기록 없음'}</span><span class="dh-history-when">${top?`${escH(top.at.slice(-5))} · ${escH(top.who)}`:''}</span><span class="dh-chevron">⌄</span></summary><div class="dh-room-log-list">${g.entries.length?g.entries.map(r=>`<div class="dh-compact-log"><div class="dh-compact-meta"><span>${escH(latestLabel(r))}</span><time>${escH(r.at.slice(-5))}</time><span>${escH(r.who)}</span></div><p>${escH(r.detail)}</p></div>`).join(''):'<p class="dh-empty">저장된 기록이 없습니다.</p>'}</div></details>`}).join('')}</div></section>`;
 }
 $('#dehumidGrid').addEventListener('click',e=>{
  const b=e.target.closest('button');if(!b||!identity)return;
@@ -1372,7 +1430,7 @@ $('#dehumidGrid').addEventListener('click',e=>{
  const d=dehumidStore();d.history??=[];d[n]??={};let detail='',type='';
  if(b.dataset.saveVac){const pending=b.closest('.dehumid-cell').dataset.pendingVac;if(!pending)return alert('공실 여부를 먼저 선택해 주세요.');if(d[n].vac===pending)return alert('이미 저장된 객실 상태입니다.');d[n].vac=pending;detail=pending==='O'?'공실 O · 공실':'입실 (공실 X)';type='vac';}
  else if(b.dataset.saveWater){if(d[n].vac!=='O')return alert('공실 O 상태를 먼저 저장해 주세요.');const v=[1,2].map(k=>`제습기 ${k}: ${b.closest('.dehumid-cell').querySelector('[data-choice-group=\"water-'+n+'-'+k+'\"] .selected')?.dataset.choice||'미입력'} · ${$('#emptied-'+n+'-'+k).checked?'물 비움':'물 비우지 않음'}`);if(v.some(x=>x.includes('미입력')))return alert('두 제습기의 물 상태를 선택해 주세요.');detail=v.join(' / ');type='water';}
- else if(b.dataset.saveOffice){const hum=$('#humidity-'+n).value;if(hum===''||+hum<0||+hum>100)return alert('습도를 0~100%로 입력해 주세요.');const power=b.closest('.dehumid-cell').querySelector('[data-choice-group=\"power-'+n+'\"] .selected')?.dataset.choice;if(!power)return alert('백오피스 제습기 전원 상태를 선택해 주세요.');detail=power+' · 습도 '+hum+'%';type='office';}
+ else if(b.dataset.saveOffice){if(n==='401')return alert('401호는 백오피스 제습기 조작 대상이 아닙니다.');const hum=$('#humidity-'+n).value;if(hum===''||+hum<0||+hum>100)return alert('습도를 0~100%로 입력해 주세요.');const power=b.closest('.dehumid-cell').querySelector('[data-choice-group=\"power-'+n+'\"] .selected')?.dataset.choice;if(!power)return alert('백오피스 제습기 전원 상태를 선택해 주세요.');detail=power+' · 습도 '+hum+'%';type='office';}
  else return;
  d.history.push({room:n,type,detail,who:identity,at:localStamp()});saveDehumid(d);
  if(type==='vac'&&(n==='101'||n==='102')){const ops=roomopsRead();ops.rooms??={};ops.history??=[];ops.rooms[n]={...roomopsDefault(),...(ops.rooms[n]||{}),vac:d[n].vac,at:localStamp(),who:identity};ops.history.push({room:n,who:identity,at:localStamp(),detail:'제습 상황실에서 '+detail});localStorage.setItem(roomopsKey(),JSON.stringify(ops));conditions.basement=['101','102'].some(k=>ops.rooms[k]?.vac==='X')?'X':'O';conditions.dehumid=conditions.basement;save();render();drawRoomops(true);}
