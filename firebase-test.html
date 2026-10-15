@@ -2190,6 +2190,11 @@ document.addEventListener('click',event=>{
     originalNotesSave();
     if(ready&&!applyingRemote&&window.TOYU_FB?.publishNotes)window.TOYU_FB.publishNotes(date(),safeCopy(staffNotes));
   };
+  window.TOYU_CLOUD_RESET_TASKS=(day)=>{
+    if(date()!==day)return;
+    applyingRemote=true;
+    try{records={};originalSave();render()}finally{applyingRemote=false}
+  };
   window.TOYU_CLOUD_APPLY_TASK=(day,id,value)=>{
     if(date()!==day)return;
     applyingRemote=true;
@@ -2295,102 +2300,106 @@ document.addEventListener('click',event=>{
 <script type="module" id="toyu-firebase-auth-test">
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js';
 import {getAuth,signInWithEmailAndPassword,signOut,onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/13.0.0/firebase-auth.js';
-import {getFirestore,doc,getDoc,setDoc,deleteDoc,collection,onSnapshot,serverTimestamp} from 'https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js';
-const config={apiKey:'AIzaSyBsksVrgM5tCaw3FCUxOZZkAmjOt6Nz5sA',authDomain:'front-ac40a.firebaseapp.com',projectId:'front-ac40a',storageBucket:'front-ac40a.firebasestorage.app',messagingSenderId:'986990525854',appId:'1:986990525854:web:c834f35d490042958bea8f',measurementId:'G-LCXMNTTTQQ'};
-const app=initializeApp(config);
-const auth=getAuth(app);
-const db=getFirestore(app);
-let unsubs=[];
-let signedIn=false;
-function stopSync(){for(const off of unsubs)try{off()}catch{}unsubs=[];window.TOYU_CLOUD_ACTIVE?.(false)}
-function syncStatus(s,error=false){window.TOYU_SYNC_STATUS?.(s,error)}
+import {getFirestore,doc,getDoc,collection,onSnapshot,runTransaction,serverTimestamp} from 'https://www.gstatic.com/firebasejs/13.0.0/firebase-firestore.js';
+const config={apiKey:'AIzaSyBsksVrgM5tCaw3FCUxOZZkAmjOt6Nz5sA',authDomain:'front-ac40a.firebaseapp.com',projectId:'front-ac40a',storageBucket:'front-ac40a.firebasestorage.app',messagingSenderId:'986990525854',appId:'1:986990525854:web:c834f35d490042958bea8f'};
+const app=initializeApp(config),auth=getAuth(app),db=getFirestore(app);
+let unsubs=[],signedIn=false,generation=0;
+const versions=new Map(), loaded=new Set(), pending=new Set(), conflicts=[];
+const key=(day,kind,id)=>`${day}/${kind}/${id}`;
+const remoteValue=s=>s.exists()?(s.data().value??null):null;
+function status(t,error=false){window.TOYU_SYNC_STATUS?.(t,error)}
+function clearListeners(){++generation;for(const off of unsubs)try{off()}catch{}unsubs=[];versions.clear();loaded.clear();pending.clear();window.TOYU_CLOUD_ACTIVE?.(false);window.TOYU_EXTRA_READY?.(false)}
+function applySnapshot(s,day,kind,id){
+ const k=key(day,kind,id),wasLoaded=loaded.has(k);
+ // Listen to committed server state, not optimistic local writes.
+ if(s.metadata.hasPendingWrites)return;
+ versions.set(k,s.exists()?Number(s.data().__revision||0):0);
+ loaded.add(k);
+ const value=remoteValue(s);
+ if(kind==='task')window.TOYU_CLOUD_APPLY_TASK?.(day,id,value);
+ if(kind==='notes')window.TOYU_CLOUD_APPLY_NOTES?.(day,value||{});
+ if(kind==='taskMemos')window.TOYU_CLOUD_APPLY_TASKMEMOS?.(day,value||{});
+ if(kind==='extra')window.TOYU_EXTRA_APPLY?.(day,id,value);
+ return wasLoaded;
+}
+async function persist(day,kind,id,value){
+ if(!auth.currentUser||!signedIn){status('로그인되지 않아 저장할 수 없습니다.',true);return false}
+ const k=key(day,kind,id);
+ if(!loaded.has(k)){status('서버 데이터 수신 전입니다. 잠시 뒤 다시 저장해 주세요.',true);return false}
+ if(pending.has(k)){status('해당 항목 저장 중입니다. 완료 후 다시 시도해 주세요.',true);return false}
+ pending.add(k); status('클라우드 저장 중…');
+ const path=kind==='task'?['workdays',day,'tasks',id]:['workdays',day,'meta',id];
+ const ref=doc(db,...path),base=versions.get(k)||0;
+ try{
+   await runTransaction(db,async tx=>{
+     const snapshot=await tx.get(ref);
+     const revision=snapshot.exists()?Number(snapshot.data().__revision||0):0;
+     if(revision!==base)throw new Error('CONFLICT');
+     tx.set(ref,{value:value??null,__revision:revision+1,updatedAt:serverTimestamp(),updatedBy:auth.currentUser.uid});
+     // An immutable audit event written in the same transaction, no previous record overwritten.
+     const auditRef=doc(collection(db,'workdays',day,'audit'));
+     tx.set(auditRef,{kind,id,action:value===null?'delete':'save',actor:auth.currentUser.uid,at:serverTimestamp(),revision:revision+1,previous:snapshot.exists()?JSON.stringify(snapshot.data().value??null).slice(0,15000):null});
+   });
+   versions.set(k,base+1);status('✓ 클라우드 저장 완료');return true;
+ }catch(e){
+   const conflict=e.message==='CONFLICT';
+   if(conflict){
+     conflicts.push({date:day,kind,id,at:new Date().toISOString()});
+     status('⚠ 다른 직원이 먼저 변경했습니다. 최신 서버 기록으로 다시 불러옵니다.',true);
+   }else status('⚠ 저장 실패: '+(e.code||e.message)+' · 네트워크/권한을 확인하세요.',true);
+   try{
+     const server=await getDoc(ref);
+     applySnapshot(server,day,kind,id);
+   }catch(readErr){console.error('Could not refresh server data',readErr)}
+   console.warn('TOYU save failed',kind,id,e);return false;
+ }finally{pending.delete(k)}
+}
 window.TOYU_FB={
-  async signIn(email,password){
-    const cred=await signInWithEmailAndPassword(auth,email,password);
-    try{
-      const snap=await getDoc(doc(db,'staff',cred.user.uid));
-      if(!snap.exists())throw new Error('Firestore staff 목록에 등록된 계정이 아닙니다.');
-      const staff=snap.data();
-      if(staff.active!==true)throw new Error('비활성 직원 계정입니다.');
-      signedIn=true;return {staff,uid:cred.user.uid};
-    }catch(err){await signOut(auth);throw err;}
-  },
-  signOut:async()=>{signedIn=false;stopSync();return signOut(auth)},
-  startSync(day){
-    stopSync();
-    if(!auth.currentUser||!signedIn||!/^\d{4}-\d{2}-\d{2}$/.test(day))return;
-    syncStatus('Firebase 실시간 연결 중…');
-    const tasks=collection(db,'workdays',day,'tasks');
-    const notes=doc(db,'workdays',day,'meta','staffNotes');
-    let tasksReady=false, notesReady=false, memosReady=false, extrasReady=false;
-    window.TOYU_EXTRA_READY?.(false);
-    const markReady=()=>{if(tasksReady&&notesReady&&memosReady&&extrasReady){window.TOYU_CLOUD_ACTIVE?.(true);syncStatus('● 실시간 동기화 연결됨')}};
-    unsubs.push(onSnapshot(tasks,s=>{
-      // Initial snapshot applies existing cloud items, never silently uploads local-only records.
-      for(const change of s.docChanges()){
-        const d=change.doc.data();
-        window.TOYU_CLOUD_APPLY_TASK?.(day,change.doc.id,change.type==='removed'?null:(d.value??null));
-      }
-      tasksReady=true;markReady();
-    },err=>{syncStatus('업무 동기화 오류: '+err.code,true);window.TOYU_CLOUD_ACTIVE?.(false)}));
-    unsubs.push(onSnapshot(doc(db,'workdays',day,'meta','taskMemos'),s=>{
-      if(s.exists())window.TOYU_CLOUD_APPLY_TASKMEMOS?.(day,s.data().value||{});
-      memosReady=true;markReady();
-    },err=>{syncStatus('업무 메모 동기화 오류: '+err.code,true);window.TOYU_CLOUD_ACTIVE?.(false)}));
-    // Extra operational records: independent Firestore documents per feature and date.
-    const extraNames=window.TOYU_EXTRA_DESCRIPTORS?.()||[];
-    let extrasPending=extraNames.length+2;
-    const extraComplete=()=>{if(--extrasPending===0){extrasReady=true;window.TOYU_EXTRA_READY?.(true);markReady()}};
-    const watchExtra=(dateKey,name)=>{
-      unsubs.push(onSnapshot(doc(db,'workdays',dateKey,'meta',name),snapshot=>{
-        if(snapshot.exists())window.TOYU_EXTRA_APPLY?.(dateKey,name,snapshot.data().value??null);
-        if(!watchExtra.ready.has(dateKey+'/'+name)){watchExtra.ready.add(dateKey+'/'+name);extraComplete()}
-      },err=>{syncStatus('운영 기록 동기화 오류 ('+name+'): '+err.code,true);window.TOYU_EXTRA_READY?.(false)}));
-    };
-    watchExtra.ready=new Set();
-    for(const name of extraNames)watchExtra(day,name);
-    watchExtra('_shared','catalog');
-    watchExtra('_shared','weeklySchedule');
-    unsubs.push(onSnapshot(notes,s=>{
-      if(s.exists())window.TOYU_CLOUD_APPLY_NOTES?.(day,s.data().value||{});
-      notesReady=true;markReady();
-    },err=>{syncStatus('메모 동기화 오류: '+err.code,true);window.TOYU_CLOUD_ACTIVE?.(false)}));
-  },
-  async publishExtra(day,name,value){
-    if(!auth.currentUser||!signedIn)return;
-    try{
-      const ref=doc(db,'workdays',day,'meta',name);
-      if(value===null)await deleteDoc(ref);
-      else await setDoc(ref,{value,updatedAt:serverTimestamp(),updatedBy:auth.currentUser.uid});
-      syncStatus('✓ '+name+' 공용 기록 저장 완료');
-    }catch(err){syncStatus(name+' 저장 실패: '+(err.code||err.message),true);console.error('Firebase extra sync failure',name,err)}
-  },
-  async publishTask(day,id,value){
-    if(!auth.currentUser||!signedIn)return;
-    syncStatus('업무 기록 클라우드 저장 중…');
-    try{
-      const ref=doc(db,'workdays',day,'tasks',id);
-      if(value===null)await deleteDoc(ref);else await setDoc(ref,{value,updatedAt:serverTimestamp(),updatedBy:auth.currentUser.uid});
-      syncStatus('✓ 업무 기록 클라우드 저장 완료');
-    }catch(err){syncStatus('저장 실패 · 인터넷/권한 확인: '+err.code,true);console.error('TOYU cloud task save failed',err)}
-  },
-  async publishTaskMemos(day,value){
-    if(!auth.currentUser||!signedIn)return;
-    syncStatus('업무 메모 클라우드 저장 중…');
-    try{await setDoc(doc(db,'workdays',day,'meta','taskMemos'),{value,updatedAt:serverTimestamp(),updatedBy:auth.currentUser.uid});syncStatus('✓ 업무 메모 클라우드 저장 완료')}
-    catch(err){syncStatus('업무 메모 저장 실패: '+err.code,true);console.error('TOYU task memo save failed',err)}
-  },
-  async publishNotes(day,value){
-    if(!auth.currentUser||!signedIn)return;
-    syncStatus('직원 메모 클라우드 저장 중…');
-    try{await setDoc(doc(db,'workdays',day,'meta','staffNotes'),{value,updatedAt:serverTimestamp(),updatedBy:auth.currentUser.uid});syncStatus('✓ 직원 메모 클라우드 저장 완료')}
-    catch(err){syncStatus('메모 저장 실패: '+err.code,true);console.error('TOYU cloud notes save failed',err)}
-  },
-  setStatus(value){let n=document.querySelector('#firebaseLoginState');if(n)n.textContent=value}
+ async signIn(email,password){
+  const cred=await signInWithEmailAndPassword(auth,email,password);
+  try{const snap=await getDoc(doc(db,'staff',cred.user.uid));
+   if(!snap.exists())throw new Error('직원 등록 정보가 없습니다.');
+   const staff=snap.data();if(staff.active!==true)throw new Error('비활성 계정입니다.');
+   signedIn=true;return{staff,uid:cred.user.uid};
+  }catch(e){await signOut(auth);throw e}
+ },
+ signOut:async()=>{signedIn=false;clearListeners();return signOut(auth)},
+ startSync(day){
+  clearListeners();if(!auth.currentUser||!signedIn||!/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(day))return;
+  const current=++generation;status('Firebase 서버와 연결 중…');
+  const extraNames=window.TOYU_EXTRA_DESCRIPTORS?.()||[];
+  const expected=new Set(['tasks','staffNotes','taskMemos',...extraNames.map(x=>'extra:'+day+':'+x),'extra:_shared:catalog','extra:_shared:weeklySchedule']);
+  const finished=new Set();
+  function ready(name){finished.add(name);if(finished.size===expected.size){window.TOYU_EXTRA_READY?.(true);window.TOYU_CLOUD_ACTIVE?.(true);status('● 서버 연결됨 · 기록 보호 활성화')}}
+  function onError(name,error){status('⚠ '+name+' 수신 오류: '+(error.code||error.message),true);window.TOYU_CLOUD_ACTIVE?.(false);window.TOYU_EXTRA_READY?.(false)}
+  const tasks=collection(db,'workdays',day,'tasks');
+  unsubs.push(onSnapshot(tasks,{includeMetadataChanges:true},snapshot=>{
+   if(current!==generation)return;
+   if(snapshot.metadata.fromCache){status('오프라인/캐시 상태 · 서버 저장을 확인하세요',true);return}
+   if(!finished.has('tasks'))window.TOYU_CLOUD_RESET_TASKS?.(day);
+   for(const ch of snapshot.docChanges()){if(!ch.doc.metadata.hasPendingWrites)applySnapshot(ch.doc,day,'task',ch.doc.id)}
+   ready('tasks');
+  },e=>onError('업무',e)));
+  function watch(dayKey,docName,kind,doneName){
+   const r=doc(db,'workdays',dayKey,'meta',docName);
+   unsubs.push(onSnapshot(r,{includeMetadataChanges:true},snapshot=>{
+    if(current!==generation)return;
+    if(snapshot.metadata.fromCache){status('오프라인/캐시 상태 · 서버 저장을 확인하세요',true);return}
+    applySnapshot(snapshot,dayKey,kind,docName);ready(doneName);
+   },e=>onError(docName,e)));
+  }
+  watch(day,'staffNotes','notes','staffNotes');watch(day,'taskMemos','taskMemos','taskMemos');
+  extraNames.forEach(n=>watch(day,n,'extra','extra:'+day+':'+n));
+  watch('_shared','catalog','extra','extra:_shared:catalog');
+  watch('_shared','weeklySchedule','extra','extra:_shared:weeklySchedule');
+ },
+ publishExtra:(d,n,v)=>persist(d,'extra',n,v),
+ publishTask:(d,id,v)=>persist(d,'task',id,v),
+ publishTaskMemos:(d,v)=>persist(d,'taskMemos','taskMemos',v),
+ publishNotes:(d,v)=>persist(d,'notes','staffNotes',v),
+ getConflicts:()=>conflicts.slice(),
+ setStatus(t){const el=document.querySelector('#firebaseLoginState');if(el)el.textContent=t}
 };
-onAuthStateChanged(auth,user=>{
- const n=document.querySelector('#firebaseLoginState');
- if(n)n.textContent=user?'Firebase 연결됨 · 직원 확인 완료':'Firebase 로그인 대기';
-});
+onAuthStateChanged(auth,user=>{const el=document.querySelector('#firebaseLoginState');if(el)el.textContent=user?'Firebase 인증 연결됨':'Firebase 로그인 대기'});
 </script>
-<div id="toyuCloudNotice" style="margin:18px auto;max-width:900px;padding:12px 16px;border:1px solid #b5cafa;border-radius:14px;background:#f4f8ff;color:#153766;font:500 12px/1.6 system-ui;">Firebase 통합 테스트: 업무 완료·메모·제습·근무 위치·업무 분장·출퇴근/휴게·주간 스케줄·업무 후기 등을 동기화합니다. 동시 편집은 먼저 저장한 기록이 나중 기록으로 덮일 수 있으니 시험용 업무만 사용하세요.</div></body></html>
+<div id="toyuCloudNotice" style="margin:18px auto;max-width:900px;padding:12px 16px;border:1px solid #b5cafa;border-radius:14px;background:#f4f8ff;color:#153766;font:500 12px/1.6 system-ui;">Firebase 운영 안정화 시험판: 항목별 버전 검증으로 동시 저장 충돌을 알리고, 수정·삭제 내역을 감사 기록으로 남깁니다. 저장 실패 안내가 나오면 성공으로 간주하지 마세요. 운영 전 기기별 테스트가 필요합니다.</div></body></html>
