@@ -913,6 +913,48 @@ h1,h2,h3,.title,.brand,.hero-greeting,.hero-title,.task .text,.done-word,.sectio
 .task-editor-fields fieldset{border:1px solid #dbe4ef;border-radius:10px;padding:12px;display:flex;gap:15px;flex-wrap:wrap}
 .task-editor-fields fieldset label{display:flex;align-items:center;gap:6px}.task-editor-fields input[type=checkbox]{width:auto;margin:0}
 @media(max-width:700px){.task-editor-section{padding:15px}.task .text{font-size:16px!important}}
+</style><style id="v10-a11y-mobile-nav">
+/* v10 · completed-card high contrast and compact mobile navigation */
+.task.blue-completed,.task.blue-completed.done-history,.task.blue-completed.task-accent,
+.task.blue-completed:nth-child(4n+2){background:#286de3!important;background-image:linear-gradient(135deg,#276fe4,#4d8dec)!important;color:#ffffff!important;border-color:#2568db!important;}
+.task.blue-completed .text,.task.blue-completed .category,.task.blue-completed .time,
+.task.blue-completed .task-memo-heading,.task.blue-completed .task-memo-heading span,
+.task.blue-completed .rightflag:not(.overdueflag){color:#ffffff!important;opacity:1!important;filter:none!important;text-shadow:none!important;}
+.task.blue-completed .time,.task.blue-completed .category{background:#ffffff20!important;border-color:#ffffff55!important;color:#fff!important;}
+.task.blue-completed .text{font-weight:800!important;opacity:1!important;-webkit-text-fill-color:#fff!important;}
+.task.blue-completed .done-word{background:#080b12!important;color:#fff!important;-webkit-text-fill-color:#fff!important;}
+.task.blue-completed .completion-chip,.task.blue-completed .completion-history .completion-chip{background:#fff!important;color:#20334e!important;}
+.task.blue-completed .chip-name{color:#20334e!important;-webkit-text-fill-color:#20334e!important;}
+.task.blue-completed .chip-time{color:#63748d!important;-webkit-text-fill-color:#63748d!important;}
+.task.blue-completed .completion-chip .chip-check{background:#fff!important;}
+.task.blue-completed .task-memo-area,.task.blue-completed .exception-note,.task.blue-completed .handoff-note{background:#fff!important;color:#24374f!important;}
+.task.blue-completed .task-memo-area *, .task.blue-completed .exception-note *, .task.blue-completed .handoff-note *{color:#24374f!important;}
+.task.blue-completed .task-manage-actions button,.task.blue-completed .undo-completion,.task.blue-completed .finish-btn.add-my-completion{background:#fff!important;color:#1556b9!important;border-color:#fff!important;}
+@media(max-width:740px){
+ /* Only a small corner menu remains while working on cards */
+ .quicknav{right:10px!important;bottom:calc(12px + env(safe-area-inset-bottom))!important;gap:6px!important;max-width:calc(100vw - 20px)!important;z-index:65!important;}
+ .quicknav #stickyProgress{display:none!important;}
+ .quicknav #vacancyQuick,.quicknav #toTop,.quicknav #toBottom,.quicknav #adminLock{display:none!important;}
+ .quicknav #tocToggle{display:block!important;min-width:0!important;min-height:44px!important;padding:10px 15px!important;background:#142e52!important;color:#fff!important;border:1px solid #142e52!important;border-radius:999px!important;font-size:12px!important;box-shadow:0 6px 17px #122d5333!important;}
+ .quicknav:has(#tocMenu:not([hidden])) #vacancyQuick,.quicknav:has(#tocMenu:not([hidden])) #toTop,.quicknav:has(#tocMenu:not([hidden])) #toBottom,.quicknav:has(#tocMenu:not([hidden])) #adminLock{display:block!important;min-width:142px!important;min-height:40px!important;background:#fff!important;color:#24374e!important;box-shadow:0 4px 16px #233e6319!important;}
+ .quicknav:has(#tocMenu:not([hidden])) #vacancyQuick{display:flex!important;}
+ .quicknav:has(#tocMenu:not([hidden])) #adminLock{min-width:45px!important;opacity:1!important;}
+ .quicknav #tocMenu{bottom:60px!important;right:0!important;max-height:min(58dvh,460px)!important;overflow-y:auto!important;width:min(310px,calc(100vw - 20px))!important;z-index:2!important;}
+ .wrap{padding-bottom:85px!important;}
+ .task .finish-btn,.task .undo-completion{position:relative;z-index:1;}
+}
+/* A confirmation dialog must always appear above floating navigation. */
+body:has(.dialog.show) .quicknav,body:has(#timeSheet:not([hidden])) .quicknav{visibility:hidden!important;pointer-events:none!important;}
+</style><style id="v11-staff-design">
+/* V11: calm status hierarchy */
+#shiftReview{display:none!important}
+.exception-note{display:block!important;opacity:1!important;filter:none!important;background:#fff2f8!important;border:1px solid #f9cfe4!important;color:#b42875!important;font-size:13px!important;font-weight:700!important;line-height:1.75!important;text-align:center!important;white-space:pre-wrap!important;overflow-wrap:anywhere!important;margin:10px 0!important}
+.task.blue-completed .exception-note{background:#edf5ff!important;border-color:#c7e2ff!important;color:#1355bd!important}
+.staff-roster{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px}.roster-member{touch-action:manipulation;cursor:grab;border:1px solid #dae6ef;border-radius:12px;padding:9px 12px;background:#fff;color:#26364b;font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:7px}.roster-member.selected{border-color:#4289f1;background:#edf5ff}.presence-dot{width:9px;height:9px;display:inline-block;border-radius:50%;background:#18b879;box-shadow:0 0 0 3px #d7f6e7;animation:toyuPresence 2.2s ease-in-out infinite}.presence-dot.off{background:#b4c0cf;box-shadow:none;animation:none}@keyframes toyuPresence{50%{box-shadow:0 0 0 6px #a0ecd144;opacity:.74}}
+.staff-location-note{font-size:12px;color:#69788b;margin:3px 0 14px}.zone.drop-target{outline:3px solid #3e86f1;outline-offset:2px}.zone-person{display:inline-flex!important;gap:6px;align-items:center}.zone-person::before{display:none!important}
+.staff-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.staff-card{border:1px solid #e0e7f0!important;border-radius:18px!important;background:#fff!important;padding:18px!important;min-width:0}.staff-card>strong{font-size:16px!important}.staff-card .staff-timeline{margin-top:13px;display:grid;gap:8px}.staff-event{display:grid;grid-template-columns:53px minmax(0,1fr);gap:10px;align-items:start;padding:10px 12px;border-radius:12px;background:#f4f7fb;color:#253349;font-size:12px;line-height:1.6}.staff-event time{font-variant-numeric:tabular-nums;font-weight:800;color:#5476a2}.staff-event.note{background:#fff0f6;color:#9d3f73}.staff-event.note time{color:#b14b84}.staff-event .body{white-space:pre-wrap;overflow-wrap:anywhere}.staff-note-add{display:block;width:100%;margin-top:12px;border:1px solid #cae1ff;border-radius:11px;background:#eff6ff;padding:10px;color:#2564ad;font-weight:800;font-size:12px;cursor:pointer}.staff-location{font-size:12px;color:#536879;line-height:1.7;margin:9px 0}.staff-empty{font-size:12px;color:#8290a1}.staff-panel{scroll-margin-top:26px}
+@media(max-width:760px){.staff-grid{grid-template-columns:1fr}.staff-card{padding:14px!important}.staff-event{grid-template-columns:45px minmax(0,1fr)}.zone-person{font-size:11px!important}}
+@media(prefers-reduced-motion:reduce){.presence-dot{animation:none}}
 </style></head><body>
 <div class="authcover" id="authcover"><div class="authcard"><button id="loginAdminLock" class="login-admin-lock" type="button" aria-label="관리자 접속" title="관리자 접속">♙</button><h2>TOYU RYOKAN<br>HOTEL WORK CLOUD</h2><p>본인 이름/직급으로 들어와 업무를 시작해 주세요.</p><label>직원 / 직위</label><select id="loginWho"><option value="">선택해 주세요</option><option>대표님</option><option>지배인님</option><option>매니저님(선영)</option><option>웅주임님(일웅)</option><option>은진</option><option>파트타이머1</option><option>파트타이머2</option><option>파트타이머3</option><option>기타 임원</option></select><div id="ptname" hidden><label>파트타이머 이름</label><input id="loginName" maxlength="30" placeholder="실제 이름을 적어 주세요"></div><label>직원별 비밀번호 (영문·숫자 6자리)</label><input id="loginPin" type="password" inputmode="text" maxlength="6" autocomplete="off" placeholder="직원별 지정 PIN을 입력하세요"><button class="primarybtn" id="loginBtn">로그인 / 최초 등록</button><p id="loginNote">이 기기에서는 프론트 직원 계정별 PIN을 사용합니다. 모든 기록은 본인이 확인한 후 즉시 기록됩니다.</p><p class="subnote">※ 이 파일은 같은 브라우저 내 탭 간 변경 사항을 반영합니다. 직원 간 기기별 실시간 동기화는 별도 서버 연결이 필요합니다.</p></div></div>
 <div class="wrap"><header class="mast"><div class="brand"><span class="logo">✳</span><span>TOYU RYOKAN <b>HOTEL WORK CLOUD</b></span></div><span class="mini" id="todayLabel"></span></header>
@@ -921,12 +963,12 @@ h1,h2,h3,.title,.brand,.hero-greeting,.hero-title,.task .text,.done-word,.sectio
 <section id="adminManager" hidden class="admin-manager"><div class="manager-head"><h2>관리자 기록 관리</h2><small>업무 기록 백업 · 선택 초기화</small></div><div class="manager-fields"><label>초기화 항목<select id="resetMode"><option value="task">선택한 업무 기록</option><option value="person">선택한 직원의 완료 기록</option><option value="completions">전체 업무 완료 기록 (선택 날짜)</option><option value="memos">메모 및 인계 기록 (선택 날짜)</option><option value="positions">직원 현재 근무 위치 (선택 날짜)</option><option value="assignments">업무분장 (선택 날짜)</option><option value="dehumid">제습 기록 (선택 날짜)</option><option value="attendance">출퇴근 기록 (선택 날짜)</option><option value="date">선택 날짜 모든 기록</option><option value="all">모든 날짜의 모든 운영 기록 (이 기기)</option></select></label><label id="selectTaskLabel">업무 선택<select id="adminTask"></select></label><label id="selectPersonLabel" hidden>직원 선택<select id="adminPerson"></select></label></div><details class="admin-pins"><summary>🔐 직원별 접속 비밀번호 확인</summary><div class="admin-pin-grid" id="adminPinList"></div><p>관리자 화면에서만 볼 수 있습니다. 단독 HTML의 PIN은 강력한 보안 인증이 아닙니다.</p></details><div class="manager-buttons"><button id="backupJson">JSON 기록 백업</button><button id="applyReset">선택 항목 초기화</button></div><p>초기화 전 반드시 백업해 주세요. 다른 기기의 저장 기록은 삭제되지 않습니다.</p></section><div class="top-actions"><button id="resetAll" class="reset-all">↺ 전체 초기화</button><span class="sync-indicator" id="syncIndicator">● 이 브라우저 저장 · 공유 미연결</span></div>
 <section id="progressDashboard" class="progress-dashboard" aria-label="전체 업무 진행 현황"><div class="progress-head"><div><small>DAILY WORK FLOW</small><h2>오늘의 업무 현황</h2></div><strong id="progressPercent">0%</strong></div><div id="progressRing" class="progress-flex"><div class="ring-wrap"><div id="progressCircle" class="progress-circle"><span id="ringValue">0%</span></div></div><div class="progress-meta"><div><b id="doneCount">0</b><small>완료</small></div><div><b id="remainingCount">0</b><small>남은 업무</small></div><div><b id="excludedCount">0</b><small>조건 미활성</small></div></div></div><div class="progress-track"><span id="progressFill"></span></div><div id="shiftProgress" class="shift-progress"></div><small class="localnote">선택한 날짜 · 해당 근무조의 업무 기준 / 실제 완료 항목 수</small></section>
 
-<section class="staff-panel" id="staffActivity"><div class="assignment-head"><div><small>STAFF ACTIVITY</small><h2>직원별 업무 상황실 <span class="live-dot"></span></h2><p>직원별 현재 업무 기록을 확인하고 업무 카드로 이동할 수 있습니다.</p></div></div><div id="staffGrid" class="staff-grid"></div></section>
+<section class="staff-panel" id="staffActivity"><div class="assignment-head"><div><small>STAFF ACTIVITY</small><h2>직원실시간 업무상황실 <span class="live-dot"></span></h2><p>직원별 완료 업무와 처리 시각, 상세 메모 및 근무 위치를 확인합니다.</p></div></div><div id="staffGrid" class="staff-grid"></div></section>
 <div class="userhead"><div><small>오늘 로그인한 직원</small><strong id="bigIdentity">로그인해 주세요</strong></div><button class="primarybtn" id="logout">로그아웃</button></div>
 <section id="myShift" class="panel myshift"><h2 id="myShiftTitle">나의 오늘 근무</h2><div class="shift-clock"><button type="button" id="clockIn" class="primarybtn">출근 기록</button><button type="button" id="clockOut" class="primarybtn">퇴근 기록</button><button type="button" id="breakRecord" class="primarybtn light-btn">휴게시간</button><span id="clockStatus">출근·퇴근 시간을 기록해 주세요.</span><div id="breakHistory" class="break-history" aria-live="polite"></div></div><p id="myDuties">업무/담당 요약: 지정된 업무를 확인해 주세요.</p></section>
 <section class="vacancy-panel" id="dehumidRoom"><h2>제습 상황실</h2><p>객실 공실 여부를 선택하면 객실 제습기 기록이 활성화됩니다. 지층 백오피스는 공실 여부와 관계없이 기록할 수 있습니다.</p><div id="dehumidGrid" class="dehumid-grid"></div><div id="dehumidHistory"></div></section>
 <div class="exportbar"><span class="pill">오늘의 업무 기록</span><button class="excel" data-excel>📗 엑셀로 출력</button></div>
-<h2 class="zone-title">지금 어디에서 일하고 있나요?</h2><p class="zone-guide">여러 활동을 동시에 선택할 수 있습니다. 선택한 항목을 다시 누르면 본인의 표시만 해제됩니다.</p><div class="zones" id="zones"></div>
+<h2 class="zone-title">직원 근무 위치</h2><p class="zone-guide">직원 이름을 드래그해 근무 구역에 배치하세요. 휴대폰에서는 이름을 선택한 뒤 구역을 누르세요.</p><div class="zones" id="zones"></div>
 <div class="panel"><div class="controls"><div class="control"><b>나의 출근 시간</b><div class="shift-group"><button class="shift active" data-shift="07">07:00</button><button class="shift" data-shift="09">09:00</button><button class="shift" data-shift="14">14:00</button><button class="shift" data-shift="all">전체</button></div></div><div class="control"><b>업무 날짜</b><input type="date" id="date"></div></div><p class="hint">업무 내용에 맞게 적힌 확인 문장을 읽고, 실제로 끝낸 경우에만 눌러 주세요. 같은 업무의 완료 기록은 계속 누적됩니다.</p><div class="utils"><button id="export">기록 백업(JSON)</button><button id="import">백업 불러오기</button><input hidden type="file" accept="application/json" id="file"></div></div>
 <div class="accountability" id="accountability"><div class="accountability-head"><div><h2>나의 출근시간대 미기록 업무 요약</h2><p>지나간 시간의 미기록 업무를 확인하고, 빠뜨린 업무는 사유를 남겨 주세요.</p></div><button id="shiftReview" class="review-btn">교대 점검하기</button></div><div id="pendingSummary"></div></div>
 <div class="vacancy-panel"><h2>객실 공실 여부</h2><p>각 객실 구분의 공실 O / 공실 X를 먼저 선택해 주세요. <b>공실 X</b>인 경우 지정된 점검 카드가 활성화됩니다. 제습기 종료는 실제 입실 직전에 확인해 주세요.</p><div id="vacancyControls" class="vacancy-grid"></div></div><div id="reviewpanel"></div><section class="task-editor-section" id="taskEditorPanel"><h2>업무 카드 편집</h2><p>모든 직원에게 업무 목록이 보이며, 새 업무 추가·수정·삭제 및 기록 초기화는 관리자 로그인 시 사용할 수 있습니다.</p><div class="task-editor-toolbar"><button type="button" id="newTaskButton">＋ 새 업무 추가</button><button type="button" id="resetTaskCatalog">기본 업무 목록 복원</button><button type="button" id="resetTodayWork">오늘 전체 업무 완료기록 초기화</button><button type="button" id="resetPersonWork">직원별 완료기록 삭제</button></div><p id="taskEditorAccess">관리자 로그인 후 편집할 수 있습니다.</p></section><nav class="tabs"><button class="tab active" data-filter="all">모든 업무</button><button class="tab" data-filter="open">미완료 · 진행 중</button><button class="tab" data-filter="done">처리한 업무</button></nav><main id="main"></main><div id="previous"></div><section class="assignment-panel" id="assignments"><div class="assignment-head"><div><small>DAILY ASSIGNMENTS</small><h2>오늘의 업무 분장</h2><p>담당자를 지정하거나 담당자 이름을 눌러 해당 직원이 맡은 일을 확인하세요.</p></div><button type="button" id="assignmentReset" class="assignment-clear">업무분장 초기화</button></div><div class="assignment-grid" id="assignmentGrid"></div><div class="assignment-note-card" id="assignmentKakaoPanel"><span class="note-eyebrow">KAKAO WORK NOTICE</span><h3>프론트 카카오톡 지시/메모 내용 넣기</h3><p>카톡으로 전달받은 업무 지시나 당일 분장을 그대로 붙여넣으세요. 저장하면 내용·작성자·시각이 기록되고 아래에서 다시 볼 수 있습니다.</p><label for="assignmentKakaoText" class="note-eyebrow">카톡 내용 붙여넣기</label><textarea id="assignmentKakaoText" placeholder="대표님이 카톡으로 전달하신 업무 분장 내용을 붙여넣으세요."></textarea><div class="assignment-note-actions"><span class="assignment-note-status" id="assignmentKakaoStatus">저장 전</span><button type="button" id="assignmentKakaoSave">업무 분장 저장</button></div><div id="assignmentKakaoPreview"></div><div class="assignment-note-history" id="assignmentKakaoHistory"></div></div></section>
@@ -1151,10 +1193,10 @@ function taskCard(t){
  ${badge?`<span class="rightflag ${m==='late'?'overdueflag':''}">${badge}</span>`:''}
  <span class="category">${esc(t.group||'일반 업무')}</span>
  <div class="text">${esc(t.text)}</div>
+ ${exception}
  <div class="task-bottom">
    ${admin()?`<div class="task-manage-actions"><button type="button" data-taskedit="${t.id}">수정</button><button type="button" data-taskdelete="${t.id}">삭제</button></div>`:''}
    ${working?`<div class="handoff-note">🟢 ${esc(r.who||'')} · ${esc(r.started||'')}부터 업무 진행 중</div><button type="button" class="undo-completion" data-stopwork="${t.id}">업무 진행 표시 종료</button>`:''}
-   ${exception}
    ${has&&alreadyMine?`<button type="button" class="undo-completion card-undo" data-undo="${t.id}">↶ 내 기록 취소</button>`:''}
    ${has?`<div class="done-word">완료됨</div><div class="completion-history big-badge-history">${logs}</div>`:''}
    ${!alreadyMine?`<button class="finish-btn add-my-completion" ${locked?'disabled title="입실(공실 X) 저장 후 활성화"':''} data-finish="${t.id}">${has?'＋ 저도 마쳤어요':btnText}</button>`:''}
@@ -1297,7 +1339,7 @@ $('#dehumidGrid').addEventListener('click',e=>{
 const oldRender=render;
 render=function(){oldRender();displayHours();drawDehumid();$('#taskEditorPanel').hidden=false;$('#taskEditorPanel').classList.toggle('viewer-mode',!admin());$('#taskEditorAccess').textContent=admin()?'관리자 편집 모드 · 현재 선택 날짜의 완료 기록을 관리할 수 있습니다.':'업무 편집과 기록 초기화는 관리자 로그인 후 사용할 수 있습니다.';$('#resetAll').style.display=admin()?'':'none';$('#assignmentReset').disabled=!admin();$('#adminLock').textContent=admin()?'🔓':'♧';managerRefresh();};
 const oldBuildToc=buildToc;
-buildToc=function(){const target=[['오늘의 업무분장','assignments'],['업무 진행 상황','progressDashboard'],['직원 실시간 업무 상황실 + 지금 어디에서 일하고 있나요?','staffActivity'],['제습 상황실','dehumidRoom'],['나의 출근시간대 미기록 업무 요약','accountability']];$('#tocMenu').innerHTML=target.map(([t,id])=>`<button type="button" data-scrollto="${id}">${t}</button>`).join('')};
+buildToc=function(){const target=[['오늘의 업무분장','assignments'],['업무 진행 상황','progressDashboard'],['직원실시간 업무상황실','staffActivity'],['제습 상황실','dehumidRoom'],['나의 출근시간대 미기록 업무 요약','accountability']];$('#tocMenu').innerHTML=target.map(([t,id])=>`<button type="button" data-scrollto="${id}">${t}</button>`).join('')};
 // Preserve old records while preventing unverified session restoration.
 
 // One-time clean start: erase previous version's saved operational data and active sessions.
@@ -1530,4 +1572,76 @@ $('#resetPersonWork').addEventListener('click',()=>{
   audit.push({kind:'reset_person_task_completions',target:who,who:identity,count,at:localStamp()});save();closeModal();render();alert(`${who}님 완료 기록 ${count}건을 삭제했습니다.`);
  },'선택 직원 기록 삭제');
 });
+
+// v11 employee activities / staff-managed location assignments.
+let staffNotes={};
+function staffNotesKey(){return 'toyu-staff-notes-v11:'+$('#date').value}
+function staffNotesLoad(){try{staffNotes=JSON.parse(localStorage.getItem(staffNotesKey())||'{}')}catch{staffNotes={}}}
+function staffNotesSave(){localStorage.setItem(staffNotesKey(),JSON.stringify(staffNotes))}
+const v11Load=load;
+load=function(){v11Load();staffNotesLoad()};
+staffNotesLoad();
+function assignStaffZone(person,idx){
+ if(!identity)return alert('로그인 후 이용해 주세요.');
+ if(!person||!zoneNames[idx])return;
+ const list=Array.isArray(zones[idx])?zones[idx]:[];
+ const existing=list.findIndex(x=>x.who===person);
+ if(existing>=0){if(!confirm(person+'님의 '+zoneNames[idx][0]+' 배치를 해제할까요?'))return;list.splice(existing,1)}
+ else list.push({who:person,at:clock(),note:'',updatedBy:identity});
+ zones[idx]=list;
+ audit.push({kind:'staff_zone_assignment',who:identity,target:person,zone:zoneNames[idx][0],action:existing>=0?'remove':'add',at:localStamp()});
+ save();render();
+}
+let selectedStaffForZone='';
+const v11OldRenderStaff=renderStaff;
+renderStaff=function(){
+ const staff=[...new Set([...staffNames(),...roles,...Object.values(records).flatMap(r=>taskEntriesByRecord(r)),...Object.keys(staffNotes)])].filter(Boolean);
+ const area=$('#staffActivity');
+ let roster=area.querySelector('#staffRoster');
+ if(!roster){roster=document.createElement('div');roster.id='staffRoster';roster.className='staff-roster';area.insertBefore(roster,$('#staffGrid'))}
+ roster.innerHTML=staff.map(n=>{const on=Object.values(zones).some(z=>Array.isArray(z)&&z.some(e=>e.who===n));return `<button type="button" draggable="true" class="roster-member ${selectedStaffForZone===n?'selected':''}" data-roster="${esc(n)}" title="드래그하거나 이름을 선택하세요"><i class="presence-dot ${on?'':'off'}"></i>${esc(n)}</button>`}).join('');
+ $('#staffGrid').innerHTML=staff.map(n=>{
+ const locations=Object.entries(zones).filter(([k,v])=>Array.isArray(v)&&v.some(z=>z.who===n)).map(([k])=>zoneNames[+k]?.[0]||k);
+ const events=[];
+ rows.forEach(t=>taskEntries(t.id).forEach(e=>{if(e.who===n)events.push({at:e.completedStamp||e.stamp||e.at||'',kind:'task',title:t.text,scheduled:t.time})}));
+ (staffNotes[n]||[]).forEach(m=>events.push({at:m.at,kind:'note',title:m.text,by:m.by}));
+ events.sort((a,b)=>String(a.at).localeCompare(String(b.at)));
+ const display=events.map(e=>{const tm=String(e.at).match(/(\d{2}:\d{2})(?::\d{2})?$/)?.[1]||e.scheduled||'--:--';return `<div class="staff-event ${e.kind==='note'?'note':''}"><time>${esc(tm)}</time><div class="body">${e.kind==='note'?'메모 · ': '✓ '}${esc(e.title)}${e.kind==='note'&&e.by?`<small> · ${esc(e.by)}</small>`:''}</div></div>`}).join('');
+ return `<article class="staff-card" data-staff="${esc(n)}"><strong><span class="presence-dot ${locations.length?'':'off'}"></span> ${esc(n)}</strong><div class="staff-location">${locations.length?'근무 위치 · '+esc(locations.join(' / ')):'현재 지정된 근무 위치 없음'}</div><div class="staff-timeline">${display||'<div class="staff-empty">오늘의 완료 기록이나 메모가 없습니다.</div>'}</div><button type="button" class="staff-note-add" data-staffnote="${esc(n)}">+ 업무 상세 메모 남기기</button></article>`
+ }).join('');
+};
+function taskEntriesByRecord(r){return (Array.isArray(r?.entries)?r.entries:[]).map(e=>e.who).filter(Boolean)}
+const v11OldRender=render;
+render=function(){v11OldRender();
+ // Zone cards also accept staff drag/drop. Their visible roster is refreshed in renderStaff.
+ document.querySelectorAll('#zones .zone').forEach(z=>z.setAttribute('title','직원 이름을 드래그하여 배치하거나 이름을 선택한 다음 누르세요'));
+};
+const v11OldSetZone=setZone;
+setZone=function(i){if(selectedStaffForZone){assignStaffZone(selectedStaffForZone,i);selectedStaffForZone='';return}v11OldSetZone(i)};
+document.addEventListener('dragstart',e=>{const el=e.target.closest('[data-roster]');if(!el)return;e.dataTransfer.setData('text/plain',el.dataset.roster);e.dataTransfer.effectAllowed='move'});
+document.addEventListener('dragover',e=>{const zone=e.target.closest('#zones [data-zone]');if(!zone)return;e.preventDefault();zone.classList.add('drop-target')});
+document.addEventListener('dragleave',e=>{let zone=e.target.closest('#zones [data-zone]');if(zone&&!zone.contains(e.relatedTarget))zone.classList.remove('drop-target')});
+document.addEventListener('drop',e=>{const z=e.target.closest('#zones [data-zone]');if(!z)return;e.preventDefault();e.stopPropagation();z.classList.remove('drop-target');const who=e.dataTransfer.getData('text/plain');if(who)assignStaffZone(who,Number(z.dataset.zone))});
+document.addEventListener('click',e=>{
+ const m=e.target.closest('[data-roster]');if(m){selectedStaffForZone=selectedStaffForZone===m.dataset.roster?'':m.dataset.roster;document.querySelectorAll('[data-roster]').forEach(el=>el.classList.toggle('selected',el.dataset.roster===selectedStaffForZone));return}
+ const b=e.target.closest('[data-staffnote]');if(!b)return;
+ const who=b.dataset.staffnote;
+ modal('직원 업무 상세 메모',who+'님의 업무 내역에 메모를 추가합니다.',`<textarea id="staffNoteText" maxlength="1500" rows="5" placeholder="진행한 업무, 특이사항, 인수인계 내용을 입력해 주세요."></textarea>`,()=>{
+  const val=$('#staffNoteText').value.trim();if(!val)return alert('메모 내용을 입력해 주세요.');
+  (staffNotes[who]??=[]).push({text:val,at:localStamp(),by:identity});staffNotesSave();audit.push({kind:'staff_note',who:identity,target:who,at:localStamp(),text:val});save();closeModal();render();
+ },'메모 저장');
+});
+const v11OldBuildToc=buildToc;
+buildToc=function(){v11OldBuildToc();const menu=$('#tocMenu');menu.querySelectorAll('button').forEach(b=>{if(b.textContent.includes('직원 실시간 업무 상황실'))b.textContent='직원실시간 업무상황실'})};
+// Hide the unused shift review control while keeping legacy listeners safe.
+$('#shiftReview').hidden=true;
+
+</script><script>
+(function(){
+ const nav=document.getElementById('quicknav'), menu=document.getElementById('tocMenu');
+ if(!nav||!menu)return;
+ ['toTop','toBottom','vacancyQuick','adminLock'].forEach(id=>{
+  document.getElementById(id)?.addEventListener('click',()=>{if(!menu.hidden)menu.hidden=true;});
+ });
+})();
 </script></body></html>
