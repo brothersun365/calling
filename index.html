@@ -1000,7 +1000,7 @@ body:has(.dialog.show) .quicknav,body:has(#timeSheet:not([hidden])) .quicknav{vi
 </style></head><body>
 <div class="authcover" id="authcover"><div class="authcard"><button id="loginAdminLock" class="login-admin-lock" type="button" aria-label="관리자 접속" title="관리자 접속">♙</button><h2>TOYU RYOKAN<br>HOTEL WORK CLOUD</h2><p>본인 이름/직급으로 들어와 업무를 시작해 주세요.</p><label>직원 / 직위</label><select id="loginWho"><option value="">선택해 주세요</option><option>대표님</option><option>지배인님</option><option>매니저님(선영)</option><option>웅주임님(일웅)</option><option>은진</option><option>파트타이머1</option><option>파트타이머2</option><option>파트타이머3</option><option>기타 임원</option></select><div id="ptname" hidden><label>파트타이머 이름</label><input id="loginName" maxlength="30" placeholder="실제 이름을 적어 주세요"></div><label>직원별 비밀번호 (영문·숫자 6자리)</label><input id="loginPin" type="password" inputmode="text" maxlength="6" autocomplete="off" placeholder="직원별 지정 PIN을 입력하세요"><button class="primarybtn" id="loginBtn">로그인 / 최초 등록</button><p id="loginNote">이 기기에서는 프론트 직원 계정별 PIN을 사용합니다. 모든 기록은 본인이 확인한 후 즉시 기록됩니다.</p><p class="subnote">※ 이 파일은 같은 브라우저 내 탭 간 변경 사항을 반영합니다. 직원 간 기기별 실시간 동기화는 별도 서버 연결이 필요합니다.</p></div></div>
 <div class="wrap"><header class="mast"><div class="brand"><span class="logo">✳</span><span>TOYU RYOKAN <b>HOTEL WORK CLOUD</b></span></div><span class="mini" id="todayLabel"></span></header>
-<section class="date-hero" aria-label="선택한 업무 날짜"><div class="date-hero-inner"><div class="hero-top"><span class="date-kicker">TOYU RYOKAN HOTEL FRONT</span><span class="hero-eyebrow">토유 프론트 일일업무기록</span></div><div class="hero-main"><div><h1 class="hero-greeting">안녕하세요, <span id="heroGreetingName">직원</span>님!</h1><p class="hero-date-line">오늘은 <strong id="heroDate">오늘 날짜</strong>입니다</p></div><div class="hero-shift" id="heroShiftSummary">오늘의 근무 시간</div></div></div></section>
+<section class="date-hero" aria-label="선택한 업무 날짜"><div class="date-hero-inner"><div class="hero-top"><span class="date-kicker">TOYU RYOKAN HOTEL FRONT</span><span class="hero-eyebrow">토유 프론트 일일업무기록</span></div><div class="hero-main"><div><h1 class="hero-greeting">안녕하세요, <span id="heroGreetingName">직원</span><span id="heroHonorific">님</span>!</h1><p class="hero-date-line">오늘은 <strong id="heroDate">오늘 날짜</strong>입니다</p></div><div class="hero-shift" id="heroShiftSummary">오늘의 근무 시간</div></div></div></section>
 <h1 class="title">업무 기록 <span>WORK LOG</span></h1>
 <section id="adminManager" hidden class="admin-manager"><div class="manager-head"><h2>관리자 기록 관리</h2><small>업무 기록 백업 · 선택 초기화</small></div><div class="manager-fields"><label>초기화 항목<select id="resetMode"><option value="task">선택한 업무 기록</option><option value="person">선택한 직원의 완료 기록</option><option value="completions">전체 업무 완료 기록 (선택 날짜)</option><option value="memos">메모 및 인계 기록 (선택 날짜)</option><option value="positions">직원 현재 근무 위치 (선택 날짜)</option><option value="assignments">업무분장 (선택 날짜)</option><option value="dehumid">제습 기록 (선택 날짜)</option><option value="attendance">출퇴근 기록 (선택 날짜)</option><option value="date">선택 날짜 모든 기록</option><option value="all">모든 날짜의 모든 운영 기록 (이 기기)</option></select></label><label id="selectTaskLabel">업무 선택<select id="adminTask"></select></label><label id="selectPersonLabel" hidden>직원 선택<select id="adminPerson"></select></label></div><details class="admin-pins"><summary>🔐 직원별 접속 비밀번호 확인</summary><div class="admin-pin-grid" id="adminPinList"></div><p>관리자 화면에서만 볼 수 있습니다. 단독 HTML의 PIN은 강력한 보안 인증이 아닙니다.</p></details><div class="manager-buttons"><button id="backupJson">JSON 기록 백업</button><button id="applyReset">선택 항목 초기화</button></div><p>초기화 전 반드시 백업해 주세요. 다른 기기의 저장 기록은 삭제되지 않습니다.</p></section><div class="top-actions"><button id="resetAll" class="reset-all">↺ 전체 초기화</button><span class="sync-indicator" id="syncIndicator">● 이 브라우저 저장 · 공유 미연결</span></div>
 <section id="progressDashboard" class="progress-dashboard" aria-label="전체 업무 진행 현황"><div class="progress-head"><div><small>DAILY WORK FLOW</small><h2>오늘의 업무 현황</h2></div><strong id="progressPercent">0%</strong></div><div id="progressRing" class="progress-flex"><div class="ring-wrap"><div id="progressCircle" class="progress-circle"><span id="ringValue">0%</span></div></div><div class="progress-meta"><div><b id="doneCount">0</b><small>완료</small></div><div><b id="remainingCount">0</b><small>남은 업무</small></div><div><b id="excludedCount">0</b><small>조건 미활성</small></div></div></div><div class="progress-track"><span id="progressFill"></span></div><div id="shiftProgress" class="shift-progress"></div><small class="localnote">선택한 날짜 · 해당 근무조의 업무 기준 / 실제 완료 항목 수</small></section>
@@ -1197,7 +1197,7 @@ function finishTask(id){
   if(!Array.isArray(r.entries))r.entries=[];
   let when=clock(), now=localStamp();
   r.entries.push({who:identity,at:when,stamp:now});
-  delete r.exception;r.status='done';r.who=identity;r.at=when;r.completedStamp=now;
+  r.status='done';r.who=identity;r.at=when;r.completedStamp=now;
   records[id]=r;audit.push({id,kind:'completed',who:identity,at:now});
   save();closeModal();render();celebrateTask(id,identity,when,t.text);
  },'네, 완료했습니다');const cancel=$('#cancel');cancel.textContent='취소';if(!$('#doingConfirm')){const b=document.createElement('button');b.id='doingConfirm';b.textContent='처리중';b.hidden=false;b.onclick=()=>{closeModal();start(id)};cancel.parentElement.insertBefore(b,cancel)}else{$('#doingConfirm').hidden=false;$('#doingConfirm').onclick=()=>{closeModal();start(id)}};
@@ -1255,7 +1255,7 @@ function groupHTML(items){let groups=new Map();items.forEach(t=>{if(!groups.has(
 function isRelevant(t){return !t.condition||conditions[t.condition]==='X'}
 function overdue(t){return isRelevant(t)&&minOf(t.time)<new Date().getHours()*60+new Date().getMinutes()&&$('#date').value===today()&&taskEntries(t.id).length===0}
 function exceptionNote(id){if(!identity)return;const t=rows.find(x=>x.id===id);modal('미기록 사유 작성', '업무를 하지 못했거나 기록을 놓쳤다면 사실대로 사유를 남겨 주세요. 실제 완료한 업무라면 취소 후 완료함을 눌러 주세요.',`<textarea id="reason" placeholder="예: 고객 응대로 처리하지 못함 / 객실 정비팀으로 인계함"></textarea>`,()=>{const reason=$('#reason').value.trim();if(reason.length<5)return alert('구체적인 사유를 5자 이상 입력해 주세요.');const r=records[id]||{};r.exception={who:identity,at:localStamp(),reason};records[id]=r;audit.push({id,kind:'exception',who:identity,reason,at:localStamp()});save();closeModal();render()},'사유 저장')}
-function drawAccountability(){const current=$('#date').value===today(),late=current?rows.filter(overdue):[];const unresolved=late.filter(t=>!records[t.id]?.exception);$('#pendingSummary').innerHTML=`<p><span class="outstanding">지난 시간 미완료 ${late.length}건</span> · 사유 미작성 ${unresolved.length}건</p><div class="pending-list">${unresolved.slice(0,8).map(t=>`<div class="pending-line"><b>${esc(t.time)} · ${esc(t.text)}</b><button data-exception="${t.id}">사유 남기기</button></div>`).join('')}${unresolved.length>8?`<p>그 외 ${unresolved.length-8}건은 교대 점검에서 확인해 주세요.</p>`:''}</div>`;const defs=[['basement','지층 · 101호 패밀리 스위트 · 파티룸 / 102호 패밀리 · 파티룸'],['standard','스탠다드 객실'],['dehumid','지층 제습기 · 101호 / 102호']];$('#vacancyControls').innerHTML=defs.map(([key,label])=>`<div class="vacancy-choice"><strong>${label}</strong><div class="vacancy-buttons"><button class="${conditions[key]==='O'?'selected':''}" data-vacancy="${key}" data-value="O">공실 O</button><button class="${conditions[key]==='X'?'selected':''}" data-vacancy="${key}" data-value="X">입실 (공실 X)</button></div><small>${conditions[key]?'현재: 공실 '+conditions[key]:'공실 상태를 선택해 주세요'}</small></div>`).join('')}
+function drawAccountability(){const current=$('#date').value===today(),late=current?rows.filter(overdue):[];const unresolved=late.filter(t=>!records[t.id]?.exception);$('#pendingSummary').innerHTML=`<p><span class="outstanding">지난 시간 미완료 ${late.length}건</span> · 사유 미작성 ${unresolved.length}건</p><div class="pending-list">${unresolved.slice(0,8).map(t=>`<div class="pending-line"><b>${esc(t.time)} · ${esc(t.text)}</b><button data-exception="${t.id}">사유 남기기</button></div>`).join('')}${unresolved.length>8?`<p>그 외 ${unresolved.length-8}건은 미처리 업무 목록에서 확인해 주세요.</p>`:''}</div>`;const defs=[['basement','지층 · 101호 패밀리 스위트 · 파티룸 / 102호 패밀리 · 파티룸'],['standard','스탠다드 객실'],['dehumid','지층 제습기 · 101호 / 102호']];$('#vacancyControls').innerHTML=defs.map(([key,label])=>`<div class="vacancy-choice"><strong>${label}</strong><div class="vacancy-buttons"><button class="${conditions[key]==='O'?'selected':''}" data-vacancy="${key}" data-value="O">공실 O</button><button class="${conditions[key]==='X'?'selected':''}" data-vacancy="${key}" data-value="X">입실 (공실 X)</button></div><small>${conditions[key]?'현재: 공실 '+conditions[key]:'공실 상태를 선택해 주세요'}</small></div>`).join('')}
 function shiftReview(){if(!identity)return;const remaining=rows.filter(overdue).filter(t=>!records[t.id]?.exception);if(!remaining.length)return alert('현재 기준으로 사유 없이 남아 있는 지난 업무가 없습니다.');$('#pendingSummary').scrollIntoView({behavior:'smooth',block:'start'});alert(`사유가 없는 지난 시간의 업무가 ${remaining.length}건 있습니다. 완료한 항목은 완료함을 누르고, 완료하지 못한 항목은 사유를 남겨 주세요.`)}
 $('#shiftReview').onclick=shiftReview;
 function render(){
@@ -1611,7 +1611,7 @@ $('#resetPersonWork').addEventListener('click',()=>{
    if(r.entries.length){r.who=r.entries.at(-1).who;r.at=r.entries.at(-1).at}
    else {delete r.who;delete r.at;delete r.completedStamp;if(r.status==='done')r.status='open'}
   });
-  audit.push({kind:'reset_person_task_completions',target:who,who:identity,count,at:localStamp()});save();closeModal();render();alert(`${who}님 완료 기록 ${count}건을 삭제했습니다.`);
+  audit.push({kind:'reset_person_task_completions',target:who,who:identity,count,at:localStamp()});save();closeModal();render();alert(`${who}${who.endsWith('님')?'':'님'} 완료 기록 ${count}건을 삭제했습니다.`);
  },'선택 직원 기록 삭제');
 });
 
@@ -1841,6 +1841,96 @@ document.querySelector('#tocMenu')?.addEventListener('click',e=>{
   else alert('현재 미처리 업무가 없습니다.');
  });
 });
+})();
+</script>
+<style id="v14-polish">
+#tocMenu .toc-close-v14{position:sticky;top:0;width:100%;background:#142e52!important;color:#fff!important;font-weight:800!important;border-radius:12px!important;z-index:4;text-align:center!important;padding:14px!important}
+#tocMenu .toc-quick-v14{font-weight:800!important;background:#eef5ff!important;color:#174d9c!important;margin:5px 0!important;border:1px solid #cfdef2!important}
+#tocMenu .toc-quick-v14.pending{background:#fff0f7!important;color:#a72b74!important}
+.task .exception-note{color:#b82075!important;background:#fff3f9!important;border:1px solid #f1bada!important;padding:12px 14px!important;text-align:left!important;font-weight:750!important;white-space:pre-wrap!important;overflow-wrap:anywhere!important}
+.task.blue-completed .exception-note{color:#1358bd!important;background:#ebf5ff!important;border-color:#a9cbf3!important}
+.saved-reasons{display:grid!important;gap:8px!important}
+.staff-card .staff-location{display:block;margin-top:8px;font-weight:750}
+.staff-card .staff-timeline{max-height:none!important}
+#tocMenu{overscroll-behavior:contain}
+</style>
+<script id="v14-behavior">
+(function(){
+ const $v=id=>document.getElementById(id);
+ const prevRenderV14=render;
+ render=function(){
+  prevRenderV14();
+  const name=$v('heroGreetingName'),suffix=$v('heroHonorific');
+  if(name&&suffix)suffix.textContent=(name.textContent||'').trim().endsWith('님')?'':'님';
+  // Ensure a saved reason stays visible immediately under its task content.
+  document.querySelectorAll('[data-task]').forEach(card=>{
+   const id=card.dataset.task, record=records[id],old=card.querySelector('.exception-note');
+   if(old)old.remove();
+   if(record?.exception?.reason){
+    const el=document.createElement('div');el.className='exception-note';
+    el.textContent='미처리 사유 · '+record.exception.reason+'  ('+(record.exception.who||'')+' · '+(record.exception.at||'')+')';
+    (card.querySelector('.text')||card.querySelector('.category')||card).insertAdjacentElement('afterend',el);
+   }
+  });
+ };
+ // Replace prior TOC regeneration chain with a stable single builder.
+ buildToc=function(){
+  const menu=$v('tocMenu');if(!menu)return;
+  const destinations=[['오늘의 업무 분장','assignments'],['업무 진행 상황','progressDashboard'],['직원실시간 업무상황실','staffActivity'],['직원 근무 위치','zones'],['제습 상황실','dehumidRoom'],['미기록 업무 및 사유','accountability'],['오늘의 업무 후기','dailyReview']];
+  menu.innerHTML='<button type="button" class="toc-close-v14">✕ 목차 닫기</button>'+
+   '<button type="button" class="toc-quick-v14" data-v14-action="top">↑ 맨 위로</button>'+
+   '<button type="button" class="toc-quick-v14 pending" data-v14-action="pending">○ 미처리된 업무로 가기</button>'+
+   '<button type="button" class="toc-quick-v14" data-v14-action="bottom">↓ 맨 아래로</button>'+
+   destinations.filter(([label,id])=>$v(id)).map(([label,id])=>'<button type="button" data-scrollto="'+id+'">'+label+'</button>').join('')+
+   [...document.querySelectorAll('#main .section')].map((section,i)=>{const id='v14-section-'+i;section.id=id;return '<button type="button" data-scrollto="'+id+'">'+(section.querySelector('h2')?.textContent||'업무 시간')+'</button>'}).join('');
+ };
+ // Override reason edit dialog: works for both first save and later edits.
+ exceptionNote=function(id){
+  if(!identity)return alert('먼저 로그인해 주세요.');
+  const task=rows.find(t=>String(t.id)===String(id));
+  const saved=records[id]?.exception?.reason||'';
+  modal('미처리 사유 남기기',task?(task.time+' · '+task.text):'사유를 기록해 주세요.',
+   '<textarea id="v14Reason" rows="5" maxlength="1500" placeholder="미처리 사유를 입력해 주세요."></textarea>',()=>{
+   const text=$v('v14Reason')?.value.trim();if(!text||text.length<2)return alert('사유를 두 글자 이상 입력해 주세요.');
+   const rec=records[id]||{};
+   rec.exception={reason:text,who:identity,at:localStamp()};records[id]=rec;
+   audit.push({id,kind:'exception',who:identity,reason:text,at:localStamp()});
+   save();closeModal();render();
+   const el=document.querySelector('[data-task="'+String(id).replace(/"/g,'')+'"] .exception-note');
+   el?.scrollIntoView({behavior:'smooth',block:'center'});
+  },'사유 저장');
+  $v('v14Reason').value=saved;
+ };
+ const menu=$v('tocMenu');
+ menu?.addEventListener('click',e=>{
+  const b=e.target.closest('.toc-close-v14,[data-v14-action]');if(!b)return;
+  e.preventDefault();e.stopImmediatePropagation();
+  menu.hidden=true;$v('tocToggle')?.setAttribute('aria-expanded','false');
+  const action=b.dataset.v14Action;
+  if(!action)return;
+  if(action==='top')return window.scrollTo({top:0,behavior:'smooth'});
+  if(action==='bottom')return window.scrollTo({top:document.documentElement.scrollHeight,behavior:'smooth'});
+  filter='all';shift='all';priorExpanded=true;render();
+  requestAnimationFrame(()=>{
+   const pending=rows.filter(t=>!taskEntries(t.id).length);
+   const first=pending.find(t=>overdue(t))||pending[0];
+   const card=first?document.querySelector('[data-task="'+first.id+'"]'):null;
+   if(!card)return alert('현재 미처리된 업무가 없습니다.');
+   card.scrollIntoView({behavior:'smooth',block:'center'});
+   card.classList.add('task-highlight');setTimeout(()=>card.classList.remove('task-highlight'),2200);
+  });
+ },true);
+ const toggle=$v('tocToggle');toggle?.addEventListener('click',()=>{
+  requestAnimationFrame(()=>toggle.setAttribute('aria-expanded',String(!menu.hidden)));
+ });
+ // Mark each saved reason clearly in both summary and its card.
+ const oldDraw=drawAccountability;
+ drawAccountability=function(){oldDraw();const target=$v('pendingSummary');if(!target)return;
+  // Older versions already append history; do not duplicate it.
+  const existing=target.querySelector('.saved-reasons');
+  if(existing)existing.setAttribute('aria-label','저장된 미처리 사유 목록');
+ };
+ render();
 })();
 </script>
 </body></html>
