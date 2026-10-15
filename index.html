@@ -640,6 +640,48 @@ button,input,select,textarea,.finish-btn,.tab,.shift,.primarybtn,.excel,.actions
 .task.blue-completed .undo-completion{background:#ffffffed!important;color:#244b84!important}
 .reset-person-label{display:block;font-size:13px;font-weight:700}.reset-person-label select{width:100%;padding:12px;margin-top:8px}
 @media(max-width:650px){.task-editor-toolbar button{flex:1 1 150px}.task .text{font-size:16px!important}.task .done-word{font-size:19px!important}}
+
+/* v13 — consistent daily operations UI */
+.finish-confirm{text-align:left!important;background:#f5f8fe!important;border:1px solid #d7e4f9!important}
+.finish-review-kicker{display:block;font-size:12px;font-weight:700;color:#506581;margin-bottom:9px}
+.finish-review-task{white-space:pre-wrap;font-size:17px;font-weight:800;line-height:1.65;color:#182d4a;padding:14px 12px;background:#fff;border-radius:12px;text-align:center}
+.finish-review-who{font-size:12px;color:#68829d;text-align:center;margin-top:10px}
+.toc-menu .toc-close{background:#eef3fa!important;text-align:center!important;font-weight:800;color:#243b60!important;position:sticky;top:0;z-index:1}
+.assignment-item .assignment-people{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.assignment-item .assign-person-btn{border:1px solid #d5e1f1;border-radius:9px;background:#fff;color:#2b4265;font-size:12px;padding:9px 11px;flex:1 1 95px;max-width:145px;font-weight:700}
+.assignment-item .assign-person-btn.selected{background:#2f75e4;color:#fff;border-color:#2f75e4}
+.assignment-item .assign-person-btn:hover{border-color:#3679d8}
+.assignment-item .assignment-now{font-size:12px;font-weight:750;color:#235baf;background:#edf5ff;border-radius:9px;padding:9px 10px;margin-top:8px;word-break:break-word}
+.assignment-tip{color:#6b7c90;font-size:12px;line-height:1.5;margin:12px 0}
+.staff-card .staff-location{font-size:13px!important;color:#2164b1!important;background:#edf4ff;border:1px solid #d5e3f7;padding:9px 12px;border-radius:10px;margin:10px 0 12px}
+.staff-card .staff-timeline{display:grid;gap:6px}
+.staff-card .staff-event{display:grid;grid-template-columns:51px 1fr;gap:10px;text-align:left;align-items:start}
+.staff-card .staff-event.note{background:#fff0f8;border-left:3px solid #e47cb0}
+.staff-card .staff-event.note .body{color:#a93a79}
+.daily-review-panel{scroll-margin-top:40px;margin-top:35px;margin-bottom:110px}
+.daily-review-inner{background:#fff;border:1px solid #e0e7f0;border-radius:22px;padding:25px;box-shadow:0 6px 18px #1323440c}
+.daily-review-kicker{font-size:11px;letter-spacing:.15em;color:#507fbb;font-weight:800}
+.daily-review-inner h2{font-size:24px;font-weight:800;margin:10px 0}
+.daily-review-inner p{font-size:13px;color:#61738a;line-height:1.5}
+.daily-review-compose{display:grid;gap:10px}.daily-review-compose textarea{width:100%;resize:vertical;padding:14px;min-height:100px;background:#f8faff!important;border:1px solid #dce6f3!important;border-radius:12px!important}
+.daily-review-compose button{justify-self:end;border:0;border-radius:11px;background:#256ee3;color:#fff;font-weight:700;padding:12px 23px}
+.daily-review-entry{margin-top:12px;padding:14px;border:1px solid #dae6f6;border-radius:13px;background:#f8fbff}
+.daily-review-entry .entry-meta{color:#526f96;font-size:12px;font-weight:700;margin-bottom:6px}
+.daily-review-entry .entry-content{white-space:pre-wrap;line-height:1.7;font-size:13px}
+.time-modes{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap}
+.time-mode{font-size:12px!important;padding:10px!important;border-radius:10px!important;border:1px solid #ccd9eb!important;background:#fff!important;color:#536a88!important;flex:1 1 85px}
+.time-mode.active{background:#2874e1!important;color:#fff!important;border-color:#2874e1!important}
+.time-mode-panel{margin-top:14px;background:#f6f9ff;padding:13px;border-radius:13px}
+.time-mode-panel[hidden]{display:none!important}
+.time-instruction{font-size:12px;color:#667b98;line-height:1.5}
+.clock-face{position:relative;width:210px;height:210px;border-radius:50%;background:#fff;border:2px solid #dce7f7;margin:12px auto;touch-action:none;user-select:none;box-shadow:inset 0 0 0 6px #f5f8fc;cursor:crosshair}
+.clock-face .clock-number{position:absolute;transform:translate(-50%,-50%);font-weight:750;font-size:13px;color:#284261;width:27px;height:27px;display:grid;place-items:center;border-radius:50%}
+.clock-face .clock-number.selected{background:#276de0;color:white}
+.clock-hand{position:absolute;width:3px;height:69px;left:calc(50% - 1.5px);bottom:50%;background:#286ee5;transform-origin:bottom center;border-radius:3px;pointer-events:none}
+.clock-center{position:absolute;left:calc(50% - 5px);top:calc(50% - 5px);width:10px;height:10px;background:#286ee5;border-radius:50%;pointer-events:none}
+.clock-meta{display:flex;justify-content:center;gap:9px}.clock-meta button{border:1px solid #d3e1f3;background:#fff;padding:8px 13px;border-radius:10px;font-weight:700}.clock-meta button.active{background:#e3efff;color:#145ac6}
+#selectMode{display:grid;grid-template-columns:1fr 1fr;gap:10px}#selectMode label{font-size:12px;color:#586b83}#selectMode select{margin-top:5px;width:100%;padding:10px}#timeTyped{width:100%;padding:12px}
+@media(max-width:600px){.daily-review-inner{padding:17px}.clock-face{width:190px;height:190px}.assignment-item .assign-person-btn{max-width:none}.daily-review-panel{margin-bottom:140px}}
 </style><style>
 /* TOYU MOBILE FIRST • EMPLOYEE IDENTITY • FRESH START */
 :root{--mobile-line:#d9e8e3;--mobile-ink:#23352f}html{scroll-padding-top:12px;-webkit-text-size-adjust:100%}body{overflow-x:hidden;max-width:100vw}button,select,input,textarea{touch-action:manipulation}button{min-height:42px}button:focus-visible{outline:3px solid #309b85;outline-offset:2px}
@@ -971,7 +1013,7 @@ body:has(.dialog.show) .quicknav,body:has(#timeSheet:not([hidden])) .quicknav{vi
 <h2 class="zone-title">직원 근무 위치</h2><p class="zone-guide">직원 이름을 드래그해 근무 구역에 배치하세요. 휴대폰에서는 이름을 선택한 뒤 구역을 누르세요.</p><div class="zones" id="zones"></div>
 <div class="panel"><div class="controls"><div class="control"><b>나의 출근 시간</b><div class="shift-group"><button class="shift active" data-shift="07">07:00</button><button class="shift" data-shift="09">09:00</button><button class="shift" data-shift="14">14:00</button><button class="shift" data-shift="all">전체</button></div></div><div class="control"><b>업무 날짜</b><input type="date" id="date"></div></div><p class="hint">업무 내용에 맞게 적힌 확인 문장을 읽고, 실제로 끝낸 경우에만 눌러 주세요. 같은 업무의 완료 기록은 계속 누적됩니다.</p><div class="utils"><button id="export">기록 백업(JSON)</button><button id="import">백업 불러오기</button><input hidden type="file" accept="application/json" id="file"></div></div>
 <div class="accountability" id="accountability"><div class="accountability-head"><div><h2>나의 출근시간대 미기록 업무 요약</h2><p>지나간 시간의 미기록 업무를 확인하고, 빠뜨린 업무는 사유를 남겨 주세요.</p></div><button id="shiftReview" class="review-btn">교대 점검하기</button></div><div id="pendingSummary"></div></div>
-<div class="vacancy-panel"><h2>객실 공실 여부</h2><p>각 객실 구분의 공실 O / 공실 X를 먼저 선택해 주세요. <b>공실 X</b>인 경우 지정된 점검 카드가 활성화됩니다. 제습기 종료는 실제 입실 직전에 확인해 주세요.</p><div id="vacancyControls" class="vacancy-grid"></div></div><div id="reviewpanel"></div><section class="task-editor-section" id="taskEditorPanel"><h2>업무 카드 편집</h2><p>모든 직원에게 업무 목록이 보이며, 새 업무 추가·수정·삭제 및 기록 초기화는 관리자 로그인 시 사용할 수 있습니다.</p><div class="task-editor-toolbar"><button type="button" id="newTaskButton">＋ 새 업무 추가</button><button type="button" id="resetTaskCatalog">기본 업무 목록 복원</button><button type="button" id="resetTodayWork">오늘 전체 업무 완료기록 초기화</button><button type="button" id="resetPersonWork">직원별 완료기록 삭제</button></div><p id="taskEditorAccess">관리자 로그인 후 편집할 수 있습니다.</p></section><nav class="tabs"><button class="tab active" data-filter="all">모든 업무</button><button class="tab" data-filter="open">미완료 · 진행 중</button><button class="tab" data-filter="done">처리한 업무</button></nav><main id="main"></main><div id="previous"></div><section class="assignment-panel" id="assignments"><div class="assignment-head"><div><small>DAILY ASSIGNMENTS</small><h2>오늘의 업무 분장</h2><p>담당자를 지정하거나 담당자 이름을 눌러 해당 직원이 맡은 일을 확인하세요.</p></div><button type="button" id="assignmentReset" class="assignment-clear">업무분장 초기화</button></div><div class="assignment-grid" id="assignmentGrid"></div><div class="assignment-note-card" id="assignmentKakaoPanel"><span class="note-eyebrow">KAKAO WORK NOTICE</span><h3>프론트 카카오톡 지시/메모 내용 넣기</h3><p>카톡으로 전달받은 업무 지시나 당일 분장을 그대로 붙여넣으세요. 저장하면 내용·작성자·시각이 기록되고 아래에서 다시 볼 수 있습니다.</p><label for="assignmentKakaoText" class="note-eyebrow">카톡 내용 붙여넣기</label><textarea id="assignmentKakaoText" placeholder="대표님이 카톡으로 전달하신 업무 분장 내용을 붙여넣으세요."></textarea><div class="assignment-note-actions"><span class="assignment-note-status" id="assignmentKakaoStatus">저장 전</span><button type="button" id="assignmentKakaoSave">업무 분장 저장</button></div><div id="assignmentKakaoPreview"></div><div class="assignment-note-history" id="assignmentKakaoHistory"></div></div></section>
+<div class="vacancy-panel"><h2>객실 공실 여부</h2><p>각 객실 구분의 공실 O / 공실 X를 먼저 선택해 주세요. <b>공실 X</b>인 경우 지정된 점검 카드가 활성화됩니다. 제습기 종료는 실제 입실 직전에 확인해 주세요.</p><div id="vacancyControls" class="vacancy-grid"></div></div><div id="reviewpanel"></div><section class="task-editor-section" id="taskEditorPanel"><h2>업무 카드 편집</h2><p>모든 직원에게 업무 목록이 보이며, 새 업무 추가·수정·삭제 및 기록 초기화는 관리자 로그인 시 사용할 수 있습니다.</p><div class="task-editor-toolbar"><button type="button" id="newTaskButton">＋ 새 업무 추가</button><button type="button" id="resetTaskCatalog">기본 업무 목록 복원</button><button type="button" id="resetTodayWork">오늘 전체 업무 완료기록 초기화</button><button type="button" id="resetPersonWork">직원별 완료기록 삭제</button></div><p id="taskEditorAccess">관리자 로그인 후 편집할 수 있습니다.</p></section><nav class="tabs"><button class="tab active" data-filter="all">모든 업무</button><button class="tab" data-filter="open">미완료 · 진행 중</button><button class="tab" data-filter="done">처리한 업무</button></nav><main id="main"></main><div id="previous"></div><section class="assignment-panel" id="assignments"><div class="assignment-head"><div><small>DAILY ASSIGNMENTS</small><h2>오늘의 업무 분장</h2><p>담당자를 지정하거나 담당자 이름을 눌러 해당 직원이 맡은 일을 확인하세요.</p></div><button type="button" id="assignmentReset" class="assignment-clear">업무분장 초기화</button></div><div class="assignment-grid" id="assignmentGrid"></div><p class="assignment-tip">담당 업무를 선택한 뒤 이름 버튼을 누르세요. 기타는 직접 메모할 수 있습니다.</p><div class="assignment-note-card" id="assignmentKakaoPanel"><span class="note-eyebrow">KAKAO WORK NOTICE</span><h3>프론트 카카오톡 지시/메모 내용 넣기</h3><p>카톡으로 전달받은 업무 지시나 당일 분장을 그대로 붙여넣으세요. 저장하면 내용·작성자·시각이 기록되고 아래에서 다시 볼 수 있습니다.</p><label for="assignmentKakaoText" class="note-eyebrow">카톡 내용 붙여넣기</label><textarea id="assignmentKakaoText" placeholder="대표님이 카톡으로 전달하신 업무 분장 내용을 붙여넣으세요."></textarea><div class="assignment-note-actions"><span class="assignment-note-status" id="assignmentKakaoStatus">저장 전</span><button type="button" id="assignmentKakaoSave">업무 분장 저장</button></div><div id="assignmentKakaoPreview"></div><div class="assignment-note-history" id="assignmentKakaoHistory"></div></div></section>
 <div class="exportbar"><span class="pill">업무 기록 백업</span><button class="excel" data-excel>📗 엑셀로 출력</button></div><footer class="foot">로그인한 이름과 완료 시각을 업무별로 누적 기록합니다. 인계 기록도 보관합니다. 개인별 순위는 표시하지 않습니다.<br>※ 초록색 표시등은 실시간 움직임 감지가 아니라 지정된 구역의 담당자 표시입니다. 다른 휴대폰에서 같은 기록을 실시간으로 보려면 서버와 공용 데이터베이스가 필요합니다. 본 파일은 브라우저별 저장 버전입니다.</footer></div>
 <aside id="quicknav" class="quicknav"><button id="vacancyQuick" class="quick-button vacancy-float" type="button" aria-expanded="false">제습 상황실 <span>↗</span></button><div class="sticky-progress" id="stickyProgress"></div><button id="tocToggle" class="quick-button" type="button">☷ 목차</button><button id="toTop" class="quick-button" type="button">↑ 맨 위로</button><button id="toBottom" class="quick-button" type="button">↓ 맨 아래로</button><button id="adminLock" class="admin-lock" type="button" aria-label="관리자 접속" title="관리자 접속">♙</button><nav id="tocMenu" class="toc-menu" hidden></nav></aside><div class="time-sheet-backdrop" id="timeSheet" hidden><div class="time-sheet" role="dialog" aria-modal="true" aria-labelledby="timeSheetTitle"><div class="sheet-top"><span class="sheet-kicker">ATTENDANCE</span><button type="button" id="sheetClose" aria-label="닫기">×</button></div><h2 id="timeSheetTitle">시간 기록</h2><p id="timeSheetHelp">기록할 시간을 선택해 주세요.</p><label for="sheetTime">시간 선택</label><input type="time" id="sheetTime" step="60"><div id="sheetBreakOptions" hidden><label for="sheetBreakKind">휴게 유형</label><select id="sheetBreakKind"><option value="60">휴게 1시간</option><option value="20">점심(휴게) 20분</option><option value="30">휴게 30분</option></select><label for="sheetBreakNote">메모 (선택)</label><input id="sheetBreakNote" placeholder="예: 점심 식사"></div><div class="sheet-actions"><button type="button" id="sheetCancel">취소</button><button type="button" id="sheetSave">기록 저장</button></div></div></div><div class="dialog" id="dialog"><div class="modal"><h2 id="modalTitle"></h2><p id="modalText"></p><div id="modalFields"></div><div class="actions"><button id="cancel">취소</button><button class="yes" id="confirm">확인</button></div></div></div><script src="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js"></script><script>
 const rows=[];let next=0;const add=(time,shifts,text)=>rows.push({id:'t'+(++next),time,shifts:shifts.split('/'),text});
@@ -1150,7 +1192,7 @@ function finishTask(id){
  if(t.condition&&conditions[t.condition]!=='X')return alert('이 업무는 해당 구분에서 공실 X를 선택해야 활성화됩니다.');
  if(taskEntries(id).some(e=>e.who===identity))return alert('이미 본인 이름으로 완료한 업무입니다. 완료 기록은 중복 추가되지 않습니다.');
  modal('정말 완료하셨나요?','실제로 업무를 완전히 끝낸 경우에만 기록해 주세요. 처리 중이면 [처리중]을 눌러주세요! 확인하면 로그인한 이름과 지금 시간이 기록되며 이전 기록은 그대로 남습니다.',
- `<div class="finish-confirm">✓ ${esc(t.text)}<br><b>${esc(identity)}</b> · ${esc(clock())}</div>`,()=>{
+ `<div class="finish-confirm"><span class="finish-review-kicker">완료 전 다시 확인할 업무</span><div class="finish-review-task">${esc(t.text)}</div><div class="finish-review-who">${esc(identity)} · ${esc(clock())}</div></div>`,()=>{
   let r=records[id]||{};
   if(!Array.isArray(r.entries))r.entries=[];
   let when=clock(), now=localStamp();
@@ -1169,7 +1211,7 @@ const dutyNames=[
  ['쓰레기통 비우기','분리수거 / 봉투 재설치'],['레스토랑 및 홀 청소 (1)','바닥청소 · 담당 1'],
  ['레스토랑 및 홀 청소 (2)','바닥청소 · 담당 2'],['조식 세팅 확인','조식 준비 확인'],
  ['인원추가 / 침구추가 확인자','추가 사항 확인'],['카페물품 채우기 책임자','컵 / 빨대 / 냅킨 등'],
- ['영어 응대자','외국인 고객 영어 응대']
+ 
 ];
 function staffNames(){return [...new Set([...roles,...Object.values(assignments).filter(Boolean),...Object.values(zones).flatMap(z=>Array.isArray(z)?z.map(v=>v.who):z?.who?[z.who]:[]),...Object.values(records).flatMap(r=>Array.isArray(r.entries)?r.entries.map(e=>e.who):[]),identity].filter(Boolean))]}
 function undoFinish(id){const r=records[id];if(!identity||!r)return;const entries=taskEntries(id);const idx=entries.findLastIndex(e=>e.who===identity);if(idx<0)return alert('본인이 완료한 기록만 취소할 수 있습니다.');const task=rows.find(t=>t.id===id);if(!confirm(`「${task?.text||'업무'}」의 내 완료 기록을 취소할까요?\n취소 이력은 남고 완료율에도 즉시 반영됩니다.`))return;const removed=entries.splice(idx,1)[0];audit.push({id,kind:'completion_undone',who:identity,previous:removed,at:localStamp()});if(!entries.length){r.status='open';delete r.who;delete r.at;delete r.completedStamp} else {r.who=entries[entries.length-1].who;r.at=entries[entries.length-1].at}save();render()}
@@ -1221,7 +1263,7 @@ function render(){
  $('#heroDate').textContent=new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'long',day:'numeric',weekday:'long'}).format(dd);
  $('#heroGreetingName').textContent=identity||'직원';
  const heroHours=identity?(employeeHours()[identity]||{}):{};
- $('#heroShiftSummary').textContent=identity?('오늘의 '+identity+'님  |  '+(heroHours.start||'출근 미기록')+' 출근 · '+(heroHours.end||'퇴근 미기록')+' 퇴근'):'로그인 후 근무 시간이 표시됩니다';
+ $('#heroShiftSummary').textContent=identity?('오늘의 '+identity+(identity.endsWith('님')?'':'님')+'  |  '+(heroHours.start||'출근 미기록')+' 출근 · '+(heroHours.end||'퇴근 미기록')+' 퇴근'):'로그인 후 근무 시간이 표시됩니다';
  drawAccountability();if(identity)$('#bigIdentity').textContent=identity;else $('#bigIdentity').textContent='로그인해 주세요';$('#zones').innerHTML=zoneNames.map(([name,desc],i)=>`<button class="zone" data-zone="${i}"><strong>${name}</strong><small>${desc}</small><span class="occupant">${Array.isArray(zones[i])&&zones[i].length?zones[i].map(z=>'<span class="zone-person" style="--employee:${employeeColor(z.who)}">'+(z.who===identity?'✓ ':'● ')+esc(z.who)+' · '+esc(z.at)+(z.note?' — '+esc(z.note):'')+'</span>').join(''):'＋ 지금 있는 곳 남기기'}</span></button>`).join('');$$('[data-shift]').forEach(b=>b.classList.toggle('active',b.dataset.shift===shift));$$('[data-filter]').forEach(b=>b.classList.toggle('active',b.dataset.filter===filter));let visible=shift==='all'?rows:rows.filter(t=>t.shifts.includes(shift)),prev=shift==='all'?[]:rows.filter(t=>minOf(t.time)<Number(shift)*60&&!t.shifts.includes(shift));const ok=t=>filter==='all'||(filter==='done'?taskEntries(t.id).length>0:taskEntries(t.id).length===0);let main=visible.filter(ok),older=prev.filter(ok);$('#main').innerHTML=main.length?groupHTML(main):'<div class="empty">표시할 업무가 없습니다.</div>';$('#previous').innerHTML=older.length?`<section class="before ${priorExpanded?'expanded':''}"><header><h2>☁ 출근 전 업무</h2><button id="expand">${priorExpanded?'흐리게 보기':'펼쳐서 보기'}</button></header>${groupHTML(older)}</section>`:'';$('#expand')?.addEventListener('click',()=>{priorExpanded=!priorExpanded;render()});let waiting=[];$('#reviewpanel').innerHTML=admin()&&waiting.length?`<div class="reviewpanel"><b>📋 관리자 확인 대기 · ${waiting.length}건</b>${waiting.map(t=>`<div class="reviewitem"><span>${esc(t.time)} ${esc(t.text)}<br><small>${esc(records[t.id].who)} · ${esc(records[t.id].at)}</small></span><span><button data-approve="${t.id}">확인</button> <button class="reject" data-reject="${t.id}">반려</button></span></div>`).join('')}</div>`:'';$('#todayLabel').textContent='♡ '+clock()+' 기준';renderProgress();renderAssignments();renderStaff();buildToc()}
 
 function editTask(id){
@@ -1295,7 +1337,7 @@ window.addEventListener('storage',e=>{if(e.key===catalogKey){catalogLoad();rende
 })();
 const hoursKey=()=>`toyu-hours-fresh-v8:${$('#date').value}`;
 function employeeHours(){try{return JSON.parse(localStorage.getItem(hoursKey())||'{}')}catch{return {}}}
-function displayHours(){if(!identity)return;const h=employeeHours()[identity]||{};$('#myShiftTitle').textContent=`지금 로그인한 직원은 '${identity}'님입니다.`;$('#clockStatus').textContent=`출근: ${h.start||'미기록'} / 퇴근: ${h.end||'미기록'}`;const duties=dutyNames.filter((_,i)=>assignments[i]===identity).map(x=>x[0]);$('#myDuties').textContent='업무/담당 요약: '+(duties.join(' · ')||'오늘 지정된 담당 업무가 없습니다.');}
+function displayHours(){if(!identity)return;const h=employeeHours()[identity]||{};$('#myShiftTitle').textContent=`지금 로그인한 직원은 '${identity}'${identity.endsWith('님')?'':'님'}입니다.`;$('#clockStatus').textContent=`출근: ${h.start||'미기록'} / 퇴근: ${h.end||'미기록'}`;const duties=dutyNames.filter((_,i)=>assignments[i]===identity).map(x=>x[0]);$('#myDuties').textContent='업무/담당 요약: '+(duties.join(' · ')||'오늘 지정된 담당 업무가 없습니다.');}
 $('#clockIn').onclick=()=>{const o=employeeHours();o[identity]??={};if(o[identity].start&&!confirm('출근 시간을 다시 기록할까요?'))return;o[identity].start=clock();localStorage.setItem(hoursKey(),JSON.stringify(o));displayHours()};
 $('#clockOut').onclick=()=>{const o=employeeHours();o[identity]??={};if(!o[identity].start)return alert('출근 기록을 먼저 남겨 주세요.');if(!confirm('지금 퇴근 시간을 저장하시겠습니까?'))return;o[identity].end=clock();localStorage.setItem(hoursKey(),JSON.stringify(o));displayHours()};
 $('#toBottom').onclick=()=>window.scrollTo({top:document.documentElement.scrollHeight,behavior:'smooth'});
@@ -1626,7 +1668,7 @@ document.addEventListener('click',e=>{
  const m=e.target.closest('[data-roster]');if(m){selectedStaffForZone=selectedStaffForZone===m.dataset.roster?'':m.dataset.roster;document.querySelectorAll('[data-roster]').forEach(el=>el.classList.toggle('selected',el.dataset.roster===selectedStaffForZone));return}
  const b=e.target.closest('[data-staffnote]');if(!b)return;
  const who=b.dataset.staffnote;
- modal('직원 업무 상세 메모',who+'님의 업무 내역에 메모를 추가합니다.',`<textarea id="staffNoteText" maxlength="1500" rows="5" placeholder="진행한 업무, 특이사항, 인수인계 내용을 입력해 주세요."></textarea>`,()=>{
+ modal('직원 업무 상세 메모',who+(who.endsWith('님')?'의':'님의')+' 업무 내역에 메모를 추가합니다.',`<textarea id="staffNoteText" maxlength="1500" rows="5" placeholder="진행한 업무, 특이사항, 인수인계 내용을 입력해 주세요."></textarea>`,()=>{
   const val=$('#staffNoteText').value.trim();if(!val)return alert('메모 내용을 입력해 주세요.');
   (staffNotes[who]??=[]).push({text:val,at:localStamp(),by:identity});staffNotesSave();audit.push({kind:'staff_note',who:identity,target:who,at:localStamp(),text:val});save();closeModal();render();
  },'메모 저장');
@@ -1636,6 +1678,90 @@ buildToc=function(){v11OldBuildToc();const menu=$('#tocMenu');menu.querySelector
 // Hide the unused shift review control while keeping legacy listeners safe.
 $('#shiftReview').hidden=true;
 
+
+/* v13 functional improvements */
+const dutyButtons=[['지배인님','지배인님'],['매니저님','매니저님(선영)'],['웅주임님','웅주임님(일웅)'],['은진님','은진'],['대표님','대표님'],['기타','__other']];
+const renderAssignmentsBeforeV13=renderAssignments;
+renderAssignments=function(){
+ $('#assignmentGrid').innerHTML=dutyNames.map(([name,detail],i)=>{
+  const who=assignments[i]||'';
+  return `<article class="assignment-item"><b>${esc(name)}</b><small>${esc(detail)}</small><div class="assignment-people">${dutyButtons.map(([label,val])=>`<button type="button" class="assign-person-btn ${who===val||val==='__other'&&who&&!dutyButtons.some(([l,v])=>v===who)?'selected':''}" data-assignbtn="${i}" data-person="${esc(val)}">${esc(label)}</button>`).join('')}</div><div class="assignment-now">${who?'담당 · '+esc(who):'담당자 미지정'}</div></article>`;
+ }).join('');
+};
+document.addEventListener('click',e=>{
+ const btn=e.target.closest('[data-assignbtn]');if(!btn)return;
+ if(!identity)return alert('로그인 후 담당 업무를 지정해 주세요.');
+ const i=Number(btn.dataset.assignbtn),val=btn.dataset.person;
+ let who=val;
+ if(val==='__other'){
+  const note=prompt('기타 담당자의 이름 또는 업무 관련 메모를 적어 주세요.',assignments[i]&&!dutyButtons.some(x=>x[1]===assignments[i])?assignments[i]:'');
+  if(note===null)return;who=note.trim().slice(0,140);if(!who)return alert('내용을 적어 주세요.');
+ }
+ if(assignments[i]===who){if(!confirm('이 업무의 담당자 지정을 해제할까요?'))return;delete assignments[i];who=''}
+ else assignments[i]=who;
+ audit.push({kind:'assignment',duty:dutyNames[i][0],who:identity,target:who,at:localStamp()});
+ save();render();
+});
+// Post-render TOC link and close button, preserving existing listener behaviour.
+const buildTocBeforeV13=buildToc;
+buildToc=function(){buildTocBeforeV13();const menu=$('#tocMenu');if(!menu)return;
+ if(!menu.querySelector('[data-scrollto="dailyReview"]'))menu.insertAdjacentHTML('beforeend','<button type="button" data-scrollto="dailyReview">오늘의 업무 후기</button>');
+ menu.insertAdjacentHTML('afterbegin','<button type="button" class="toc-close" id="tocCloseV13">✕ 목차 닫기</button>');
+};
+document.addEventListener('click',e=>{if(e.target.closest('#tocCloseV13')){$('#tocMenu').hidden=true;$('#tocToggle').setAttribute('aria-expanded','false');}});
+const reviewKeyV13=()=>`toyu-daily-review:${$('#date').value}`;
+function readReviewsV13(){try{return JSON.parse(localStorage.getItem(reviewKeyV13())||'[]')}catch{return []}}
+function drawReviewsV13(){const holder=$('#dailyReviewEntries');if(!holder)return;
+ holder.innerHTML=readReviewsV13().slice().reverse().map(e=>`<div class="daily-review-entry"><div class="entry-meta">${esc(e.who)} · ${esc(e.at)}</div><div class="entry-content">${esc(e.text)}</div></div>`).join('')||'<p>오늘 등록된 업무 후기가 없습니다.</p>';
+}
+$('#dailyReviewSave').onclick=()=>{if(!identity)return alert('로그인 후 작성해 주세요.');const val=$('#dailyReviewText').value.trim();if(!val)return alert('한 줄 후기를 적어 주세요.');const items=readReviewsV13();items.push({who:identity,at:localStamp(),text:val});localStorage.setItem(reviewKeyV13(),JSON.stringify(items));$('#dailyReviewText').value='';drawReviewsV13();};
+const renderBeforeV13=render;
+render=function(){renderBeforeV13();drawReviewsV13();};
+// Time controls: native picker, keyboard entry and accessible numeric selection/dial.
+(function(){
+ const native=$('#sheetTime'),input=$('#timeTyped'),hh=$('#timeHourSelect'),mm=$('#timeMinuteSelect'),dial=$('#timeDial'),numbers=$('#timeDialNums');
+ hh.innerHTML=Array.from({length:24},(_,i)=>`<option value="${String(i).padStart(2,'0')}">${String(i).padStart(2,'0')}시</option>`).join('');
+ mm.innerHTML=Array.from({length:60},(_,i)=>`<option value="${String(i).padStart(2,'0')}">${String(i).padStart(2,'0')}분</option>`).join('');
+ let mode='dial',stage='hours';
+ const valid=t=>/^([01]\d|2[0-3]):[0-5]\d$/.test(t);
+ function sync(t){if(!valid(t))return;native.value=t;input.value=t;const [h,m]=t.split(':');hh.value=h;mm.value=m;draw();}
+ function draw(){let [h,m]=(valid(native.value)?native.value:'09:00').split(':').map(Number);let max=stage==='hours'?12:60,now=stage==='hours'?(h%12):m;
+ const a=(now/max)*360;$('#timeHand').style.transform=`rotate(${a}deg)`;
+ numbers.innerHTML=Array.from({length:12},(_,i)=>{const value=stage==='hours'?(i===0?12:i):i*5;const angle=i*Math.PI/6-Math.PI/2;
+ const x=50+38*Math.cos(angle),y=50+38*Math.sin(angle);
+ return `<span class="clock-number ${now===value%max?'selected':''}" style="left:${x}%;top:${y}%">${stage==='hours'?value:String(value).padStart(2,'0')}</span>`}).join('');
+ $('#dialHour').classList.toggle('active',stage==='hours');$('#dialMinute').classList.toggle('active',stage==='minutes');
+ }
+ function choose(e){const r=dial.getBoundingClientRect();const x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;
+ let fraction=((Math.atan2(x,-y)/(Math.PI*2))+1)%1;
+ let [h,m]=(valid(native.value)?native.value:'09:00').split(':').map(Number);
+ if(stage==='hours'){let selected=Math.round(fraction*12)%12;h=(h>=12?12:0)+selected;if(h===24)h=12;stage='minutes'}else m=Math.round(fraction*60)%60;
+ sync(`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`);
+ }
+ let dragging=false;
+ dial.addEventListener('pointerdown',e=>{dragging=true;try{dial.setPointerCapture(e.pointerId)}catch{}choose(e)});
+ dial.addEventListener('pointermove',e=>{if(dragging){if(stage==='minutes')choose(e)}});
+ dial.addEventListener('pointerup',()=>dragging=false);
+ $('#dialHour').onclick=()=>{stage='hours';draw()};$('#dialMinute').onclick=()=>{stage='minutes';draw()};
+ document.querySelectorAll('[data-time-mode]').forEach(b=>b.onclick=()=>{mode=b.dataset.timeMode;document.querySelectorAll('[data-time-mode]').forEach(x=>x.classList.toggle('active',x===b));
+ ['dial','keyboard','select'].forEach(x=>$('#'+x+'Mode').hidden=x!==mode);
+ sync(native.value||'09:00');if(mode==='keyboard')input.focus();
+ });
+ input.addEventListener('change',()=>{let v=input.value.trim();if(/^\d{3,4}$/.test(v)){v=v.padStart(4,'0');v=v.slice(0,2)+':'+v.slice(2)}if(!valid(v))return alert('시간을 24시간 표기로 입력해 주세요. 예: 09:30');sync(v)});
+ hh.addEventListener('change',()=>sync(hh.value+':'+mm.value));mm.addEventListener('change',()=>sync(hh.value+':'+mm.value));
+ native.addEventListener('change',()=>sync(native.value));
+ $('#timeSheet').addEventListener('click',e=>{if(e.target.closest('[data-time-mode]'))return;});
+ const nativeSave=$('#sheetSave').onclick;
+ $('#sheetSave').onclick=()=>{if(mode==='keyboard'){
+  let v=input.value.trim();if(/^\d{3,4}$/.test(v)){v=v.padStart(4,'0');v=v.slice(0,2)+':'+v.slice(2)}
+  if(!valid(v))return alert('시간을 올바르게 입력해 주세요. 예: 09:30');sync(v);
+ }else if(mode==='select')sync(hh.value+':'+mm.value);
+ nativeSave();};
+ // When original time sheet opens, populate all controls from its current selection.
+ ['clockIn','clockOut','breakRecord'].forEach(id=>$('#'+id).addEventListener('click',()=>{setTimeout(()=>sync(native.value||'09:00'),0)}));
+ sync(native.value||'09:00');
+})();
+// Include end-of-day notes in the export report, without changing current export mechanics.
 </script><script>
 (function(){
  const nav=document.getElementById('quicknav'), menu=document.getElementById('tocMenu');
@@ -1644,4 +1770,77 @@ $('#shiftReview').hidden=true;
   document.getElementById(id)?.addEventListener('click',()=>{if(!menu.hidden)menu.hidden=true;});
  });
 })();
-</script></body></html>
+</script>
+<style>
+/* v12 navigation and saved reasons */
+#tocMenu .toc-tool{font-weight:800!important;background:#f2f7ff!important;color:#1d4e95!important;margin:3px 0;border:1px solid #e1eaf8!important}
+#tocMenu .toc-tool.pending{background:#fff3f8!important;color:#a82b72!important;border-color:#f9d4e6!important}
+.saved-reasons{margin-top:15px;display:grid;gap:9px}
+.saved-reasons h3{font-size:14px;font-weight:800;color:#1b365a;margin:4px 0}
+.saved-reason-row{background:#fff7fb;border:1px solid #f0d3e3;border-left:4px solid #ec78b0;border-radius:12px;padding:12px 14px;display:grid;gap:5px}
+.saved-reason-row strong{font-size:13px;color:#2a3445;line-height:1.55}
+.saved-reason-row .saved-reason-text{font-size:13px;color:#b12d79;font-weight:700;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere}
+.saved-reason-row small{color:#728198;font-size:11px}
+.task .exception-note{position:relative!important;z-index:2!important;display:block!important;visibility:visible!important;margin:12px 0!important}
+@media(max-width:650px){#tocMenu .toc-tool{min-height:43px!important}}
+</style>
+<script>
+/* v12: keep a visible reason history in the missed-work section. */
+(function(){
+const oldDrawAccountability=drawAccountability;
+drawAccountability=function(){
+ oldDrawAccountability();
+ const container=document.querySelector('#pendingSummary');
+ if(!container)return;
+ const saved=rows.filter(t=>records[t.id]?.exception).map(t=>({task:t,reason:records[t.id].exception}));
+ if(saved.length){
+  const panel=document.createElement('section');panel.className='saved-reasons';
+  panel.innerHTML='<h3>저장된 미처리 사유 · '+saved.length+'건</h3>'+saved.map(({task,reason})=>'<div class="saved-reason-row"><strong>'+esc(task.time)+' · '+esc(task.text)+'</strong><div class="saved-reason-text">사유 · '+esc(reason.reason)+'</div><small>'+esc(reason.who)+' · '+esc(reason.at)+'</small></div>').join('');
+  container.appendChild(panel);
+ }
+};
+const oldExceptionNote=exceptionNote;
+exceptionNote=function(id){
+ const task=rows.find(t=>String(t.id)===String(id));
+ const r=records[id]?.exception;
+ modal('미처리 업무 사유',task?task.time+' · '+task.text:'업무 사유를 기록해 주세요.',
+ '<textarea id="reason" rows="5" maxlength="1500" placeholder="미처리 사유를 구체적으로 입력해 주세요.">'+(r?esc(r.reason):'')+'</textarea>',()=>{
+  const text=document.querySelector('#reason')?.value.trim()||'';
+  if(text.length<2)return alert('사유를 2자 이상 입력해 주세요.');
+  if(!identity)return alert('로그인 후 저장해 주세요.');
+  const record=records[id]||{};
+  record.exception={reason:text,who:identity,at:localStamp()};
+  records[id]=record;
+  audit.push({id,kind:'exception',who:identity,reason:text,at:localStamp()});
+  save();closeModal();render();
+  const savedRow=[...document.querySelectorAll('.saved-reason-row')].find(el=>el.textContent.includes(text));
+  (savedRow||document.querySelector('#accountability'))?.scrollIntoView({behavior:'smooth',block:'center'});
+ },'사유 저장');
+};
+const oldBuildTocV12=buildToc;
+buildToc=function(){
+ oldBuildTocV12();
+ const menu=document.querySelector('#tocMenu');if(!menu)return;
+ const tools=document.createElement('div');
+ tools.innerHTML='<button type="button" class="toc-tool" data-toc-action="top">↑ 맨 위로</button><button type="button" class="toc-tool pending" data-toc-action="pending">○ 미처리된 업무로 가기</button><button type="button" class="toc-tool" data-toc-action="bottom">↓ 맨 아래로</button>';
+ menu.prepend(...tools.children);
+};
+document.querySelector('#tocMenu')?.addEventListener('click',e=>{
+ const b=e.target.closest('[data-toc-action]');if(!b)return;
+ e.preventDefault();e.stopPropagation();
+ document.querySelector('#tocMenu').hidden=true;
+ if(b.dataset.tocAction==='top')return window.scrollTo({top:0,behavior:'smooth'});
+ if(b.dataset.tocAction==='bottom')return window.scrollTo({top:document.documentElement.scrollHeight,behavior:'smooth'});
+ filter='all';shift='all';priorExpanded=true;render();
+ requestAnimationFrame(()=>{
+  const candidates=rows.filter(t=>taskEntries(t.id).length===0);
+  const overdueCandidates=candidates.filter(t=>overdue(t));
+  const target=(overdueCandidates.length?overdueCandidates:candidates)[0];
+  const el=target?document.querySelector('[data-task="'+CSS.escape(String(target.id))+'"]'):null;
+  if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.classList.add('task-highlight');setTimeout(()=>el.classList.remove('task-highlight'),2300)}
+  else alert('현재 미처리 업무가 없습니다.');
+ });
+});
+})();
+</script>
+</body></html>
