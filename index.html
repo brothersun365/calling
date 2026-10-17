@@ -1163,7 +1163,7 @@ async function login(){
  }catch(err){alert('로그인 실패: '+(err?.message||String(err)));}
  finally{btn.disabled=false;btn.textContent='업무 시작하기';}
 }
-const officialKnownEmails={'웅주임님(일웅)':'sisun90000@gmail.com','매니저님(선영)':'parksy9803@naver.com'};
+const officialKnownEmails={'웅주임님(일웅)':'sisun90000@gmail.com','매니저님(선영)':'parksy9803@naver.com','대표님':'ovidwin@gmail.com'};
 function refreshLoginChoice(){
  const role=$('#loginWho').value;
  $('#ptname').hidden=!role.startsWith('파트타이머');
@@ -2366,5 +2366,5 @@ window.TOYU_FB={
 };
 onAuthStateChanged(auth,user=>{const el=document.querySelector('#firebaseLoginState');if(el)el.textContent=user?'Firebase 인증 연결됨':'Firebase 로그인 대기'});
 </script>
-<div id="toyuCloudNotice" style="margin:18px auto;max-width:900px;padding:12px 16px;border:1px solid #b5cafa;border-radius:14px;background:#f4f8ff;color:#153766;font:500 12px/1.6 system-ui;">Firebase 운영 안정화 시험판: 항목별 버전 검증으로 동시 저장 충돌을 알리고, 수정·삭제 내역을 감사 기록으로 남깁니다. 저장 실패 안내가 나오면 성공으로 간주하지 마세요. 운영 전 기기별 테스트가 필요합니다.</div><!-- 계정 안내: 대표님/지배인님/기타 동일 이메일 ovidwin@gmail.com 은 Firebase Auth 한 계정으로 인식하므로 역할별 고유 로그인 구현 전까지 자동 연결하지 않음. -->
+<div id="toyuCloudNotice" style="margin:18px auto;max-width:900px;padding:12px 16px;border:1px solid #b5cafa;border-radius:14px;background:#f4f8ff;color:#153766;font:500 12px/1.6 system-ui;">Firebase 운영 안정화 시험판: 항목별 버전 검증으로 동시 저장 충돌을 알리고, 수정·삭제 내역을 감사 기록으로 남깁니다. 저장 실패 안내가 나오면 성공으로 간주하지 마세요. 운영 전 기기별 테스트가 필요합니다.</div><!-- 계정 안내: 일웅, 선영 매니저, 대표님 이메일만 자동 연결. 지배인/기타는 자동 이메일 연결하지 않음. Firebase Auth 계정 및 /staff 권한 등록은 별도 필요. -->
 </body></html>
